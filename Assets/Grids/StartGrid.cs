@@ -2,16 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// 存储测试用地图TestMap的地图数据
-public class TestMap : Maps
+public class StartGrid : Grids
 {
-    public override void Init()
-    {
-        StemCellsOriginPosition.Clear();
-        StemCellsOriginPosition.Add(new Position(4, 1));
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +14,15 @@ public class TestMap : Maps
     void Update()
     {
         
+    }
+
+    public override void onStemCellPassBy()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void onStemCellStay()
+    {
+        throw new System.NotImplementedException();
     }
 }
