@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
         // 看看返回的位置
         Debug.Log(pos[0].x);
         Debug.Log(pos[0].y);
+        // something fucking test
     }
 
     // Start is called before the first frame update
