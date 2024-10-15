@@ -6,11 +6,40 @@ using UnityEngine;
 // 存储测试用地图TestMap的地图数据
 public class TestMap : Maps
 {
+
     public override void Init()
     {
-        StemCellsOriginPosition.Clear();
+        Debug.Log("Init Map");
+        StemCellsOriginPosition = new List<Position>();
         StemCellsOriginPosition.Add(new Position(4, 1));
+        StemCellsOriginPosition.Add(new Position(13, 6));
+        StemCellsOriginPosition.Add(new Position(13, 16));
+        StemCellsOriginPosition.Add(new Position(4, 11));
+
+        GridsDict = new Dictionary<Position, GameObject>();
+        for (int i = 0; i < GridsList.Count; i++) {
+            // 此时P全是0，无语
+            // Position p = GridsList[i].GetComponent<Grids>().p;
+            // Debug.Log(string.Format("i={0}: p.x={1}, p.y={2}", i, p.x, p.y));
+            int x = GridsList[i].GetComponent<Grids>().x;
+            int y = GridsList[i].GetComponent<Grids>().y;
+            Debug.Log(string.Format("i={0}: x={1}, y={2}", i, x, y));
+            GridsDict[new Position(x, y)] = GridsList[i];
+        }
     }
+
+    public override Vector3 PositionChange(Position p)  // 坐标转换计算
+    {
+        int x = p.x;
+        int y = p.y;
+
+        // z轴坐标设置为-1，显示在地图前面
+        Vector3 pos = new Vector3(0, 0, -1);
+        pos.x = (float)(-8.0 + (float)0.5 * x + (float)0.5 * y);
+        pos.y = (float)(0.0 + (float)0.25 * x - (float)0.25 * y);
+        return pos;
+    }
+
 
     // Start is called before the first frame update
     void Start()
