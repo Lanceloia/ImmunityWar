@@ -2915,6 +2915,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1962930633658672225, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 588152042}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &611653993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5734220592555890084, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
+  m_PrefabInstance: {fileID: 745050669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &613643958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3247,6 +3252,10 @@ PrefabInstance:
     - target: {fileID: 3746167931012341039, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
       propertyPath: y
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746167931012341039, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
+      propertyPath: next
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4694290418713290007, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
       propertyPath: m_LocalScale.x
@@ -4865,6 +4874,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 1994659062}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1241966313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5734220592555890084, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
+  m_PrefabInstance: {fileID: 2063481986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1257325534
 GameObject:
   m_ObjectHideFlags: 0
@@ -5271,6 +5285,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 1711928948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1364453270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5734220592555890084, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
+  m_PrefabInstance: {fileID: 843706510}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1372301883 stripped
 GameObject:
@@ -5681,6 +5700,10 @@ MonoBehaviour:
   - {fileID: 750015784}
   - {fileID: 634609404}
   - {fileID: 495828220}
+  - {fileID: 1610949628}
+  - {fileID: 1364453270}
+  - {fileID: 611653993}
+  - {fileID: 1241966313}
 --- !u!1 &1441851830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -6469,6 +6492,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 914490680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1610949628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5734220592555890084, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
+  m_PrefabInstance: {fileID: 1751200968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1641752486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -6843,6 +6871,10 @@ PrefabInstance:
     - target: {fileID: 3746167931012341039, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
       propertyPath: y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746167931012341039, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
+      propertyPath: next
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4694290418713290007, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
       propertyPath: m_LocalScale.x
@@ -8341,6 +8373,10 @@ PrefabInstance:
       propertyPath: y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3746167931012341039, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
+      propertyPath: next
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4694290418713290007, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35
@@ -8666,7 +8702,11 @@ MonoBehaviour:
   - {fileID: 1045413127}
   - {fileID: 153459244}
   - {fileID: 1061918599}
+  pathogenList: []
+  immuneCellList: []
   map: {fileID: 1431763884}
+  pathogenPrefabList:
+  - {fileID: 7830961705039782732, guid: b150067c46ee4fd49b4f81c0dd5d4e01, type: 3}
 --- !u!1 &2114588590 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}

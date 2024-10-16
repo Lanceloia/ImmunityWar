@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pathogen : MonoBehaviour
 {
     public Position p;
-    //test for github
+    public int index;
+
     // Start is called before the first frame update
     void Start()
     {
