@@ -99,14 +99,14 @@ public class Board : MonoBehaviour
             forward_step--;
         }
 
-        // 此处调用Pathogen_Forward，仅做测试用
+        /* 此处调用Pathogen_Forward，仅做测试用
         if (pathogenList.Count == 0)
         {
             Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
             PathogenCreate(0, defaultPathogenPos);
         }
         // 固定每次前进2格
-        PathogenForward(0, 2);
+        PathogenForward(0, 2);*/
     }
 
 
@@ -135,11 +135,17 @@ public class Board : MonoBehaviour
 
             Position np = p + dir;
             // Position np = p;
-            stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
+            pathogenList[pathogen_index].GetComponent<Pathogen>().p = np;
 
-            StemCellMove(stem_cell_index, np);
+            PathogenMove(pathogen_index, np);
             forward_step--;
         }
+    }
+
+    public void PathogenMove(int pathogen_index, Position target_position)
+    {
+        pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
+        pathogenList[pathogen_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
     }
 
     public void passToken()
