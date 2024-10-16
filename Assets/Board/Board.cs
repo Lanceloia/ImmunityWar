@@ -60,6 +60,7 @@ public class Board : MonoBehaviour
 
     public void StemCellForward(int stem_cell_index, int forward_step)
     {
+        // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
         // Debug.Log(string.Format("stem {0} should forward {1} step", stem_cell_index, forward_step));
         // Debug.Log("FFFF");
         while (forward_step > 0)
