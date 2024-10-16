@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.UI;
+
 
 public class Board : MonoBehaviour
 {
@@ -110,7 +110,7 @@ public class Board : MonoBehaviour
     }
     public void setTokenBlock(bool block)
     {
-        Debug.Log("Lock change");
+        Debug.Log("Lock change to"+block);
         tokenBlock = block;
     }
 }
