@@ -40,8 +40,8 @@ public class Dice : MonoBehaviour
          * 直接使1号玩家移动
          */
         Board.instance.StemCellForward(0, randomNumber);
-
-
+        
+        
         yield return new WaitForSeconds(1);//返回一个值而已，没有意义
     }
 
