@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
@@ -19,8 +20,10 @@ public class Board : MonoBehaviour
     public int token;//依靠token决定行动轮次
     public bool tokenBlock;//上锁后轮次不再变化，上一轮次玩家持续行动
 
+
     public void StartGame()
     {
+
 
         map.GetComponent<Maps>().Init();                                               // 初始化地图信息
         List<Position> pos = map.GetComponent<Maps>().StemCellsOriginPosition;         // 读取干细胞的初始位置
@@ -39,11 +42,14 @@ public class Board : MonoBehaviour
         //初始化轮次为玩家1
         token = 0;
         tokenBlock = false;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+
+        
         // Debug.Log("Board Start");
         StartGame();
     }
@@ -101,5 +107,10 @@ public class Board : MonoBehaviour
     public int getToken()
     {
         return token;
+    }
+    public void setTokenBlock(bool block)
+    {
+        Debug.Log("Lock change");
+        tokenBlock = block;
     }
 }
