@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainWayGrid : Grids
 {
+    public bool canbuild2x2;
+    public GameObject build2x2;
     private void _init()
     {
         type = GridsType.MainWayGrid;
@@ -26,6 +28,16 @@ public class MainWayGrid : Grids
 
     public override void onStemCellStay()
     {
-        throw new System.NotImplementedException();
+        if (canbuild2x2)
+        {
+            build2x2.SetActive(true);
+        }
+        build2x2.GetComponent<Macrophages>().Upgrade();
+        /*É¾³ý½¨Öþ
+        if (canbuild2x2 && Input.GetKeyDown(KeyCode.B))
+        {
+            build2x2.SetActive(false);
+        }
+        */
     }
 }

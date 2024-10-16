@@ -38,7 +38,7 @@ abstract public class Maps : MonoBehaviour
     public List<Position> StemCellsOriginPosition;
     public List<GameObject> GridsList;
 
-    protected Dictionary<Position, GameObject> GridsDict;
+    protected static Dictionary<Position, GameObject> GridsDict;
 
     abstract public void Init();    // 初始化数据成员
     abstract public Vector3 PositionChange(Position p); // 地图坐标转换为世界坐标

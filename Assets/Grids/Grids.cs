@@ -21,8 +21,9 @@ public enum Direction
 
 abstract public class Grids : MonoBehaviour
 {
+    
     // 数据成员
-    protected GridsType type;   // 格子的类型
+    public GridsType type;   // 格子的类型
     public Position p;             // 格子的地图坐标（内部计算用）
     public int x, y;               // 格子的地图坐标（外部绑定用）
 

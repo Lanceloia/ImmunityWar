@@ -24,7 +24,7 @@ public class Dice : MonoBehaviour
 
     private IEnumerator RollAnimation()
     {
-        Debug.Log("Rolling Dice");
+        //Debug.Log("Rolling Dice");
         if (spriteRenderer == null||sprites.Length != 6)
         {
             Debug.Log("Dice RollAnimation error");

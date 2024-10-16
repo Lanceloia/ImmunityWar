@@ -42,7 +42,10 @@ public class TestMap : Maps
         return pos;
     }
 
-
+    public static Dictionary<Position, GameObject> GetGridsDict()
+    {
+        return GridsDict;
+    }
     // Start is called before the first frame update
     void Start()
     {

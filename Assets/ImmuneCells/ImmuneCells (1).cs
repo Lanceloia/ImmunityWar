@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ImmuneCells : MonoBehaviour
 {
+    public GameObject Tower;           // 防御塔自己
     // 基础属性
     public int immuneCellIndex;           // 防御塔名称
     public int rank;                  // 当前等级
@@ -40,8 +41,20 @@ public class ImmuneCells : MonoBehaviour
         rank++;
         attackPower *= 1.2f;  // 升级后攻击力增加20%
         upgradeCost += 100;   // 升级后升级费用增加100
-
+        SpriteChange();
         Debug.Log(immuneCellIndex + " upgraded to rank " + rank + ". New upgrade cost: " + upgradeCost);
+    }
+    public virtual void SpriteChange()
+    {
+        //贴图更新
+        if (rank == 2)
+        Tower.GetComponent<SpriteRenderer>().color = Color.green;
+        if (rank == 3)
+        Tower.GetComponent<SpriteRenderer>().color = Color.blue;
+        if (rank == 4)
+        Tower.GetComponent<SpriteRenderer>().color = Color.yellow;
+        if (rank == 5)
+        Tower.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
     // 普通攻击方法，定义攻击行为

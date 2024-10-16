@@ -84,8 +84,10 @@ public class Board : MonoBehaviour
             StemCellMove(stem_cell_index, np);
             forward_step--;
         }
+       
+        Dictionary<Position, GameObject> tempDict = TestMap.GetGridsDict();
 
+        tempDict[np].GetComponent<Grids>().onStemCellStay();
         
-
     }
 }
