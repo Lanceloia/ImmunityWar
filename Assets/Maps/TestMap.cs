@@ -10,12 +10,14 @@ public class TestMap : Maps
     public override void Init()
     {
         Debug.Log("Init Map");
+        //获得四位玩家的初始位置
         StemCellsOriginPosition = new List<Position>();
         StemCellsOriginPosition.Add(new Position(4, 1));
         StemCellsOriginPosition.Add(new Position(13, 6));
         StemCellsOriginPosition.Add(new Position(13, 16));
         StemCellsOriginPosition.Add(new Position(4, 11));
 
+        //以坐标为key将所有格子存入字典
         GridsDict = new Dictionary<Position, GameObject>();
         for (int i = 0; i < GridsList.Count; i++) {
             // 此时P全是0，无语

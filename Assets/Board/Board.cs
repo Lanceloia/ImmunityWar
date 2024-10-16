@@ -76,8 +76,7 @@ public class Board : MonoBehaviour
 
             Position np = p + dir;
             // Position np = p;
-            stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
-
+            
             StemCellMove(stem_cell_index, np);
             forward_step--;
         }
