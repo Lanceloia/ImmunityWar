@@ -63,6 +63,10 @@ public class Board : MonoBehaviour
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
         // Debug.Log(string.Format("stem {0} should forward {1} step", stem_cell_index, forward_step));
         // Debug.Log("FFFF");
+        
+        //若不动，则np = p
+        Position np = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
+        
         while (forward_step > 0)
         {
             // Debug.Log("GGGG");
@@ -74,11 +78,14 @@ public class Board : MonoBehaviour
             Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
             // Debug.Log(string.Format("next dir is {0}", dir));
 
-            Position np = p + dir;
+            np = p + dir;
             // Position np = p;
             
             StemCellMove(stem_cell_index, np);
             forward_step--;
         }
+
+        
+
     }
 }

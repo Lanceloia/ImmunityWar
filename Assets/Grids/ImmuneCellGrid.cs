@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ImmuneCellGrid : Grids
 {
-    // Start is called before the first frame update
+    private void _init()
+    {
+        type = GridsType.ImmuneCellGrid;
+    }
+    
     void Start()
     {
-        
+        _init();
     }
 
     // Update is called once per frame
