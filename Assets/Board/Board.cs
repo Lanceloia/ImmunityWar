@@ -15,11 +15,13 @@ public class Board : MonoBehaviour
     }
 
     public List<GameObject> stemCellList;   // 存储4个干细胞对象
+    public List<GameObject> pathogenList;   // 存储若干个病原体对象（随着游戏进程推进不断生成销毁新的对象）
+    public List<GameObject> immuneCellList; // 存储若干个免疫细胞对象（随着游戏进程推进不断生成销毁新的对象）
     public GameObject map;                  // 记得绑定游戏地图
+    public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制
 
     public int token;//依靠token决定行动轮次
     public bool tokenBlock;//上锁后轮次不再变化，上一轮次玩家持续行动
-
 
     public void StartGame()
     {
@@ -60,6 +62,7 @@ public class Board : MonoBehaviour
         // Debug.Log(string.Format("stemCellList.cnt={0}", stemCellList.Count));
     }
 
+
     // 将某个干细胞的移动到目标位置（逻辑位置和精灵图均移动）
     public void StemCellMove(int stem_cell_index, Position target_position)
     {
@@ -71,6 +74,7 @@ public class Board : MonoBehaviour
         //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
     }
 
+    // 使某个干细胞沿着主路自动向前移动若干步数（会间接调用StemCellMove）
     public void StemCellForward(int stem_cell_index, int forward_step)
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
@@ -81,6 +85,48 @@ public class Board : MonoBehaviour
             // Debug.Log("GGGG");
             // Debug.Log(string.Format("stemCellList.cnt={0}",stemCellList.Count));
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
+            // Debug.Log("HHHH");
+            // Position p = new Position(-1, -1);
+            // Debug.Log(string.Format("cur pos at {0},{1}", p.x, p.y));
+            Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
+            // Debug.Log(string.Format("next dir is {0}", dir));
+
+            Position np = p + dir;
+            // Position np = p;
+            stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
+
+            StemCellMove(stem_cell_index, np);
+            forward_step--;
+        }
+
+        // 此处调用Pathogen_Forward，仅做测试用
+        if (pathogenList.Count == 0)
+        {
+            Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
+            PathogenCreate(0, defaultPathogenPos);
+        }
+        // 固定每次前进2格
+        PathogenForward(0, 2);
+    }
+
+
+
+    public void PathogenCreate(int pathogen_type, Position target_position)
+    {
+        // 创建一个新的类型为pathogen_type的对象，将它的精灵图移动到target_position位置
+        // 可能需要返回这个新对象在列表中的序号
+
+
+        // 使用GameObject.Instantiate方法拷贝预制体对象，将其添加到列表中
+        pathogenList.Add(Instantiate(pathogenPrefabList[0]));
+    }
+
+    public void PathogenForward(int pathogen_index, int forward_step)
+    {
+        // 几乎完全与StemCellForward的逻辑相同
+        while (forward_step > 0)
+        {
+            Position p = pathogenList[pathogen_index].GetComponent<Pathogen>().p;
             // Debug.Log("HHHH");
             // Position p = new Position(-1, -1);
             // Debug.Log(string.Format("cur pos at {0},{1}", p.x, p.y));
@@ -113,4 +159,67 @@ public class Board : MonoBehaviour
         Debug.Log("Lock change to"+block);
         tokenBlock = block;
     }
+
+    
+        // 此处调用Pathogen_Forward，仅做测试用
+        if (pathogenList.Count == 0)
+        {
+            Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
+            PathogenCreate(0, defaultPathogenPos);
+        }
+        // 固定每次前进2格
+        PathogenForward(0, 2);
+    }
+
+
+
+    public void PathogenCreate(int pathogen_type, Position target_position)
+    {
+        // 创建一个新的类型为pathogen_type的对象，将它的精灵图移动到target_position位置
+        // 可能需要返回这个新对象在列表中的序号
+
+
+        // 使用GameObject.Instantiate方法拷贝预制体对象，将其添加到列表中
+        pathogenList.Add(Instantiate(pathogenPrefabList[0]));
+    }
+
+    public void PathogenForward(int pathogen_index, int forward_step)
+    {
+        // 几乎完全与StemCellForward的逻辑相同
+        while (forward_step > 0)
+        {
+            Position p = pathogenList[pathogen_index].GetComponent<Pathogen>().p;
+            // Debug.Log("HHHH");
+            // Position p = new Position(-1, -1);
+            // Debug.Log(string.Format("cur pos at {0},{1}", p.x, p.y));
+            Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
+            // Debug.Log(string.Format("next dir is {0}", dir));
+
+            Position np = p + dir;
+            // Position np = p;
+            stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
+
+            StemCellMove(stem_cell_index, np);
+            forward_step--;
+        }
+    }
+    public void passToken()
+    {
+        if (!tokenBlock)
+        {
+            token++;
+            token %= 4;
+        }
+    }
+    public int getToken()
+    {
+        return token;
+    }
+    public void setTokenBlock(bool block)
+    {
+        Debug.Log("Lock change to"+block);
+        tokenBlock = block;
+    }
+
+    
 }

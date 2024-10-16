@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PathogenGrid : Grids
 {
-    // Start is called before the first frame update
+    private void _init()
+    {
+        type = GridsType.PathogenGrid;
+    }
     void Start()
     {
-        
+        _init();
     }
 
     // Update is called once per frame

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class StartGrid : Grids
 {
-    // Start is called before the first frame update
+    private void _init()
+    {
+        type = GridsType.StartGrid;
+    }
     void Start()
     {
-        
+        _init();
     }
 
     // Update is called once per frame

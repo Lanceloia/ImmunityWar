@@ -10,15 +10,15 @@ public class Dice : MonoBehaviour
     
     private void OnMouseDown()
     {
-        RollDice(); // µ±Êó±êµã»÷Ê±µ÷ÓÃRollDice
+        RollDice(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½RollDice
     }
     public void RollDice()
     {
-        StartCoroutine(RollAnimation());// µ÷ÓÃRollAnimation
+        StartCoroutine(RollAnimation());// ï¿½ï¿½ï¿½ï¿½RollAnimation
     }
      void Start()
     {
-        // »ñÈ¡Sprite Renderer×é¼þ
+        // ï¿½ï¿½È¡Sprite Rendererï¿½ï¿½ï¿½
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -31,7 +31,7 @@ public class Dice : MonoBehaviour
         }
         int randomNumber = Random.Range(1, 7);
         //
-        //²¥·ÅÈÓ÷»×ÓµÄ¶¯»­
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ¶ï¿½ï¿½ï¿½
         //
         spriteRenderer.sprite = sprites[randomNumber - 1];
         type = randomNumber;
@@ -39,7 +39,7 @@ public class Dice : MonoBehaviour
         
 
 
-        yield return new WaitForSeconds(1);//·µ»ØÒ»¸öÖµ¶øÒÑ£¬Ã»ÓÐÒâÒå
+        yield return new WaitForSeconds(1);//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Öµï¿½ï¿½ï¿½Ñ£ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     public int getDiceType()

@@ -34,8 +34,8 @@ public struct Position
 
 abstract public class Maps : MonoBehaviour
 {
-    // 图上所有起始点的位置
-    public List<Position> StemCellsOriginPosition;
+    public List<Position> StemCellsOriginPosition;    // 图上所有起始点的位置
+    public List<Position> PathogensOriginPosition;    // 图上所有病原体区的位置
     public List<GameObject> GridsList;
 
     protected Dictionary<Position, GameObject> GridsDict;
