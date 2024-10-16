@@ -7,13 +7,13 @@ public class StemCell : MonoBehaviour
     public Position p;
 
     public Vector3 target;
-    public float speed = 1.0f;
+    public float speed;
     public bool isMove = false;
 
     // Start is called before the first frame update
     void Start()
     {
-              
+        speed = 3f;
     }
 
     // Update is called once per frame

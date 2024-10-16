@@ -65,12 +65,13 @@ public class Board : MonoBehaviour
         
     }
 
+    // 将某个干细胞的移动到目标位置（逻辑位置和精灵图均移动）
     public void StemCellMove(int stem_cell_index, Position target_position)
     {
         stemCellList[stem_cell_index].GetComponent<StemCell>().p = target_position;
         stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
     }
-    // 将某个干细胞的移动到目标位置（逻辑位置和精灵图均移动）
+
     public void StemCellSmoothMove(int stem_cell_index, Position target_position)
     {
         // Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
