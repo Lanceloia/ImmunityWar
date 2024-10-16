@@ -23,6 +23,8 @@ public class Board : MonoBehaviour
     public int token;//依靠token决定行动轮次
     public bool tokenBlock;//上锁后轮次不再变化，上一轮次玩家持续行动
 
+    public bool isMove;//有物体正在移动，用于实现连续运动
+
     public void StartGame()
     {
 
@@ -44,7 +46,7 @@ public class Board : MonoBehaviour
         //初始化轮次为玩家1
         token = 0;
         tokenBlock = false;
-        
+
     }
 
     // Start is called before the first frame update
@@ -60,22 +62,29 @@ public class Board : MonoBehaviour
     void Update()
     {
         // Debug.Log(string.Format("stemCellList.cnt={0}", stemCellList.Count));
+        
     }
 
-
-    // 将某个干细胞的移动到目标位置（逻辑位置和精灵图均移动）
     public void StemCellMove(int stem_cell_index, Position target_position)
+    {
+        stemCellList[stem_cell_index].GetComponent<StemCell>().p = target_position;
+        stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
+    }
+    // 将某个干细胞的移动到目标位置（逻辑位置和精灵图均移动）
+    public void StemCellSmoothMove(int stem_cell_index, Position target_position)
     {
         // Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
         stemCellList[stem_cell_index].GetComponent<StemCell>().p = target_position;
-        stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
+        stemCellList[stem_cell_index].GetComponent<StemCell>().target = map.GetComponent<Maps>().PositionChange(target_position);
+        stemCellList[stem_cell_index].GetComponent<StemCell>().isMove = true;
+        //stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
         // Debug.Log(string.Format("cur pos at {0},{1}",
         //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.x,
         //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
     }
 
     // 使某个干细胞沿着主路自动向前移动若干步数（会间接调用StemCellMove）
-    public void StemCellForward(int stem_cell_index, int forward_step)
+    public IEnumerator StemCellForward(int stem_cell_index, int forward_step)
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
         // Debug.Log(string.Format("stem {0} should forward {1} step", stem_cell_index, forward_step));
@@ -94,7 +103,8 @@ public class Board : MonoBehaviour
             Position np = p + dir;
             // Position np = p;
             // stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
-            StemCellMove(stem_cell_index, np);
+            StemCellSmoothMove(stem_cell_index, np);
+            yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
             forward_step--;
         }
 
@@ -109,6 +119,24 @@ public class Board : MonoBehaviour
         PathogenForward(0, 2);
     }
 
+    IEnumerator WaitForObjectUpdate(int stem_cell_index)
+    {
+        while (true)
+        {
+            // 调用对象的自定义 Update() 方法
+            stemCellList[stem_cell_index].GetComponent<StemCell>().SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
+
+            // 判断条件
+            if (!stemCellList[stem_cell_index].GetComponent<StemCell>().isMove)
+            {
+                Debug.Log("条件满足，停止等待");
+                break;  // 满足条件时退出循环
+            }
+
+            // 等待下一帧继续循环
+            yield return null;
+        }
+    }
 
     public void PathogenCreate(int pathogen_type, Position target_position)
     {
@@ -129,7 +157,7 @@ public class Board : MonoBehaviour
     {
         // 几乎完全与StemCellMove的逻辑相同
         pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
-        Debug.Log(string.Format("Here!"));
+        //Debug.Log(string.Format("Here!"));
         pathogenList[pathogen_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
     }
 

@@ -6,6 +6,10 @@ public class StemCell : MonoBehaviour
 {
     public Position p;
 
+    public Vector3 target;
+    public float speed = 1.0f;
+    public bool isMove = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +19,16 @@ public class StemCell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isMove)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        }
+        if (target!=null)
+        {
+            if (transform.position == target)
+            {
+                isMove = false;
+            }
+        }
     }
 }

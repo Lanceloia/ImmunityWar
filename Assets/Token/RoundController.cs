@@ -18,11 +18,11 @@ public class RoundControler : MonoBehaviour
         Board.instance.passToken();
         tokenUser = Board.instance.getToken();
         dice.RollDice();
-        
+
         /*
          * 直接使stem_cell_index号玩家移动
          */
-        Board.instance.StemCellForward(tokenUser, dice.type);
+        StartCoroutine(Board.instance.StemCellForward(tokenUser, dice.type));
     }
     // Start is called before the first frame update
     void Start()
