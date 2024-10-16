@@ -98,7 +98,7 @@ public class Board : MonoBehaviour
             forward_step--;
         }
 
-         此处调用Pathogen_Forward，仅做测试用
+         //此处调用Pathogen_Forward，仅做测试用
         if (pathogenList.Count == 0)
         {
             // 读取第一个刷怪点
@@ -146,11 +146,6 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void PathogenMove(int pathogen_index, Position target_position)
-    {
-        pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
-        pathogenList[pathogen_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
-    }
 
     public void passToken()
     {
