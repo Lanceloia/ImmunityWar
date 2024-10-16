@@ -17,6 +17,13 @@ public class TestMap : Maps
         StemCellsOriginPosition.Add(new Position(13, 16));
         StemCellsOriginPosition.Add(new Position(4, 11));
 
+        //获得四位玩家的初始位置
+        PathogensOriginPosition = new List<Position>();
+        PathogensOriginPosition.Add(new Position(11, 4));
+        PathogensOriginPosition.Add(new Position(16, 12));
+        PathogensOriginPosition.Add(new Position(6, 13));
+        PathogensOriginPosition.Add(new Position(1, 5));
+
         //以坐标为key将所有格子存入字典
         GridsDict = new Dictionary<Position, GameObject>();
         for (int i = 0; i < GridsList.Count; i++) {
@@ -25,7 +32,7 @@ public class TestMap : Maps
             // Debug.Log(string.Format("i={0}: p.x={1}, p.y={2}", i, p.x, p.y));
             int x = GridsList[i].GetComponent<Grids>().x;
             int y = GridsList[i].GetComponent<Grids>().y;
-            Debug.Log(string.Format("i={0}: x={1}, y={2}", i, x, y));
+            // Debug.Log(string.Format("i={0}: x={1}, y={2}", i, x, y));
             GridsDict[new Position(x, y)] = GridsList[i];
         }
     }

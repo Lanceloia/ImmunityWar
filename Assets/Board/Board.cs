@@ -93,32 +93,44 @@ public class Board : MonoBehaviour
 
             Position np = p + dir;
             // Position np = p;
-            stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
-
+            // stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
             StemCellMove(stem_cell_index, np);
             forward_step--;
         }
 
-        /* 此处调用Pathogen_Forward，仅做测试用
+         此处调用Pathogen_Forward，仅做测试用
         if (pathogenList.Count == 0)
         {
+            // 读取第一个刷怪点
             Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
             PathogenCreate(0, defaultPathogenPos);
         }
         // 固定每次前进2格
-        PathogenForward(0, 2);*/
+        PathogenForward(0, 2);
     }
-
 
 
     public void PathogenCreate(int pathogen_type, Position target_position)
     {
         // 创建一个新的类型为pathogen_type的对象，将它的精灵图移动到target_position位置
         // 可能需要返回这个新对象在列表中的序号
-
-
         // 使用GameObject.Instantiate方法拷贝预制体对象，将其添加到列表中
-        pathogenList.Add(Instantiate(pathogenPrefabList[0]));
+        // Debug.Log(string.Format("FFF pathogen_cnt={0}", pathogenList.Count));
+        GameObject pathogen = Instantiate(pathogenPrefabList[pathogen_type]);
+        pathogenList.Add(pathogen);
+        Debug.Log(string.Format("GGG pathogen_cnt={0}", pathogenList.Count));
+        // 此处可能需要绑定index
+        // 移动到初始位置
+        PathogenMove(pathogenList.Count - 1, target_position);
+    }
+
+    // 将某个病原体的移动到目标位置（逻辑位置和精灵图均移动）
+    public void PathogenMove(int pathogen_index, Position target_position)
+    {
+        // 几乎完全与StemCellMove的逻辑相同
+        pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
+        Debug.Log(string.Format("Here!"));
+        pathogenList[pathogen_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
     }
 
     public void PathogenForward(int pathogen_index, int forward_step)
@@ -127,16 +139,8 @@ public class Board : MonoBehaviour
         while (forward_step > 0)
         {
             Position p = pathogenList[pathogen_index].GetComponent<Pathogen>().p;
-            // Debug.Log("HHHH");
-            // Position p = new Position(-1, -1);
-            // Debug.Log(string.Format("cur pos at {0},{1}", p.x, p.y));
             Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
-            // Debug.Log(string.Format("next dir is {0}", dir));
-
             Position np = p + dir;
-            // Position np = p;
-            pathogenList[pathogen_index].GetComponent<Pathogen>().p = np;
-
             PathogenMove(pathogen_index, np);
             forward_step--;
         }
