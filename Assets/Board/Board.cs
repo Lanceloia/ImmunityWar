@@ -16,6 +16,9 @@ public class Board : MonoBehaviour
     public List<GameObject> stemCellList;   // 存储4个干细胞对象
     public GameObject map;                  // 记得绑定游戏地图
 
+    public int token;//依靠token决定行动轮次
+    public bool tokenBlock;//上锁后轮次不再变化，上一轮次玩家持续行动
+
     public void StartGame()
     {
 
@@ -32,6 +35,10 @@ public class Board : MonoBehaviour
         StemCellMove(1, pos[1]);
         StemCellMove(2, pos[2]);
         StemCellMove(3, pos[3]);
+        
+        //初始化轮次为玩家1
+        token = 0;
+        tokenBlock = false;
     }
 
     // Start is called before the first frame update
@@ -80,5 +87,18 @@ public class Board : MonoBehaviour
             StemCellMove(stem_cell_index, np);
             forward_step--;
         }
+    }
+
+    public void passToken()
+    {
+        if (!tokenBlock)
+        {
+            token++;
+            token %= 4;
+        }
+    }
+    public int getToken()
+    {
+        return token;
     }
 }
