@@ -37,7 +37,7 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Board Start");
+        // Debug.Log("Board Start");
         StartGame();
     }
 
@@ -50,28 +50,28 @@ public class Board : MonoBehaviour
     // 将某个干细胞的移动到目标位置（逻辑位置和精灵图均移动）
     public void StemCellMove(int stem_cell_index, Position target_position)
     {
-        Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
+        // Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
         stemCellList[stem_cell_index].GetComponent<StemCell>().p = target_position;
         stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
-        Debug.Log(string.Format("cur pos at {0},{1}", 
-            stemCellList[stem_cell_index].GetComponent<StemCell>().p.x, 
-            stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
+        // Debug.Log(string.Format("cur pos at {0},{1}",
+        //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.x,
+        //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
     }
 
     public void StemCellForward(int stem_cell_index, int forward_step)
     {
-        Debug.Log(string.Format("stem {0} should forward {1} step", stem_cell_index, forward_step));
-        Debug.Log("FFFF");
+        // Debug.Log(string.Format("stem {0} should forward {1} step", stem_cell_index, forward_step));
+        // Debug.Log("FFFF");
         while (forward_step > 0)
         {
-            Debug.Log("GGGG");
-            Debug.Log(string.Format("stemCellList.cnt={0}",stemCellList.Count));
+            // Debug.Log("GGGG");
+            // Debug.Log(string.Format("stemCellList.cnt={0}",stemCellList.Count));
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
-            Debug.Log("HHHH");
+            // Debug.Log("HHHH");
             // Position p = new Position(-1, -1);
-            Debug.Log(string.Format("cur pos at {0},{1}", p.x, p.y));
+            // Debug.Log(string.Format("cur pos at {0},{1}", p.x, p.y));
             Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
-            Debug.Log(string.Format("next dir is {0}", dir));
+            // Debug.Log(string.Format("next dir is {0}", dir));
 
             Position np = p + dir;
             // Position np = p;
