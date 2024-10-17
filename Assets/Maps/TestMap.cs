@@ -25,7 +25,7 @@ public class TestMap : Maps
             // Debug.Log(string.Format("i={0}: p.x={1}, p.y={2}", i, p.x, p.y));
             int x = GridsList[i].GetComponent<Grids>().x;
             int y = GridsList[i].GetComponent<Grids>().y;
-            Debug.Log(string.Format("i={0}: x={1}, y={2}", i, x, y));
+            //Debug.Log(string.Format("i={0}: x={1}, y={2}", i, x, y));
             GridsDict[new Position(x, y)] = GridsList[i];
         }
     }

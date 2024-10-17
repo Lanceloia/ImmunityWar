@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class ImmuneCellGrid : Grids
 {
+    public bool hasTower = false;
+    public List<GameObject> towertype;
     private void _init()
     {
+        //Debug.Log("ImmuneCellGrid");
         type = GridsType.ImmuneCellGrid;
+        GameObject[] objectsInScene = GameObject.FindGameObjectsWithTag("Tower");
+
+        for (int i = 0; i < objectsInScene.Length; i++)
+        {
+            towertype.Add(objectsInScene[i]);
+        }
     }
     
     void Start()

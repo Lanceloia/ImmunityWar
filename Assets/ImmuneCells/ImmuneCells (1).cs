@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ImmuneCells : MonoBehaviour
 {
+    public static List<GameObject> immuneCells = new List<GameObject>(); // 防御塔列表
     public GameObject Tower;           // 防御塔自己
     // 基础属性
-    public int immuneCellIndex;           // 防御塔名称
+    public int immuneCellIndex;           // 防御塔编号
     public int rank;                  // 当前等级
     public float attackPower;         // 攻击力
 
