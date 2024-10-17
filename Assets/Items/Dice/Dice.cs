@@ -11,6 +11,8 @@ public class Dice : MonoBehaviour
     private void OnMouseDown()
     {
         RollDice(); // �������ʱ����RollDice
+        if (Board.instance.token != CurrentRound.AI)
+            StartCoroutine(Board.instance.StemCellForward((int)Board.instance.token, type));
     }
     public void RollDice()
     {
@@ -37,8 +39,6 @@ public class Dice : MonoBehaviour
         type = randomNumber;
 
         
-
-
         yield return new WaitForSeconds(1);//����һ��ֵ���ѣ�û������
     }
 

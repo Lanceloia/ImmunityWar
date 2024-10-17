@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public enum CurrentRound
+{
+    P1 = 0,
+    P2 = 1,
+    P3 = 2,
+    P4 = 3,
+    AI = 4
+}
 
 public class Board : MonoBehaviour
 {
@@ -20,15 +28,12 @@ public class Board : MonoBehaviour
     public GameObject map;                  // 记得绑定游戏地图
     public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制
 
-    public int token;//依靠token决定行动轮次
-    public bool tokenBlock;//上锁后轮次不再变化，上一轮次玩家持续行动
+    public CurrentRound token;              // 依靠token决定行动轮次
 
     public bool isMove;//有物体正在移动，用于实现连续运动
 
     public void StartGame()
     {
-
-
         map.GetComponent<Maps>().Init();                                               // 初始化地图信息
         List<Position> pos = map.GetComponent<Maps>().StemCellsOriginPosition;         // 读取干细胞的初始位置
 
@@ -45,8 +50,6 @@ public class Board : MonoBehaviour
         
         //初始化轮次为玩家1
         token = 0;
-        tokenBlock = false;
-
     }
 
     // Start is called before the first frame update
@@ -114,10 +117,11 @@ public class Board : MonoBehaviour
         {
             // 读取第一个刷怪点
             Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
-            PathogenCreate(0, defaultPathogenPos);
+            int defaultPathogenType = 0;
+            PathogenCreate(defaultPathogenType, defaultPathogenPos);
         }
-        // 固定每次前进2格
-        PathogenForward(0, 2);
+        //// 固定每次前进2格
+        //PathogenForward(0, 2);
     }
 
     IEnumerator WaitForObjectUpdate(int stem_cell_index)
@@ -175,22 +179,19 @@ public class Board : MonoBehaviour
         }
     }
 
-
-    public void passToken()
+    public void NextRound()
     {
-        if (!tokenBlock)
+        token = token + 1;          // token 传给下一个
+        
+        // 如果token在AI这里，则轮到AI行动
+        if (token == CurrentRound.AI)
         {
-            token++;
-            token %= 4;
+            int pathogen_index = 0;
+            int forward_step = 2;
+
+            PathogenForward(pathogen_index, forward_step);
+
+            token = CurrentRound.P1;   // AI行动完token传回给P1
         }
-    }
-    public int getToken()
-    {
-        return token;
-    }
-    public void setTokenBlock(bool block)
-    {
-        Debug.Log("Lock change to"+block);
-        tokenBlock = block;
     }
 }
