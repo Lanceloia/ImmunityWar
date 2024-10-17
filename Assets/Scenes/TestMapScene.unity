@@ -7593,17 +7593,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1962930633658672225, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 1794934891}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1804526173 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
-  m_PrefabInstance: {fileID: 457820073}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1804526174 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
   m_PrefabInstance: {fileID: 457820073}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804526173}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
@@ -8985,9 +8980,13 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: testMap
+      value: 
+      objectReference: {fileID: 1431763888}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: build2x2
       value: 
-      objectReference: {fileID: 1804526173}
+      objectReference: {fileID: 1804526174}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
