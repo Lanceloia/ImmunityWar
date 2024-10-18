@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -25,8 +26,10 @@ public class Board : MonoBehaviour
     public List<GameObject> stemCellList;   // 存储4个干细胞对象
     public List<GameObject> pathogenList;   // 存储若干个病原体对象（随着游戏进程推进不断生成销毁新的对象）
     public List<GameObject> immuneCellList; // 存储若干个免疫细胞对象（随着游戏进程推进不断生成销毁新的对象）
+
     public GameObject map;                  // 记得绑定游戏地图
     public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制
+    public List<GameObject> immuneCellPrefabList;     // 绑定免疫细胞的预制体对象，用于复制
 
     public CurrentRound token;              // 依靠token决定行动轮次
 
@@ -91,28 +94,27 @@ public class Board : MonoBehaviour
     public IEnumerator StemCellForward(int stem_cell_index, int forward_step)
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
-        // Debug.Log(string.Format("stem {0} should forward {1} step", stem_cell_index, forward_step));
-        // Debug.Log("FFFF");
+
         while (forward_step > 0)
         {
-            // Debug.Log("GGGG");
-            // Debug.Log(string.Format("stemCellList.cnt={0}",stemCellList.Count));
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
-            // Debug.Log("HHHH");
-            // Position p = new Position(-1, -1);
-            // Debug.Log(string.Format("cur pos at {0},{1}", p.x, p.y));
             Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
-            // Debug.Log(string.Format("next dir is {0}", dir));
 
             Position np = p + dir;
-            // Position np = p;
-            // stemCellList[stem_cell_index].GetComponent<StemCell>().p = np;
+
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
             forward_step--;
         }
 
-         //此处调用Pathogen_Forward，仅做测试用
+        // 完成前进后，调用停留格子的OnStemCellStay
+        Position nnp = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
+        GameObject grid = map.GetComponent<Maps>().GetGridsFromPosition(nnp);
+        if (grid.GetComponent<Grids>().type == GridsType.MainWayGrid)
+            grid.GetComponent<MainWayGrid>().onStemCellStay();
+
+
+        //此处调用Pathogen_Forward，仅做测试用
         if (pathogenList.Count == 0)
         {
             // 读取第一个刷怪点
@@ -134,7 +136,7 @@ public class Board : MonoBehaviour
             // 判断条件
             if (!stemCellList[stem_cell_index].GetComponent<StemCell>().isMove)
             {
-                Debug.Log("条件满足，停止等待");
+                // Debug.Log("条件满足，停止等待");
                 break;  // 满足条件时退出循环
             }
 
@@ -193,5 +195,41 @@ public class Board : MonoBehaviour
 
             token = CurrentRound.P1;   // AI行动完token传回给P1
         }
+    }
+
+    public ImmuneCellGridState ImmuneCell2x2Query(Position target_position)
+    {
+        Debug.Log(string.Format("query state"));
+        // 查询目标免疫细胞区域的可建造/可升级状态
+        GameObject immune_cell_grid = map.GetComponent<Maps>().GetGridsFromPosition(target_position);
+        return immune_cell_grid.GetComponent<ImmuneCellGrid>().state;
+    }
+
+
+    public void ImmuneCell2x2Build(int immune_cell_type, Position target_position)
+    {
+        // 创建一个新的类型为immune_cell_type的对象，并将它的精灵图移动到target_position位置
+        GameObject immune_cell = Instantiate(immuneCellPrefabList[immune_cell_type]);
+        immuneCellList.Add(immune_cell);
+        Debug.Log(string.Format("GGG immune_cell_cnt={0}", immuneCellList.Count));
+
+        // 精灵图移动到目标位置，并登记序号
+        immune_cell.GetComponent<ImmuneCell>().p = target_position;
+        immune_cell.GetComponent<ImmuneCell>().index = immuneCellList.Count - 1;
+        immune_cell.transform.position = map.GetComponent<Maps>().PositionChange(target_position) + new Vector3(0.5f, 0.45f, 0);
+
+        // 向免疫细胞区注册自身
+        GameObject immune_cell_grid = map.GetComponent<Maps>().GetGridsFromPosition(target_position);
+        immune_cell_grid.GetComponent<ImmuneCellGrid>().state = ImmuneCellGridState.CanUpgrade;
+        immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell = immune_cell;
+
+        // TODO：向攻击范围内的道路格子注册自身
+    }
+
+
+    internal void ImmuneCell2x2Upgrade(Position target_position)
+    {
+        GameObject immune_cell_grid = map.GetComponent<Maps>().GetGridsFromPosition(target_position);
+        immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().Upgrade();
     }
 }
