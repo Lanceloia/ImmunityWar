@@ -30,7 +30,7 @@ public class Pathogen : MonoBehaviour
             if (transform.position == target)
             {
                 isMove = false;
-                Board.instance.isMove4Pathogen = false;
+               
             }
         }
     }

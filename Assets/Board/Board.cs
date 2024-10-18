@@ -33,6 +33,7 @@ public class Board : MonoBehaviour
 
     public CurrentRound token;              // 依靠token决定行动轮次
     public int totalRound;
+    public int monsterRound;
 
     public bool isMove4Stem;//有物体正在移动，用于实现连续运动
     public bool isMove4Pathogen;
@@ -59,6 +60,7 @@ public class Board : MonoBehaviour
         token = 0;
         totalRound = 0;
         isMove4Stem = false;
+        monsterRound = 1;
     }
 
     // Start is called before the first frame update
@@ -128,20 +130,20 @@ public class Board : MonoBehaviour
         moveStem = stemCellList[stem_cell_index].GetComponent<StemCell>();
         isMove4Stem = true;
         moveStem.isMove = true;
-        int i = 0; ;
+
         while (true)
         {
             // 调用对象的自定义 Update() 方法
             stemCellList[stem_cell_index].GetComponent<StemCell>().SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
             
-            Debug.Log("repeat for " + i);
+            
             // 判断条件
             if (!moveStem.isMove)
             {
                 //Debug.Log("条件满足，停止等待");
                 break;  // 满足条件时退出循环
             }
-            i++;
+            
             // 等待下一帧继续循环
             yield return null;
         }
@@ -233,17 +235,29 @@ public class Board : MonoBehaviour
             int forward_step = 2;
 
             //此处调用Pathogen_Forward，仅做测试用
-            if (pathogenList.Count == 0)
+            /*if (pathogenList.Count == 0)
             {
                 // 读取第一个刷怪点
 
                 Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
                 int defaultPathogenType = 0;
                 PathogenCreate(defaultPathogenType, defaultPathogenPos);
+            }*/
+            if ((totalRound ) % monsterRound == 0&& totalRound!=0)
+            {
+                Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[((totalRound)/4)%4];
+                int defaultPathogenType = 0;
+                PathogenCreate(defaultPathogenType, defaultPathogenPos);
             }
-            //// 固定每次前进2格
+            //// 所有怪物每次前进随机格
             
-            StartCoroutine(PathogenForward(pathogen_index, forward_step));
+            for(int i=0;i< pathogenList.Count; i++)
+            {
+                StartCoroutine(PathogenForward(i, UnityEngine.Random.Range(1, 7)));
+                //to do :增加交互
+            }
+
+            
 
 
             token = CurrentRound.P1;   // AI行动完token传回给P1
