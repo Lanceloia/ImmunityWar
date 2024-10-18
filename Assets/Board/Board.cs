@@ -34,6 +34,7 @@ public class Board : MonoBehaviour
     public CurrentRound token;              // 依靠token决定行动轮次
 
     public bool isMove;//有物体正在移动，用于实现连续运动
+    public StemCell moveObject;
 
     public void StartGame()
     {
@@ -128,13 +129,14 @@ public class Board : MonoBehaviour
 
     IEnumerator WaitForObjectUpdate(int stem_cell_index)
     {
+        moveObject = stemCellList[stem_cell_index].GetComponent<StemCell>();
         while (true)
         {
             // 调用对象的自定义 Update() 方法
-            stemCellList[stem_cell_index].GetComponent<StemCell>().SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
+            moveObject.SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
 
             // 判断条件
-            if (!stemCellList[stem_cell_index].GetComponent<StemCell>().isMove)
+            if (isMove)
             {
                 // Debug.Log("条件满足，停止等待");
                 break;  // 满足条件时退出循环

@@ -28,6 +28,7 @@ public class StemCell : MonoBehaviour
             if (transform.position == target)
             {
                 isMove = false;
+                Board.instance.isMove = isMove;
             }
         }
     }
