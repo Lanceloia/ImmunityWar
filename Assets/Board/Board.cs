@@ -32,9 +32,12 @@ public class Board : MonoBehaviour
     public List<GameObject> immuneCellPrefabList;     // 绑定免疫细胞的预制体对象，用于复制
 
     public CurrentRound token;              // 依靠token决定行动轮次
+    public int totalRound;
 
-    public bool isMove;//有物体正在移动，用于实现连续运动
-    public StemCell moveObject;
+    public bool isMove4Stem;//有物体正在移动，用于实现连续运动
+    public bool isMove4Pathogen;
+    public StemCell moveStem;
+    public Pathogen movePathogen;
 
     public void StartGame()
     {
@@ -54,6 +57,8 @@ public class Board : MonoBehaviour
         
         //初始化轮次为玩家1
         token = 0;
+        totalRound = 0;
+        isMove4Stem = false;
     }
 
     // Start is called before the first frame update
@@ -95,7 +100,7 @@ public class Board : MonoBehaviour
     public IEnumerator StemCellForward(int stem_cell_index, int forward_step)
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
-
+        //Debug.Log("move:"+forward_step);
         while (forward_step > 0)
         {
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
@@ -106,6 +111,7 @@ public class Board : MonoBehaviour
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
             forward_step--;
+            
         }
 
         // 完成前进后，调用停留格子的OnStemCellStay
@@ -114,34 +120,28 @@ public class Board : MonoBehaviour
         if (grid.GetComponent<Grids>().type == GridsType.MainWayGrid)
             grid.GetComponent<MainWayGrid>().onStemCellStay();
 
-
-        //此处调用Pathogen_Forward，仅做测试用
-        if (pathogenList.Count == 0)
-        {
-            // 读取第一个刷怪点
-            Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
-            int defaultPathogenType = 0;
-            PathogenCreate(defaultPathogenType, defaultPathogenPos);
-        }
-        //// 固定每次前进2格
-        //PathogenForward(0, 2);
+        
     }
 
     IEnumerator WaitForObjectUpdate(int stem_cell_index)
     {
-        moveObject = stemCellList[stem_cell_index].GetComponent<StemCell>();
+        moveStem = stemCellList[stem_cell_index].GetComponent<StemCell>();
+        isMove4Stem = true;
+        moveStem.isMove = true;
+        int i = 0; ;
         while (true)
         {
             // 调用对象的自定义 Update() 方法
-            moveObject.SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
-
+            stemCellList[stem_cell_index].GetComponent<StemCell>().SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
+            
+            Debug.Log("repeat for " + i);
             // 判断条件
-            if (isMove)
+            if (!moveStem.isMove)
             {
-                // Debug.Log("条件满足，停止等待");
+                //Debug.Log("条件满足，停止等待");
                 break;  // 满足条件时退出循环
             }
-
+            i++;
             // 等待下一帧继续循环
             yield return null;
         }
@@ -170,22 +170,61 @@ public class Board : MonoBehaviour
         pathogenList[pathogen_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
     }
 
-    public void PathogenForward(int pathogen_index, int forward_step)
+    public void PathogenSmoothMove(int pathogen_index, Position target_position)
+    {
+        // Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
+        pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
+        pathogenList[pathogen_index].GetComponent<Pathogen>().target = map.GetComponent<Maps>().PositionChange(target_position);
+        pathogenList[pathogen_index].GetComponent<Pathogen>().isMove = true;
+        //stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
+        // Debug.Log(string.Format("cur pos at {0},{1}",
+        //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.x,
+        //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
+    }
+
+    public IEnumerator PathogenForward(int pathogen_index, int forward_step)
     {
         // 几乎完全与StemCellForward的逻辑相同
+        
         while (forward_step > 0)
         {
             Position p = pathogenList[pathogen_index].GetComponent<Pathogen>().p;
             Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
+
             Position np = p + dir;
-            PathogenMove(pathogen_index, np);
+
+            PathogenSmoothMove(pathogen_index, np);
+            yield return StartCoroutine(WaitForObjectUpdate4Pathogen(pathogen_index));
             forward_step--;
+        }
+    }
+
+    IEnumerator WaitForObjectUpdate4Pathogen(int pathogen_index)
+    {
+        movePathogen = pathogenList[pathogen_index].GetComponent<Pathogen>();
+        isMove4Pathogen = true;
+        while (true)
+        {
+            // 调用对象的自定义 Update() 方法
+            movePathogen.SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
+            
+            // 判断条件
+            if (!movePathogen.isMove)
+            {
+
+                Debug.Log("条件满足，停止等待");
+                break;  // 满足条件时退出循环
+            }
+
+            // 等待下一帧继续循环
+            yield return null;
         }
     }
 
     public void NextRound()
     {
-        token = token + 1;          // token 传给下一个
+        token++;          // token 传给下一个
+        totalRound++;
         
         // 如果token在AI这里，则轮到AI行动
         if (token == CurrentRound.AI)
@@ -193,7 +232,19 @@ public class Board : MonoBehaviour
             int pathogen_index = 0;
             int forward_step = 2;
 
-            PathogenForward(pathogen_index, forward_step);
+            //此处调用Pathogen_Forward，仅做测试用
+            if (pathogenList.Count == 0)
+            {
+                // 读取第一个刷怪点
+
+                Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
+                int defaultPathogenType = 0;
+                PathogenCreate(defaultPathogenType, defaultPathogenPos);
+            }
+            //// 固定每次前进2格
+            
+            StartCoroutine(PathogenForward(pathogen_index, forward_step));
+
 
             token = CurrentRound.P1;   // AI行动完token传回给P1
         }
