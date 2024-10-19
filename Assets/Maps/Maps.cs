@@ -38,12 +38,12 @@ abstract public class Maps : MonoBehaviour
     public List<Position> PathogensOriginPosition;    // 图上所有病原体区的位置
     public List<GameObject> GridsList;
 
-    protected Dictionary<Position, GameObject> GridsDict;
+    protected Dictionary<Position, GameObject> GridsDict; // 图上所有格子的位置和对象
 
     abstract public void Init();    // 初始化数据成员
     abstract public Vector3 PositionChange(Position p); // 地图坐标转换为世界坐标
 
-    public GameObject GetGridsFromPosition(Position p)
+    public GameObject GetGridsFromPosition(Position p) // 根据坐标获取格子对象
     {
         return GridsDict[p];
     }

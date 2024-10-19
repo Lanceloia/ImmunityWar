@@ -28,7 +28,9 @@ public class StemCell : MonoBehaviour
             if (transform.position == target)
             {
                 isMove = false;
+                
             }
         }
+            
     }
 }

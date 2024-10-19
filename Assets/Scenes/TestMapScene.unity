@@ -975,7 +975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: m_Name
-      value: ImmuneCellGrid-0
+      value: ImmuneCellGrid-5
       objectReference: {fileID: 0}
     - target: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: x
@@ -1198,9 +1198,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: canbuild2x2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: immuneCellGrid2x2
       value: 
-      objectReference: {fileID: 693221773}
+      objectReference: {fileID: 874079675}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2115,9 +2119,13 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: canbuild2x2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: immuneCellGrid2x2
       value: 
-      objectReference: {fileID: 693221773}
+      objectReference: {fileID: 874079675}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2641,7 +2649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: m_Name
-      value: ImmuneCellGrid-0
+      value: ImmuneCellGrid-6
       objectReference: {fileID: 0}
     - target: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: x
@@ -3189,7 +3197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: m_Name
-      value: ImmuneCellGrid-0
+      value: ImmuneCellGrid-3
       objectReference: {fileID: 0}
     - target: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: x
@@ -3554,9 +3562,13 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: canbuild2x2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: immuneCellGrid2x2
       value: 
-      objectReference: {fileID: 693221773}
+      objectReference: {fileID: 874079675}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3777,7 +3789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: m_Name
-      value: ImmuneCellGrid-0
+      value: ImmuneCellGrid-7
       objectReference: {fileID: 0}
     - target: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: x
@@ -4364,11 +4376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3058377220749433487, guid: 8476331a7560cb24d90e4feabb358512, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.7
+      value: 9.7
       objectReference: {fileID: 0}
     - target: {fileID: 3058377220749433487, guid: 8476331a7560cb24d90e4feabb358512, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3
+      value: -3.15
       objectReference: {fileID: 0}
     - target: {fileID: 3058377220749433487, guid: 8476331a7560cb24d90e4feabb358512, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4846,7 +4858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: m_Name
-      value: ImmuneCellGrid-0
+      value: ImmuneCellGrid-4
       objectReference: {fileID: 0}
     - target: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: x
@@ -5048,9 +5060,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: canbuild2x2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: immuneCellGrid2x2
       value: 
-      objectReference: {fileID: 693221773}
+      objectReference: {fileID: 874079675}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5076,11 +5092,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 194605392343067196, guid: 68f10ae856f1dde48adaf502dc3b640c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.58
+      value: 9.67
       objectReference: {fileID: 0}
     - target: {fileID: 194605392343067196, guid: 68f10ae856f1dde48adaf502dc3b640c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.34
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: 194605392343067196, guid: 68f10ae856f1dde48adaf502dc3b640c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6422,7 +6438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: m_Name
-      value: ImmuneCellGrid-0
+      value: ImmuneCellGrid-1
       objectReference: {fileID: 0}
     - target: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: x
@@ -8386,9 +8402,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: canbuild2x2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: immuneCellGrid2x2
       value: 
-      objectReference: {fileID: 693221773}
+      objectReference: {fileID: 874079675}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8547,7 +8567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: m_Name
-      value: ImmuneCellGrid-0
+      value: ImmuneCellGrid-2
       objectReference: {fileID: 0}
     - target: {fileID: 8623513680679540468, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
       propertyPath: x
@@ -8928,9 +8948,13 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: canbuild2x2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: immuneCellGrid2x2
       value: 
-      objectReference: {fileID: 693221773}
+      objectReference: {fileID: 874079675}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9124,13 +9148,18 @@ MonoBehaviour:
   - {fileID: 1061918599}
   pathogenList: []
   immuneCellList: []
-  map: {fileID: 1431763884}
+  map: {fileID: 1431763888}
   pathogenPrefabList:
   - {fileID: 7830961705039782732, guid: b150067c46ee4fd49b4f81c0dd5d4e01, type: 3}
   immuneCellPrefabList:
   - {fileID: 3142038978999402330, guid: 9eb20263dd1e8a447980de534821011f, type: 3}
   token: 0
-  isMove: 0
+  totalRound: 0
+  monsterRound: 0
+  isMove4Stem: 0
+  isMove4Pathogen: 0
+  moveStem: {fileID: 0}
+  movePathogen: {fileID: 0}
 --- !u!1 &2114588590 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}

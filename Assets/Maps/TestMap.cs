@@ -7,7 +7,7 @@ using UnityEngine;
 public class TestMap : Maps
 {
 
-    public override void Init()
+    public override void Init()     //优化：因为只调用一次，所以不用更改GetComponent（10.19）
     {
         Debug.Log("Init Map");
         //获得四位玩家的初始位置
@@ -17,7 +17,7 @@ public class TestMap : Maps
         StemCellsOriginPosition.Add(new Position(13, 16));
         StemCellsOriginPosition.Add(new Position(4, 11));
 
-        //获得四位玩家的初始位置
+        //获得四个病毒的初始位置
         PathogensOriginPosition = new List<Position>();
         PathogensOriginPosition.Add(new Position(11, 4));
         PathogensOriginPosition.Add(new Position(16, 12));
