@@ -255,16 +255,13 @@ public class Board : MonoBehaviour
                 //to do :增加交互
             }
 
-            
-
-
             token = CurrentRound.P1;   // AI行动完token传回给P1
         }
     }
 
     public ImmuneCellGridState ImmuneCell2x2Query(Position target_position)
     {
-        Debug.Log(string.Format("query state"));
+        //Debug.Log(string.Format("query state"));
         // 查询目标免疫细胞区域的可建造/可升级状态
         GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
         return immune_cell_grid.GetComponent<ImmuneCellGrid>().state;
