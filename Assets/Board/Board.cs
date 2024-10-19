@@ -27,7 +27,7 @@ public class Board : MonoBehaviour
     public List<GameObject> pathogenList;   // 存储若干个病原体对象（随着游戏进程推进不断生成销毁新的对象）
     public List<GameObject> immuneCellList; // 存储若干个免疫细胞对象（随着游戏进程推进不断生成销毁新的对象）
 
-    public GameObject map;                  // 记得绑定游戏地图
+    public Maps map;                  // 记得绑定游戏地图的脚本
     public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制
     public List<GameObject> immuneCellPrefabList;     // 绑定免疫细胞的预制体对象，用于复制
 
@@ -35,15 +35,15 @@ public class Board : MonoBehaviour
     public int totalRound;
     public int monsterRound;
 
-    public bool isMove4Stem;//有物体正在移动，用于实现连续运动
+    public bool isMove4Stem;    //有物体正在移动，用于实现连续运动
     public bool isMove4Pathogen;
     public StemCell moveStem;
     public Pathogen movePathogen;
 
     public void StartGame()
     {
-        map.GetComponent<Maps>().Init();                                               // 初始化地图信息
-        List<Position> pos = map.GetComponent<Maps>().StemCellsOriginPosition;         // 读取干细胞的初始位置
+        map.Init();                                               // 初始化地图信息
+        List<Position> pos = map.StemCellsOriginPosition;         // 读取干细胞的初始位置
 
         if (stemCellList.Count < 4)
         {
@@ -66,8 +66,6 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        
         // Debug.Log("Board Start");
         StartGame();
     }
@@ -83,16 +81,16 @@ public class Board : MonoBehaviour
     public void StemCellMove(int stem_cell_index, Position target_position)
     {
         stemCellList[stem_cell_index].GetComponent<StemCell>().p = target_position;
-        stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
+        stemCellList[stem_cell_index].transform.position = map.PositionChange(target_position);
     }
 
     public void StemCellSmoothMove(int stem_cell_index, Position target_position)
     {
         // Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
         stemCellList[stem_cell_index].GetComponent<StemCell>().p = target_position;
-        stemCellList[stem_cell_index].GetComponent<StemCell>().target = map.GetComponent<Maps>().PositionChange(target_position);
+        stemCellList[stem_cell_index].GetComponent<StemCell>().target = map.PositionChange(target_position);
         stemCellList[stem_cell_index].GetComponent<StemCell>().isMove = true;
-        //stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
+        //stemCellList[stem_cell_index].transform.position = map.PositionChange(target_position);
         // Debug.Log(string.Format("cur pos at {0},{1}",
         //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.x,
         //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
@@ -106,7 +104,7 @@ public class Board : MonoBehaviour
         while (forward_step > 0)
         {
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
-            Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
+            Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
 
             Position np = p + dir;
 
@@ -118,7 +116,7 @@ public class Board : MonoBehaviour
 
         // 完成前进后，调用停留格子的OnStemCellStay
         Position nnp = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
-        GameObject grid = map.GetComponent<Maps>().GetGridsFromPosition(nnp);
+        GameObject grid = map.GetGridsFromPosition(nnp);
         if (grid.GetComponent<Grids>().type == GridsType.MainWayGrid)
             grid.GetComponent<MainWayGrid>().onStemCellStay();
 
@@ -169,16 +167,16 @@ public class Board : MonoBehaviour
         // 几乎完全与StemCellMove的逻辑相同
         pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
         //Debug.Log(string.Format("Here!"));
-        pathogenList[pathogen_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
+        pathogenList[pathogen_index].transform.position = map.PositionChange(target_position);
     }
 
     public void PathogenSmoothMove(int pathogen_index, Position target_position)
     {
         // Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
         pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
-        pathogenList[pathogen_index].GetComponent<Pathogen>().target = map.GetComponent<Maps>().PositionChange(target_position);
+        pathogenList[pathogen_index].GetComponent<Pathogen>().target = map.PositionChange(target_position);
         pathogenList[pathogen_index].GetComponent<Pathogen>().isMove = true;
-        //stemCellList[stem_cell_index].transform.position = map.GetComponent<Maps>().PositionChange(target_position);
+        //stemCellList[stem_cell_index].transform.position = map.PositionChange(target_position);
         // Debug.Log(string.Format("cur pos at {0},{1}",
         //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.x,
         //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
@@ -191,7 +189,7 @@ public class Board : MonoBehaviour
         while (forward_step > 0)
         {
             Position p = pathogenList[pathogen_index].GetComponent<Pathogen>().p;
-            Direction dir = map.GetComponent<Maps>().GetGridsFromPosition(p).GetComponent<Grids>().next;
+            Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
 
             Position np = p + dir;
 
@@ -239,13 +237,13 @@ public class Board : MonoBehaviour
             {
                 // 读取第一个刷怪点
 
-                Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[0];
+                Position defaultPathogenPos = map.PathogensOriginPosition[0];
                 int defaultPathogenType = 0;
                 PathogenCreate(defaultPathogenType, defaultPathogenPos);
             }*/
             if ((totalRound ) % monsterRound == 0&& totalRound!=0)
             {
-                Position defaultPathogenPos = map.GetComponent<Maps>().PathogensOriginPosition[((totalRound)/4)%4];
+                Position defaultPathogenPos = map.PathogensOriginPosition[((totalRound)/4)%4];
                 int defaultPathogenType = 0;
                 PathogenCreate(defaultPathogenType, defaultPathogenPos);
             }
@@ -268,7 +266,7 @@ public class Board : MonoBehaviour
     {
         Debug.Log(string.Format("query state"));
         // 查询目标免疫细胞区域的可建造/可升级状态
-        GameObject immune_cell_grid = map.GetComponent<Maps>().GetGridsFromPosition(target_position);
+        GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
         return immune_cell_grid.GetComponent<ImmuneCellGrid>().state;
     }
 
@@ -283,10 +281,10 @@ public class Board : MonoBehaviour
         // 精灵图移动到目标位置，并登记序号
         immune_cell.GetComponent<ImmuneCell>().p = target_position;
         immune_cell.GetComponent<ImmuneCell>().index = immuneCellList.Count - 1;
-        immune_cell.transform.position = map.GetComponent<Maps>().PositionChange(target_position) + new Vector3(0.5f, 0.45f, 0);
+        immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.5f, 0.45f, 0);
 
         // 向免疫细胞区注册自身
-        GameObject immune_cell_grid = map.GetComponent<Maps>().GetGridsFromPosition(target_position);
+        GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
         immune_cell_grid.GetComponent<ImmuneCellGrid>().state = ImmuneCellGridState.CanUpgrade;
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell = immune_cell;
 
@@ -296,7 +294,7 @@ public class Board : MonoBehaviour
 
     internal void ImmuneCell2x2Upgrade(Position target_position)
     {
-        GameObject immune_cell_grid = map.GetComponent<Maps>().GetGridsFromPosition(target_position);
+        GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().Upgrade();
     }
 }
