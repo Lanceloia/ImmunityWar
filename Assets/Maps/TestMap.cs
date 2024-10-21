@@ -9,7 +9,7 @@ public class TestMap : Maps
 
     public override void Init()     //优化：因为只调用一次，所以不用更改GetComponent（10.19）
     {
-        Debug.Log("Init Map");
+        //Debug.Log("Init Map");
         //获得四位玩家的初始位置
         StemCellsOriginPosition = new List<Position>();
         StemCellsOriginPosition.Add(new Position(4, 1));

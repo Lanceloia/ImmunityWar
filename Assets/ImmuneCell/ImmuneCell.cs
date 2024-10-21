@@ -18,6 +18,20 @@ abstract public class ImmuneCell : MonoBehaviour
     public int rank;             // 防御塔等级
     public int maxRank;          // 最大等级
 
+
+    public byte attackPower;         // 攻击力
+    public byte attackRange;         // 攻击范围
+    public byte attackSpeed;        // 攻击速度(每回合攻击次数)
+    public byte attackLeft;         // 剩余攻击次数
+
+    public void NextRound()
+    {
+        attackLeftReset();
+    }
+    public void attackLeftReset()
+    {
+        attackLeft = attackSpeed;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +47,9 @@ abstract public class ImmuneCell : MonoBehaviour
     abstract public void Upgrade();
 
     abstract public void SpriteChange();
+
+    abstract public void AttackChange();
+
+    abstract public void attack(GameObject pathogen);
 
 }

@@ -7,7 +7,11 @@ public class MarcophageCell : ImmuneCell
     // Start is called before the first frame update
     void Start()
     {
-
+        rank = 1;
+        attackPower = 3;
+        attackRange = 1;
+        attackSpeed = 1;
+        attackLeft = attackSpeed;
     }
 
     // Update is called once per frame
@@ -22,6 +26,7 @@ public class MarcophageCell : ImmuneCell
         Debug.Assert(rank < 3);
         rank++;
         SpriteChange();
+        AttackChange();
 
         if (rank == 3)
         {
@@ -37,5 +42,30 @@ public class MarcophageCell : ImmuneCell
             tower.GetComponent<SpriteRenderer>().color = Color.green;
         else if (rank == 3)
             tower.GetComponent<SpriteRenderer>().color = Color.blue;
+    }
+
+
+    public override void AttackChange()
+    {
+        //¹¥»÷Á¦¸üÐÂ
+        if (rank == 2)
+        {
+            attackPower = 4;
+            attackSpeed = 2;
+        }
+        else if (rank == 3)
+        {
+            attackPower = 5;
+            attackRange = 2;
+            attackSpeed = 3;
+        }
+    }
+    public override void attack(GameObject pathogen)
+    {
+        while(attackLeft != 0 && pathogen != null)
+        {
+            attackLeft--;
+            pathogen.GetComponent<Pathogen>().onHurt(attackPower);
+        }
     }
 }

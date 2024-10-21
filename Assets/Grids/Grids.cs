@@ -26,6 +26,8 @@ abstract public class Grids : MonoBehaviour
     public Position p;             // 格子的地图坐标（内部计算用）
     public int x, y;               // 格子的地图坐标（外部绑定用）
 
+    public List<GameObject> immuneCells = new List<GameObject>();     // 可以攻击到这个格子的防御塔
+
     public Direction next;         // 下一个格子的方向
     public bool accessRoad;        // 是否存在支路
     public Direction accessRoadNext; // 支路的下一个格子的方向
@@ -39,6 +41,11 @@ abstract public class Grids : MonoBehaviour
     // 干细胞停留时处理
     public abstract void onStemCellStay();
 
+    // 病菌经过时的处理
+    public abstract void onPathogenCellPassBy(GameObject pathogen);
+
+    // 病菌停留时处理
+    public abstract void onPathogenCellStay(GameObject pathogen);
     private void Awake()
     {
         p.x = x;

@@ -39,4 +39,14 @@ public class ImmuneCellGrid : Grids
     {
         throw new System.NotImplementedException();
     }
+
+    public override void onPathogenCellPassBy(GameObject pathogen_cell)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void onPathogenCellStay(GameObject pathogen_cell) 
+    {
+        throw new System.NotImplementedException();
+    }
 }

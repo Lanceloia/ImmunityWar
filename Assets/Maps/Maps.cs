@@ -36,7 +36,7 @@ abstract public class Maps : MonoBehaviour
 {
     public List<Position> StemCellsOriginPosition;    // 图上所有起始点的位置
     public List<Position> PathogensOriginPosition;    // 图上所有病原体区的位置
-    public List<GameObject> GridsList;
+    public List<GameObject> GridsList;           // 图上所有格子的对象表
 
     protected Dictionary<Position, GameObject> GridsDict; // 图上所有格子的位置和对象
 

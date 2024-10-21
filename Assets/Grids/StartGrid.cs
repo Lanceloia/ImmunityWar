@@ -28,4 +28,13 @@ public class StartGrid : Grids
     {
         throw new System.NotImplementedException();
     }
+    public override void onPathogenCellPassBy(GameObject pathogenCell)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void onPathogenCellStay(GameObject pathogenCell) 
+    {
+        throw new System.NotImplementedException();
+    }
 }

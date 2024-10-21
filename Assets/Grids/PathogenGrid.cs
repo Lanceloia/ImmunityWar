@@ -28,4 +28,14 @@ public class PathogenGrid : Grids
     {
         throw new System.NotImplementedException();
     }
+
+    public override void onPathogenCellPassBy(GameObject pathogen)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void onPathogenCellStay(GameObject pathogen) 
+    {
+        throw new System.NotImplementedException();
+    }
 }

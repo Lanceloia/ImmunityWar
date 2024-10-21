@@ -10,7 +10,8 @@ public enum CurrentRound
     P2 = 1,
     P3 = 2,
     P4 = 3,
-    AI = 4
+    AI = 4,    //pathogen
+
 }
 
 public class Board : MonoBehaviour
@@ -63,14 +64,12 @@ public class Board : MonoBehaviour
         monsterRound = 1;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         // Debug.Log("Board Start");
         StartGame();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Debug.Log(string.Format("stemCellList.cnt={0}", stemCellList.Count));
@@ -155,7 +154,7 @@ public class Board : MonoBehaviour
         // Debug.Log(string.Format("FFF pathogen_cnt={0}", pathogenList.Count));
         GameObject pathogen = Instantiate(pathogenPrefabList[pathogen_type]);
         pathogenList.Add(pathogen);
-        Debug.Log(string.Format("GGG pathogen_cnt={0}", pathogenList.Count));
+        //Debug.Log(string.Format("GGG pathogen_cnt={0}", pathogenList.Count));
         // 此处可能需要绑定index
         // 移动到初始位置
         PathogenMove(pathogenList.Count - 1, target_position);
@@ -176,10 +175,7 @@ public class Board : MonoBehaviour
         pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
         pathogenList[pathogen_index].GetComponent<Pathogen>().target = map.PositionChange(target_position);
         pathogenList[pathogen_index].GetComponent<Pathogen>().isMove = true;
-        //stemCellList[stem_cell_index].transform.position = map.PositionChange(target_position);
-        // Debug.Log(string.Format("cur pos at {0},{1}",
-        //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.x,
-        //     stemCellList[stem_cell_index].GetComponent<StemCell>().p.y));
+        
     }
 
     public IEnumerator PathogenForward(int pathogen_index, int forward_step)
@@ -196,6 +192,17 @@ public class Board : MonoBehaviour
             PathogenSmoothMove(pathogen_index, np);
             yield return StartCoroutine(WaitForObjectUpdate4Pathogen(pathogen_index));
             forward_step--;
+
+            //每一步移动完后，调用路过格子的onPathogenCellPassBy()
+            GameObject grid = map.GetGridsFromPosition(np);
+            if(grid != null)
+            {
+                grid.GetComponent<Grids>().onPathogenCellPassBy(pathogenList[pathogen_index]);
+            }
+
+
+
+
         }
     }
 
@@ -225,6 +232,10 @@ public class Board : MonoBehaviour
     {
         token++;          // token 传给下一个
         totalRound++;
+
+        // ImmuneCell行动
+        ImmuneCellAction();
+            
         
         // 如果token在AI这里，则轮到AI行动
         if (token == CurrentRound.AI)
@@ -258,6 +269,14 @@ public class Board : MonoBehaviour
             token = CurrentRound.P1;   // AI行动完token传回给P1
         }
     }
+    private void ImmuneCellAction()
+    {
+        // 每个免疫细胞行动
+        for (int i = 0; i < immuneCellList.Count; i++)
+        {
+            immuneCellList[i].GetComponent<ImmuneCell>().NextRound();
+        }
+    }
 
     public ImmuneCellGridState ImmuneCell2x2Query(Position target_position)
     {
@@ -273,7 +292,7 @@ public class Board : MonoBehaviour
         // 创建一个新的类型为immune_cell_type的对象，并将它的精灵图移动到target_position位置
         GameObject immune_cell = Instantiate(immuneCellPrefabList[immune_cell_type]);
         immuneCellList.Add(immune_cell);
-        Debug.Log(string.Format("GGG immune_cell_cnt={0}", immuneCellList.Count));
+        //Debug.Log(string.Format("GGG immune_cell_cnt={0}", immuneCellList.Count));
 
         // 精灵图移动到目标位置，并登记序号
         immune_cell.GetComponent<ImmuneCell>().p = target_position;
@@ -285,9 +304,54 @@ public class Board : MonoBehaviour
         immune_cell_grid.GetComponent<ImmuneCellGrid>().state = ImmuneCellGridState.CanUpgrade;
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell = immune_cell;
 
-        // TODO：向攻击范围内的道路格子注册自身
+        // 向攻击范围内的道路格子注册自身
+        GridsAddImmune(immune_cell);
+
     }
 
+    private void GridsAddImmune(GameObject immune_cell)
+    {
+       
+        for (int i = 0; i < map.GridsList.Count; i++)
+        {
+            if (isInAttackRange(immune_cell,map.GridsList[i].GetComponent<Grids>().p))
+            {
+                map.GridsList[i].GetComponent<Grids>().immuneCells.Add(immune_cell);
+            }
+        }
+    }
+
+    private bool isInAttackRange(GameObject immune_cell,Position posion)
+    {
+        byte attackRange = immune_cell.GetComponent<ImmuneCell>().attackRange;
+        Position ip = immune_cell.GetComponent<ImmuneCell>().p;
+        
+        bool isInRange = false;
+        
+        //正方形攻击范围
+
+        if (true)   //根据ImmuneGrids的类型判断所需判断的方式
+        {
+            if (Mathf.Abs(ip.x - posion.x) <= attackRange && Mathf.Abs(ip.y - posion.y) <= attackRange)
+            {
+                isInRange = true;
+            }
+            else if (Mathf.Abs(ip.x+1 - posion.x) <= attackRange && Mathf.Abs(ip.y - posion.y) <= attackRange)
+            {
+                isInRange = true;
+            }
+            else if (Mathf.Abs(ip.x - posion.x) <= attackRange && Mathf.Abs(ip.y+1 - posion.y) <= attackRange)
+            {
+                isInRange = true;
+            }
+            else if (Mathf.Abs(ip.x+1 - posion.x) <= attackRange && Mathf.Abs(ip.y+1 - posion.y) <= attackRange)
+            {
+                isInRange = true;
+            }
+        }
+       
+        return isInRange;
+    }
 
     internal void ImmuneCell2x2Upgrade(Position target_position)
     {

@@ -2,27 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pathogen : MonoBehaviour
+public enum PathogenType
 {
-    public Position p;
-    public int index;
+   bacteria,
+   virus,
+   fungi
+
+}
+abstract public class Pathogen : MonoBehaviour
+{
+    public Position p;      //病菌位置
+    public int index;       //细菌编号
+
+    public PathogenType type;      //病菌类型
+    public int health;     //病菌血量
 
 
     public Vector3 target;
     public float speed;
     public bool isMove = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         // Debug.Log("test for github again");
-        speed = 3f;
+       
     }
 
-    // Update is called once per frame
     void Update()
     {
+        
         if (isMove)
         {
+            //逐格移动
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         }
         if (target != null)
@@ -34,4 +45,7 @@ public class Pathogen : MonoBehaviour
             }
         }
     }
+
+    abstract public void onHurt(byte damage);      //受伤时调用
+
 }

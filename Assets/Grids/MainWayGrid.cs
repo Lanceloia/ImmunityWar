@@ -36,7 +36,7 @@ public class MainWayGrid : Grids
             // 如果已经建造，则弹出 “升级” 和 “跳过”
 
             Position target_position = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().p;
-            Debug.Log(string.Format("Query state of pos({0}, {1})", target_position.x, target_position.y));
+            //Debug.Log(string.Format("Query state of pos({0}, {1})", target_position.x, target_position.y));
 
             // 查询可建造 / 可升级状态
             ImmuneCellGridState state = Board.instance.ImmuneCell2x2Query(target_position);
@@ -61,5 +61,19 @@ public class MainWayGrid : Grids
 
         }
 
+    }
+    public override void onPathogenCellPassBy(GameObject pathogenCell)
+    {
+        for(int i = 0; i < immuneCells.Count; i++)
+        {
+            ImmuneCell immuneCell = immuneCells[i].GetComponent<ImmuneCell>();
+            immuneCell.attack(pathogenCell); // 攻击
+        }
+
+    }
+
+    public override void onPathogenCellStay(GameObject pathogenCell) 
+    {
+        throw new System.NotImplementedException();
     }
 }
