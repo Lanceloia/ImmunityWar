@@ -49,6 +49,7 @@ abstract public class ImmuneCell : MonoBehaviour
     abstract public void SpriteChange();
 
     abstract public void AttackChange();
+    abstract protected void GridsImmuneChange();
 
     abstract public void attack(GameObject pathogen);
 

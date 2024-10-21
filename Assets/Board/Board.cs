@@ -321,7 +321,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    private bool isInAttackRange(GameObject immune_cell,Position posion)
+    public bool isInAttackRange(GameObject immune_cell,Position posion)
     {
         byte attackRange = immune_cell.GetComponent<ImmuneCell>().attackRange;
         Position ip = immune_cell.GetComponent<ImmuneCell>().p;

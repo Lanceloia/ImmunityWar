@@ -30,11 +30,12 @@ public class StartGrid : Grids
     }
     public override void onPathogenCellPassBy(GameObject pathogenCell)
     {
-        for(int i = 0; i < immuneCells.Count; i++)
+        foreach (GameObject immuneCell in immuneCells)
         {
-            ImmuneCell immuneCell = immuneCells[i].GetComponent<ImmuneCell>();
-            immuneCell.attack(pathogenCell); // ¹¥»÷
+            ImmuneCell ic = immuneCell.GetComponent<ImmuneCell>();
+            ic.attack(pathogenCell); // ¹¥»÷
         }
+
     }
 
     public override void onPathogenCellStay(GameObject pathogenCell) 

@@ -22,6 +22,7 @@ public class MarcophageCell : ImmuneCell
 
     public override void Upgrade()
     {
+        byte temp = attackRange;
         // 断言此处等级必定小于3（等于3时调用者不该调用此函数）
         Debug.Assert(rank < 3);
         rank++;
@@ -33,6 +34,46 @@ public class MarcophageCell : ImmuneCell
             GameObject immune_cell_grid = Board.instance.map.GetComponent<Maps>().GetGridsFromPosition(p);
             immune_cell_grid.GetComponent<ImmuneCellGrid>().state = ImmuneCellGridState.MaxRank;
         }
+        
+        if  (temp != attackRange)//如果攻击范围改变，则重新计算攻击目标
+        {
+            GameObject immune_cell_grid = Board.instance.map.GetComponent<Maps>().GetGridsFromPosition(p);
+            
+        }
+    }
+
+    protected override void GridsImmuneChange()
+    {
+        Maps map = Board.instance.map;
+        for (int i = 0; i < map.GridsList.Count; i++)
+        {
+            if (isInAttackRange(map.GridsList[i].GetComponent<Grids>().p))
+            {
+                map.GridsList[i].GetComponent<Grids>().immuneCells.Add(tower);
+            }
+        }
+    }
+
+    private bool isInAttackRange(Position position)
+    {
+        bool isInRange = false;
+        if  ((Mathf.Abs(position.x - p.x) <= attackRange ) && (Mathf.Abs(position.y - p.y) <= attackRange))
+        {
+            isInRange = true;
+        }    
+        else if ((Mathf.Abs(position.x+1 - p.x) <= attackRange) && (Mathf.Abs(position.y - p.y) <= attackRange))
+        {
+            isInRange = true;
+        }
+        else if ((Mathf.Abs(position.x - p.x) <= attackRange) && (Mathf.Abs(position.y+1 - p.y) <= attackRange))
+        {
+            isInRange = true;
+        }
+        else if ((Mathf.Abs(position.x+1 - p.x) <= attackRange) && (Mathf.Abs(position.y+1 - p.y) <= attackRange))
+        {
+            isInRange = true;
+        }
+        return isInRange;
     }
 
     public override void SpriteChange()
