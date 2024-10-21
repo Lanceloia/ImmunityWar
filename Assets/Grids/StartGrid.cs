@@ -30,7 +30,11 @@ public class StartGrid : Grids
     }
     public override void onPathogenCellPassBy(GameObject pathogenCell)
     {
-        throw new System.NotImplementedException();
+        for(int i = 0; i < immuneCells.Count; i++)
+        {
+            ImmuneCell immuneCell = immuneCells[i].GetComponent<ImmuneCell>();
+            immuneCell.attack(pathogenCell); // ¹¥»÷
+        }
     }
 
     public override void onPathogenCellStay(GameObject pathogenCell) 
