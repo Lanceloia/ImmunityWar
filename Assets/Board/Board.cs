@@ -72,8 +72,10 @@ public class Board : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log(string.Format("stemCellList.cnt={0}", stemCellList.Count));
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     // 将某个干细胞的移动到目标位置（逻辑位置和精灵图均移动）
