@@ -103,6 +103,12 @@ public class MarcophageCell : ImmuneCell
     }
     public override void attack(GameObject pathogen)
     {
+        if (pathogen == null)
+        {
+            Debug.Log("pathogen is null");
+            return;
+        }
+            
         while(attackLeft != 0 && pathogen != null)
         {
             attackLeft--;

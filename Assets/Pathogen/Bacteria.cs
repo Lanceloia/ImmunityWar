@@ -28,7 +28,9 @@ public class Bacteria : Pathogen
         health -= damage;
         if (health <= 0)
         {
+            
             Destroy(gameObject);
+            Board.instance.pathogenList.Remove(this.gameObject);
         }
     }
 }

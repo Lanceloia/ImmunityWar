@@ -171,35 +171,39 @@ public class Board : MonoBehaviour
         pathogenList[pathogen_index].transform.position = map.PositionChange(target_position);
     }
 
-    public void PathogenSmoothMove(int pathogen_index, Position target_position)
+    //用于改变list中记录的数值
+    public void PathogenSmoothMove(GameObject pathogen, Position target_position)
     {
         // Debug.Log(string.Format("move stem {0} to position({1},{2})", stem_cell_index, target_position.x, target_position.y));
-        pathogenList[pathogen_index].GetComponent<Pathogen>().p = target_position;
-        pathogenList[pathogen_index].GetComponent<Pathogen>().target = map.PositionChange(target_position);
-        pathogenList[pathogen_index].GetComponent<Pathogen>().isMove = true;
+        pathogen.GetComponent<Pathogen>().p = target_position;
+        pathogen.GetComponent<Pathogen>().target = map.PositionChange(target_position);
+        pathogen.GetComponent<Pathogen>().isMove = true;
         
     }
 
     public IEnumerator PathogenForward(int pathogen_index, int forward_step)
     {
         // 几乎完全与StemCellForward的逻辑相同
-        
+        GameObject pathogen = pathogenList[pathogen_index];
         while (forward_step > 0)
         {
-            Position p = pathogenList[pathogen_index].GetComponent<Pathogen>().p;
+            Position p = pathogen.GetComponent<Pathogen>().p;
             Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
 
             Position np = p + dir;
 
-            PathogenSmoothMove(pathogen_index, np);
-            yield return StartCoroutine(WaitForObjectUpdate4Pathogen(pathogen_index));
+            PathogenSmoothMove(pathogen, np);
+            yield return StartCoroutine(WaitForObjectUpdatePathogen(pathogen));
             forward_step--;
 
             //每一步移动完后，调用路过格子的onPathogenCellPassBy()
             GameObject grid = map.GetGridsFromPosition(np);
             if(grid != null)
             {
-                grid.GetComponent<Grids>().onPathogenCellPassBy(pathogenList[pathogen_index]);
+                //Debug.Log("move pathogen " + pathogen_index);
+                grid.GetComponent<Grids>().onPathogenCellPassBy(pathogen);
+                if (pathogen == null)
+                    break;
             }
 
 
@@ -208,20 +212,22 @@ public class Board : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForObjectUpdate4Pathogen(int pathogen_index)
+    IEnumerator WaitForObjectUpdatePathogen(GameObject pathogen)
     {
-        movePathogen = pathogenList[pathogen_index].GetComponent<Pathogen>();
+        movePathogen = pathogen.GetComponent<Pathogen>();
         isMove4Pathogen = true;
         while (true)
         {
             // 调用对象的自定义 Update() 方法
-            movePathogen.SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
-            
+            if (movePathogen != null)
+                movePathogen.SendMessage("CustomUpdate", SendMessageOptions.DontRequireReceiver);
+            else 
+                isMove4Pathogen = false;
             // 判断条件
             if (!movePathogen.isMove)
             {
 
-                Debug.Log("条件满足，停止等待");
+                //Debug.Log("条件满足，停止等待");
                 break;  // 满足条件时退出循环
             }
 
@@ -264,6 +270,7 @@ public class Board : MonoBehaviour
             
             for(int i=0;i< pathogenList.Count; i++)
             {
+                Debug.Log(i);
                 StartCoroutine(PathogenForward(i, UnityEngine.Random.Range(1, 7)));
                 //to do :增加交互
             }

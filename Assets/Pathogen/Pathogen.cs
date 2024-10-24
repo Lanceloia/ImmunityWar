@@ -24,7 +24,6 @@ abstract public class Pathogen : MonoBehaviour
 
     void Start()
     {
-        // Debug.Log("test for github again");
        
     }
 
