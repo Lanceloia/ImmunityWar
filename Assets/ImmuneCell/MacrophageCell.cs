@@ -37,7 +37,9 @@ public class MarcophageCell : ImmuneCell
         
         if  (temp != attackRange)//如果攻击范围改变，则重新计算攻击目标
         {
-            GameObject immune_cell_grid = Board.instance.map.GetComponent<Maps>().GetGridsFromPosition(p);
+
+            //Debug.Log("attackRange changed");
+            GridsImmuneChange();
             
         }
     }
@@ -61,15 +63,15 @@ public class MarcophageCell : ImmuneCell
         {
             isInRange = true;
         }    
-        else if ((Mathf.Abs(position.x+1 - p.x) <= attackRange) && (Mathf.Abs(position.y - p.y) <= attackRange))
+        else if ((Mathf.Abs(position.x - (p.x+1)) <= attackRange) && (Mathf.Abs(position.y - p.y) <= attackRange))
         {
             isInRange = true;
         }
-        else if ((Mathf.Abs(position.x - p.x) <= attackRange) && (Mathf.Abs(position.y+1 - p.y) <= attackRange))
+        else if ((Mathf.Abs(position.x - p.x) <= attackRange) && (Mathf.Abs(position.y - (p.y+1)) <= attackRange))
         {
             isInRange = true;
         }
-        else if ((Mathf.Abs(position.x+1 - p.x) <= attackRange) && (Mathf.Abs(position.y+1 - p.y) <= attackRange))
+        else if ((Mathf.Abs(position.x - (p.x+1)) <= attackRange) && (Mathf.Abs(position.y - (p.y+1)) <= attackRange))
         {
             isInRange = true;
         }
