@@ -271,7 +271,7 @@ public class Board : MonoBehaviour
             for(int i=0;i< pathogenList.Count; i++)
             {
                 //Debug.Log(i);
-                StartCoroutine(PathogenForward(i, 1/*UnityEngine.Random.Range(1, 7)*/));
+                StartCoroutine(PathogenForward(i, *UnityEngine.Random.Range(1, 7)));
                 //to do :增加交互
             }
 
