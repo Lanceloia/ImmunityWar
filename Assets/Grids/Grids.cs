@@ -9,6 +9,7 @@ public enum GridsType
     MainWayGrid = 2,
     ImmuneCellGrid = 3,
     PathogenGrid = 4,
+    AccessRoadGrid = 5,
 }
 
 public enum Direction

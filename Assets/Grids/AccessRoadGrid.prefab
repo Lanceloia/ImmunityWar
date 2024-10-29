@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5628597503649775120}
   - component: {fileID: 6189829347456566886}
+  - component: {fileID: 172996891407243342}
   m_Layer: 0
   m_Name: AccessRoadGrid
   m_TagString: Untagged
@@ -84,3 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &172996891407243342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422728807294108566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab17666860869948858d00e2f96fda7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 0
+  y: 0
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
