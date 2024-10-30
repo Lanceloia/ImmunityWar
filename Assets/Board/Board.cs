@@ -115,6 +115,8 @@ public class Board : MonoBehaviour
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
             Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
             Position np = p + dir;
+
+            // 如果干细胞当前位置的格子是交叉路口，则进入选择箭头状态
             if (map.GetGridsFromPosition(p).GetComponent<Grids>().accessRoad)
             {
                 
