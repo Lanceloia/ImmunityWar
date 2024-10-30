@@ -7,12 +7,18 @@ public class Dice : MonoBehaviour
     public Sprite[] sprites;
     private SpriteRenderer spriteRenderer;
     public int type = 1;
+
+    public bool canBeUsed = true;
     
     private void OnMouseDown()
     {
-        RollDice(); // �������ʱ����RollDice
-        if (Board.instance.token != CurrentRound.AI)
-            StartCoroutine(Board.instance.StemCellForward((int)Board.instance.token, type));
+        if (canBeUsed)
+        {
+            RollDice(); // �������ʱ����RollDice
+            if (Board.instance.token != CurrentRound.AI)
+                StartCoroutine(Board.instance.StemCellForward((int)Board.instance.token, type));
+            canBeUsed = false;
+        }
     }
     public void RollDice()
     {

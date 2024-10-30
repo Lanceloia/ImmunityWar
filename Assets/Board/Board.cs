@@ -28,6 +28,12 @@ public class Board : MonoBehaviour
     public List<GameObject> pathogenList;   // 存储若干个病原体对象（随着游戏进程推进不断生成销毁新的对象）
     public List<GameObject> immuneCellList; // 存储若干个免疫细胞对象（随着游戏进程推进不断生成销毁新的对象）
 
+    //UIs
+    public List<GameObject> arrowList;
+    public bool isSelectingAccess;
+    public bool isGoingAccess;
+    public Direction nextAccessDirection;
+
     public Maps map;                  // 记得绑定游戏地图的脚本
     public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制
     public List<GameObject> immuneCellPrefabList;     // 绑定免疫细胞的预制体对象，用于复制
@@ -56,6 +62,8 @@ public class Board : MonoBehaviour
         StemCellMove(1, pos[1]);
         StemCellMove(2, pos[2]);
         StemCellMove(3, pos[3]);
+
+
         
         //初始化轮次为玩家1
         token = 0;
@@ -106,8 +114,21 @@ public class Board : MonoBehaviour
         {
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
             Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
-
             Position np = p + dir;
+
+            // 如果干细胞当前位置的格子是交叉路口，则进入选择箭头状态
+            if (map.GetGridsFromPosition(p).GetComponent<Grids>().accessRoad)
+            {
+                
+
+                Direction acdir = map.GetGridsFromPosition(p).GetComponent<Grids>().accessRoadNext;
+                yield return StartCoroutine(WaitForArrowSelect((int)dir, (int)acdir,p+dir+dir,p+acdir+acdir));
+
+                np = p + nextAccessDirection;
+
+            }
+
+            
 
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
@@ -123,6 +144,56 @@ public class Board : MonoBehaviour
 
         
     }
+
+    IEnumerator WaitForArrowSelect(int ori,int access,Position oriP,Position accessP)
+    {
+        ArrowMove(ori, oriP);
+        ArrowMove(access, accessP);
+        
+        isSelectingAccess = true;
+        GameObject oriObj = arrowList[ori].GetComponent<GameObject>();
+        GameObject accObj = arrowList[access].GetComponent<GameObject>();
+        
+        while (isSelectingAccess)
+        {
+            
+            yield return new WaitForEndOfFrame();
+
+            // 检查点击事件
+            /*if (Input.GetMouseButtonDown(0))  // 0 代表左键点击
+            {
+                // 将鼠标点击转换为世界坐标
+                Debug.Log("nmsl");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                // 检查点击是否在对象上
+                if (Physics.Raycast(ray, out hit) && hit.transform.gameObject == oriObj)
+                {
+                    isSelectingAccess = false;
+                    isGoingAccess = false;
+
+                    ArrowMove(ori, new Position(-10,-10));
+                    ArrowMove(access, new Position(-10, -10));
+                }
+                if (Physics.Raycast(ray, out hit) && hit.transform.gameObject == accObj)
+                {
+                    isSelectingAccess = false;
+                    isGoingAccess = true;
+
+                    ArrowMove(ori, new Position(-10, -10));
+                    ArrowMove(access, new Position(-10, -10));
+                }
+                
+            }*/
+            
+        }
+        ArrowMove(ori, new Position(-10, -10));
+        ArrowMove(access, new Position(-10, -10));
+
+
+    }
+
 
     IEnumerator WaitForObjectUpdate(int stem_cell_index)
     {
@@ -248,11 +319,11 @@ public class Board : MonoBehaviour
         // 如果token在AI这里，则轮到AI行动
         if (token == CurrentRound.AI)
         {
-            int pathogen_index = 0;
+            /*int pathogen_index = 0;
             int forward_step = 2;
 
             //此处调用Pathogen_Forward，仅做测试用
-            /*if (pathogenList.Count == 0)
+            if (pathogenList.Count == 0)
             {
                 // 读取第一个刷怪点
 
@@ -367,4 +438,10 @@ public class Board : MonoBehaviour
         GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().Upgrade();
     }
+
+    public void ArrowMove(int direction, Position target_position)
+    {        
+        arrowList[direction].transform.position = map.PositionChange(target_position);
+    }
+
 }

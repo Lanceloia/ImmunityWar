@@ -12,6 +12,7 @@ public class RoundControler : MonoBehaviour
         if (!tokenLock)
         {
             Board.instance.NextRound();
+            dice.canBeUsed = true;
         }
     }
 
@@ -19,7 +20,6 @@ public class RoundControler : MonoBehaviour
     void Start()
     {
         tokenLock = false;
-        //dice = GetComponent<Dice>();
     }
 
     // Update is called once per frame
