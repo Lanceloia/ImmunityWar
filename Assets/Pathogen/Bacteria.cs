@@ -28,6 +28,9 @@ public class Bacteria : Pathogen
     public override void onHurt(int damage)
     {
         health -= damage;
+
+        Debug.Log(string.Format("HP: {0}, DMG: {1}", health, damage));
+
         if (health <= 0)
         {
             
