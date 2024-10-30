@@ -23,7 +23,7 @@ public class Bacteria : Pathogen
         health = 10;
         speed = 3f;
     }
-    public override void onHurt(byte damage)
+    public override void onHurt(int damage)
     {
         health -= damage;
         if (health <= 0)
@@ -33,4 +33,5 @@ public class Bacteria : Pathogen
             Board.instance.pathogenList.Remove(this.gameObject);
         }
     }
+    
 }

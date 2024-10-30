@@ -17,6 +17,7 @@ abstract public class Pathogen : MonoBehaviour
     public PathogenType type;      //病菌类型
     public int health;     //病菌血量
 
+    public int targetIndex;
 
     public Vector3 target;
     public float speed;
@@ -45,6 +46,7 @@ abstract public class Pathogen : MonoBehaviour
         }
     }
 
-    abstract public void onHurt(byte damage);      //受伤时调用
+    abstract public void onHurt(int damage);      //受伤时调用
+
 
 }

@@ -1777,6 +1777,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 1391042306}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &291862045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+  m_PrefabInstance: {fileID: 1371871410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &302697199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -3933,6 +3938,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1962930633658672225, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 588152042}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &591540187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+  m_PrefabInstance: {fileID: 680851352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &597146390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+  m_PrefabInstance: {fileID: 1649407603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &611653993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5734220592555890084, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
@@ -4009,6 +4024,14 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: HistiocyteNext
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: nearHistiocyte
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4231,13 +4254,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 680851354}
   m_SourcePrefab: {fileID: 100100000, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
 --- !u!4 &680851353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6747917326016193611, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
   m_PrefabInstance: {fileID: 680851352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &680851354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591540187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f5e731c54d19449e20f9a481d345d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 14
+  y: 3
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  hisIndex: 0
 --- !u!1 &682064579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -4892,6 +4939,14 @@ PrefabInstance:
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: HistiocyteNext
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: nearHistiocyte
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5468,6 +5523,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1380683453074243298, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
   m_PrefabInstance: {fileID: 457820073}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &886145997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+  m_PrefabInstance: {fileID: 2026021029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &893270370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -5673,6 +5733,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: HistiocyteNext
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: nearHistiocyte
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -7579,13 +7647,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1371871412}
   m_SourcePrefab: {fileID: 100100000, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
 --- !u!4 &1371871411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6747917326016193611, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
   m_PrefabInstance: {fileID: 1371871410}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1371871412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291862045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f5e731c54d19449e20f9a481d345d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 11
+  y: 13
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  hisIndex: 1
 --- !u!1 &1372301883 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -8036,6 +8128,10 @@ MonoBehaviour:
   - {fileID: 1601656491}
   - {fileID: 2006478850}
   - {fileID: 1472932}
+  - {fileID: 597146390}
+  - {fileID: 591540187}
+  - {fileID: 291862045}
+  - {fileID: 886145997}
 --- !u!1 &1441851830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -8981,6 +9077,14 @@ PrefabInstance:
       propertyPath: next
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: HistiocyteNext
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: nearHistiocyte
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9256,13 +9360,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1649407605}
   m_SourcePrefab: {fileID: 100100000, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
 --- !u!4 &1649407604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6747917326016193611, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
   m_PrefabInstance: {fileID: 1649407603}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1649407605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597146390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f5e731c54d19449e20f9a481d345d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 6
+  y: 4
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  hisIndex: 3
 --- !u!1001 &1660756924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11644,13 +11772,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2026021031}
   m_SourcePrefab: {fileID: 100100000, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
 --- !u!4 &2026021030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6747917326016193611, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
   m_PrefabInstance: {fileID: 2026021029}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2026021031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886145997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f5e731c54d19449e20f9a481d345d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 1
+  y: 12
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  hisIndex: 2
 --- !u!1001 &2026602278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12314,6 +12466,7 @@ MonoBehaviour:
   isMove4Pathogen: 0
   moveStem: {fileID: 0}
   movePathogen: {fileID: 0}
+  totalHealth: 0
 --- !u!1 &2114588590 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}

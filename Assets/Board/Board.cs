@@ -47,6 +47,8 @@ public class Board : MonoBehaviour
     public StemCell moveStem;
     public Pathogen movePathogen;
 
+    public int totalHealth;
+
     public void StartGame()
     {
         map.Init();                                               // 初始化地图信息
@@ -70,6 +72,7 @@ public class Board : MonoBehaviour
         totalRound = 0;
         isMove4Stem = false;
         monsterRound = 1;
+        totalHealth = 15;
     }
 
     void Start()
@@ -219,7 +222,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void PathogenCreate(int pathogen_type, Position target_position)
+    public void PathogenCreate(int pathogen_type, Position target_position, int target_index)
     {
         // 创建一个新的类型为pathogen_type的对象，将它的精灵图移动到target_position位置
         // 可能需要返回这个新对象在列表中的序号
@@ -230,6 +233,7 @@ public class Board : MonoBehaviour
         //Debug.Log(string.Format("GGG pathogen_cnt={0}", pathogenList.Count));
         // 此处可能需要绑定index
         // 移动到初始位置
+        pathogen.GetComponent<Pathogen>().targetIndex = target_index;
         PathogenMove(pathogenList.Count - 1, target_position);
     }
 
@@ -262,6 +266,14 @@ public class Board : MonoBehaviour
             Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
 
             Position np = p + dir;
+
+            if (map.GetGridsFromPosition(p).GetComponent<Grids>().nearHistiocyte)
+            {
+                if(map.GetGridsFromPosition(p+ map.GetGridsFromPosition(p).GetComponent<Grids>().HistiocyteNext).GetComponent<HistiocyteGrid>().hisIndex == pathogen.GetComponent<Pathogen>().targetIndex)
+                {
+                    np = p + map.GetGridsFromPosition(p).GetComponent<Grids>().HistiocyteNext;
+                }
+            }
 
             PathogenSmoothMove(pathogen, np);
             yield return StartCoroutine(WaitForObjectUpdatePathogen(pathogen));
@@ -335,7 +347,7 @@ public class Board : MonoBehaviour
             {
                 Position defaultPathogenPos = map.PathogensOriginPosition[((totalRound)/4)%4];
                 int defaultPathogenType = 0;
-                PathogenCreate(defaultPathogenType, defaultPathogenPos);
+                PathogenCreate(defaultPathogenType, defaultPathogenPos, ((totalRound) / 4) % 4);
             }
             //// 所有怪物每次前进随机格
             

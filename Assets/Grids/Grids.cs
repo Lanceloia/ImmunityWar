@@ -10,6 +10,7 @@ public enum GridsType
     ImmuneCellGrid = 3,
     PathogenGrid = 4,
     AccessRoadGrid = 5,
+    HistiocyteGrid = 6,
 }
 
 public enum Direction
@@ -33,6 +34,9 @@ abstract public class Grids : MonoBehaviour
     public bool accessRoad;        // 是否存在支路
     public Direction accessRoadNext; // 支路的下一个格子的方向
     bool canActiveStay;              // 能否主动停留在此处
+
+    public bool nearHistiocyte;//是否邻近组织细胞
+    public Direction HistiocyteNext;//组织细胞方向
 
     // List of ImmuneCells    // 一个列表，表示这个格子在列表中的细胞的攻击范围内
 
