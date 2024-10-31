@@ -9,6 +9,12 @@ public class Dice : MonoBehaviour
     public int type = 1;
 
     public bool canBeUsed = true;
+
+
+    private Vector3 initialOffset;
+
+    
+
     
     private void OnMouseDown()
     {
@@ -24,12 +30,18 @@ public class Dice : MonoBehaviour
     {
         StartCoroutine(RollAnimation());// 锟斤拷锟斤拷RollAnimation
     }
+
      void Start()
     {
         // 锟斤拷取Sprite Renderer锟斤拷锟?
         spriteRenderer = GetComponent<SpriteRenderer>();
+        initialOffset = transform.position - Camera.main.transform.position;
     }
-
+    void LateUpdate()
+    {
+        // 每帧更新对象位置，使其锁定在初始位置不随摄像机移动
+        transform.position = Camera.main.transform.position + initialOffset;
+    }
     private IEnumerator RollAnimation()
     {
         //Debug.Log("Rolling Dice");

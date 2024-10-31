@@ -49,6 +49,8 @@ public class Board : MonoBehaviour
 
     public int totalHealth;
 
+    public GameObject cameraController;
+
     public void StartGame()
     {
         map.Init();                                               // 初始化地图信息
@@ -191,8 +193,8 @@ public class Board : MonoBehaviour
             }*/
             
         }
-        ArrowMove(ori, new Position(-10, -10));
-        ArrowMove(access, new Position(-10, -10));
+        ArrowMove(ori, new Position(-20, -20));
+        ArrowMove(access, new Position(-20, -20));
 
 
     }
@@ -326,8 +328,13 @@ public class Board : MonoBehaviour
 
         // ImmuneCell行动
         ImmuneCellAction();
-            
         
+        if(token!= CurrentRound.AI)
+        {
+            
+            cameraController.GetComponent<CameraController>().SetTarget(stemCellList[(int)token].GetComponent<StemCell>().transform);
+            cameraController.GetComponent<CameraController>().isFollowing = true;
+        }
         // 如果token在AI这里，则轮到AI行动
         if (token == CurrentRound.AI)
         {
@@ -359,6 +366,8 @@ public class Board : MonoBehaviour
             }
 
             token = CurrentRound.P1;   // AI行动完token传回给P1
+            cameraController.GetComponent<CameraController>().SetTarget(stemCellList[(int)CurrentRound.P1].GetComponent<StemCell>().transform);
+            cameraController.GetComponent<CameraController>().isFollowing = true;
         }
     }
     private void ImmuneCellAction()
