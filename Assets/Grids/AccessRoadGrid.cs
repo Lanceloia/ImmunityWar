@@ -26,7 +26,7 @@ public class AccessRoadGrid : Grids
         throw new System.NotImplementedException();
     }
 
-    public override void onStemCellStay()
+    public override IEnumerator onStemCellStay()
     {
 
         throw new System.NotImplementedException();

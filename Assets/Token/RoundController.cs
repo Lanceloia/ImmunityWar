@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundControler : MonoBehaviour
+public class RoundController : MonoBehaviour
 {
     public Dice dice;
     public bool tokenLock;

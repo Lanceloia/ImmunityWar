@@ -44,7 +44,7 @@ abstract public class Grids : MonoBehaviour
     public abstract void onStemCellPassBy();
 
     // 干细胞停留时处理
-    public abstract void onStemCellStay();
+    public abstract IEnumerator onStemCellStay();
 
     // 病菌经过时的处理
     public abstract void onPathogenCellPassBy(GameObject pathogen);

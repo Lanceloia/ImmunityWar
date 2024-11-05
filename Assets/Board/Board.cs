@@ -34,6 +34,10 @@ public class Board : MonoBehaviour
     public bool isGoingAccess;
     public Direction nextAccessDirection;
 
+    public List<GameObject> buildList;//升级ui列表
+    public bool isSelectingBuild;
+    public bool isBuilding;
+
     public Maps map;                  // 记得绑定游戏地图的脚本
     public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制
     public List<GameObject> immuneCellPrefabList;     // 绑定免疫细胞的预制体对象，用于复制
@@ -47,7 +51,13 @@ public class Board : MonoBehaviour
     public StemCell moveStem;
     public Pathogen movePathogen;
 
+    public GameObject roundController;//所有操作完成时允许进入下一回合
+    public bool hasSelectedAccess;
+    public bool hasSelectedTower;
+    public bool hasClickedDice;
+
     public int totalHealth;
+    public int totalAPT;
 
     public GameObject cameraController;
 
@@ -145,9 +155,9 @@ public class Board : MonoBehaviour
         Position nnp = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
         GameObject grid = map.GetGridsFromPosition(nnp);
         if (grid.GetComponent<Grids>().type == GridsType.MainWayGrid)
-            grid.GetComponent<MainWayGrid>().onStemCellStay();
+            yield return StartCoroutine(grid.GetComponent<MainWayGrid>().onStemCellStay());
 
-        
+
     }
 
     IEnumerator WaitForArrowSelect(int ori,int access,Position oriP,Position accessP)
@@ -294,6 +304,7 @@ public class Board : MonoBehaviour
 
 
 
+
         }
     }
 
@@ -309,7 +320,7 @@ public class Board : MonoBehaviour
             else 
                 isMove4Pathogen = false;
             // 判断条件
-            if (!movePathogen.isMove)
+            if ((!movePathogen.isMove) || !isMove4Pathogen)
             {
 
                 //Debug.Log("条件满足，停止等待");
@@ -319,6 +330,14 @@ public class Board : MonoBehaviour
             // 等待下一帧继续循环
             yield return null;
         }
+    }
+
+    public void newRoundReset()//将回合操作锁重置
+    {
+        hasClickedDice = false;
+        hasSelectedAccess = false;
+        hasSelectedTower = false;
+        roundController.GetComponent<RoundController>().tokenLock = true;
     }
 
     public void NextRound()
@@ -357,8 +376,8 @@ public class Board : MonoBehaviour
                 PathogenCreate(defaultPathogenType, defaultPathogenPos, ((totalRound) / 4) % 4);
             }
             //// 所有怪物每次前进随机格
-            
-            for(int i=0;i< pathogenList.Count; i++)
+
+            for (int i = pathogenList.Count - 1; i >= 0; i--)
             {
                 //Debug.Log(i);
                 StartCoroutine(PathogenForward(i, UnityEngine.Random.Range(1, 7)));

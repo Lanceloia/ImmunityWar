@@ -27,7 +27,7 @@ public class MainWayGrid : Grids
         throw new System.NotImplementedException();
     }
 
-    public override void onStemCellStay()
+    public override IEnumerator onStemCellStay()
     {
         if (canbuild2x2) 
         {
@@ -43,15 +43,15 @@ public class MainWayGrid : Grids
 
             // 满级则跳过
             if (state == ImmuneCellGridState.MaxRank)
-                return;
-
+                yield break;
+            yield return StartCoroutine(WaitForBuildSelect(target_position));
             // 玩家是否选择跳过
             bool skip;
 
             // 当前不可跳过
-            skip = false;
+            skip = !(Board.instance.isBuilding);
             if (skip)
-                return;
+                yield break;
 
             if (state == ImmuneCellGridState.CanBuild)
                 Board.instance.ImmuneCell2x2Build((int)ImmuneCellType.MacrophageCell, target_position);
@@ -62,6 +62,30 @@ public class MainWayGrid : Grids
         }
 
     }
+
+    public void ButtonMove(Position target_position)
+    {
+        Board.instance.buildList[0].transform.position = Board.instance.map.PositionChange(target_position + (Direction)3 + (Direction)3);
+        Board.instance.buildList[1].transform.position = Board.instance.map.PositionChange(target_position + (Direction)2 + (Direction)2);
+    }
+
+    IEnumerator WaitForBuildSelect(Position target_position)
+    {
+        ButtonMove(target_position);
+
+        Board.instance.isSelectingBuild = true;
+
+
+        while (Board.instance.isSelectingBuild)
+        {
+
+            yield return new WaitForEndOfFrame();
+
+        }
+        ButtonMove(new Position(-25, -25));
+
+    }
+
     public override void onPathogenCellPassBy(GameObject pathogenCell)
     {
         foreach (GameObject immuneCell in immuneCells)
