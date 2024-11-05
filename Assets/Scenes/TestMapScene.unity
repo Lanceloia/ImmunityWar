@@ -13679,6 +13679,8 @@ MonoBehaviour:
   - {fileID: 7830961705039782732, guid: b150067c46ee4fd49b4f81c0dd5d4e01, type: 3}
   immuneCellPrefabList:
   - {fileID: 3142038978999402330, guid: 9eb20263dd1e8a447980de534821011f, type: 3}
+  - {fileID: 4538323048108370188, guid: 8b53b507c3913fc4d9e7e409a7f1b1a0, type: 3}
+  - {fileID: 35106885973069644, guid: 47fd8ca8282059a489d6bb9053ba7538, type: 3}
   token: 0
   totalRound: 0
   monsterRound: 0
