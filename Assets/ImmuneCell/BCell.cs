@@ -5,8 +5,7 @@ using UnityEngine;
 public class BCell : ImmuneCell
 {
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rank = 1;
         attackPower = 3;
@@ -40,41 +39,43 @@ public class BCell : ImmuneCell
         {
 
             //Debug.Log("attackRange changed");
-            GridsImmuneChange();
+            GridsImmuneChange(shapeType);
             
         }
     }
 
-    protected override void GridsImmuneChange()
+    protected override void GridsImmuneChange(ShapeType shapeType)
     {
         Maps map = Board.instance.map;
         for (int i = 0; i < map.GridsList.Count; i++)
         {
-            if (isInAttackRange(map.GridsList[i].GetComponent<Grids>().p))
+            if (isInAttackRange(map.GridsList[i].GetComponent<Grids>().p,shapeType))
             {
                 map.GridsList[i].GetComponent<Grids>().immuneCells.Add(tower);
             }
         }
     }
 
-    private bool isInAttackRange(Position position)
+    private bool isInAttackRange(Position position,ShapeType shapeType)
     {
         bool isInRange = false;
         if  ((Mathf.Abs(position.x - p.x) <= attackRange ) && (Mathf.Abs(position.y - p.y) <= attackRange))
         {
             isInRange = true;
         }    
-        else if ((Mathf.Abs(position.x - (p.x+1)) <= attackRange) && (Mathf.Abs(position.y - p.y) <= attackRange))
+        if (shapeType == ShapeType.UpTriangle)
         {
-            isInRange = true;
+            if ((Mathf.Abs(position.x - (p.x+1)) <= attackRange ) && (Mathf.Abs(position.y - p.y) <= attackRange))
+            {
+                isInRange = true;
+            }
         }
-        else if ((Mathf.Abs(position.x - p.x) <= attackRange) && (Mathf.Abs(position.y - (p.y+1)) <= attackRange))
+        else if (shapeType == ShapeType.DownTriangle)
         {
-            isInRange = true;
-        }
-        else if ((Mathf.Abs(position.x - (p.x+1)) <= attackRange) && (Mathf.Abs(position.y - (p.y+1)) <= attackRange))
-        {
-            isInRange = true;
+            if ((Mathf.Abs(position.x - p.x) <= attackRange) && (Mathf.Abs(position.y - (p.y+1)) <= attackRange))
+            {
+                isInRange = true;
+            }
         }
         return isInRange;
     }

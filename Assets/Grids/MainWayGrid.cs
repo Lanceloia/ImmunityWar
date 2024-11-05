@@ -52,9 +52,9 @@ public class MainWayGrid : Grids
                 {
                     //如果未建造则建造，否则升级
                     if (state == ImmuneCellGridState.CanBuild)
-                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.MacrophageCell, target_position,shape);
+                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.MacrophageCell, target_position,immuneCellGrid2x2.GetComponent<Grids>().shape);
                     else
-                        Board.instance.ImmuneCellUpgrade(target_position,shape);
+                        Board.instance.ImmuneCellUpgrade(target_position,immuneCellGrid2x2.GetComponent<Grids>().shape);
                 }
             }
         }
@@ -80,17 +80,17 @@ public class MainWayGrid : Grids
                 {
                     //如果未建造则建造，否则升级
                     if (state == ImmuneCellGridState.CanBuild)
-                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.BCell, target_position,shape);
+                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.BCell, target_position,immuneCellGrid2x1.GetComponent<Grids>().shape);
                     else
-                        Board.instance.ImmuneCellUpgrade(target_position,shape);
+                        Board.instance.ImmuneCellUpgrade(target_position,immuneCellGrid2x1.GetComponent<Grids>().shape);
                 }
                 else if (!skip && playerChoice == ImmuneCellType.TCell)
                 {
                     //如果未建造则建造，否则升级
                     if (state == ImmuneCellGridState.CanBuild)
-                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.TCell, target_position,shape);
+                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.TCell, target_position,immuneCellGrid2x1.GetComponent<Grids>().shape);
                     else
-                        Board.instance.ImmuneCellUpgrade(target_position,shape);
+                        Board.instance.ImmuneCellUpgrade(target_position,immuneCellGrid2x1.GetComponent<Grids>().shape);
                 }
             }
         }

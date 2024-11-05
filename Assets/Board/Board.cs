@@ -417,7 +417,14 @@ public class Board : MonoBehaviour
         // 精灵图移动到目标位置，并登记序号
         immune_cell.GetComponent<ImmuneCell>().p = target_position;
         immune_cell.GetComponent<ImmuneCell>().index = immuneCellList.Count - 1;
-        immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.5f, 0.45f, 0);
+        
+        // 根据形状调整位置
+        if (shapeType == ShapeType. BigSquare)
+            immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.5f, 0.45f, 0);
+        else if (shapeType == ShapeType.UpTriangle )
+            immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.25f, 0.125f, 0);
+        else if(shapeType == ShapeType.DownTriangle)
+            immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.25f, -0.125f, 0);
 
         // 向免疫细胞区注册自身
         GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
@@ -425,23 +432,23 @@ public class Board : MonoBehaviour
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell = immune_cell;
 
         // 向攻击范围内的道路格子注册自身
-        GridsAddImmune(immune_cell);
+        GridsAddImmune(immune_cell,shapeType);
 
     }
 
-    private void GridsAddImmune(GameObject immune_cell)
+    private void GridsAddImmune(GameObject immune_cell,ShapeType shapeType)
     {
        
         for (int i = 0; i < map.GridsList.Count; i++)
         {
-            if (isInAttackRange(immune_cell,map.GridsList[i].GetComponent<Grids>().p))
+            if (isInAttackRange(immune_cell,map.GridsList[i].GetComponent<Grids>().p,shapeType))
             {
                 map.GridsList[i].GetComponent<Grids>().immuneCells.Add(immune_cell);
             }
         }
     }
 
-    public bool isInAttackRange(GameObject immune_cell,Position posion)
+    public bool isInAttackRange(GameObject immune_cell,Position posion,ShapeType shapeType)
     {
         byte attackRange = immune_cell.GetComponent<ImmuneCell>().attackRange;
         Position ip = immune_cell.GetComponent<ImmuneCell>().p;
@@ -450,7 +457,7 @@ public class Board : MonoBehaviour
         
         //正方形攻击范围
 
-        if (true)   //根据ImmuneGrids的类型判断所需判断的方式
+        if (shapeType == ShapeType.BigSquare)   //根据ImmuneGrids的类型判断所需判断的方式
         {
             if (Mathf.Abs(ip.x - posion.x) <= attackRange && Mathf.Abs(ip.y - posion.y) <= attackRange)
             {
@@ -469,7 +476,29 @@ public class Board : MonoBehaviour
                 isInRange = true;
             }
         }
-       
+        else if (shapeType == ShapeType.UpTriangle )
+        {
+            if (Mathf.Abs(ip.x - posion.x) <= attackRange && Mathf.Abs(ip.y - posion.y) <= attackRange)
+            {
+                isInRange = true;
+            }
+            else if (Mathf.Abs(ip.x+1- posion.x) <= attackRange && Mathf.Abs(ip.y - posion.y) <= attackRange)
+            {
+                isInRange = true;
+            }
+        }
+
+        else if (shapeType == ShapeType.DownTriangle )
+        {
+            if (Mathf.Abs(ip.x - posion.x) <= attackRange && Mathf.Abs(ip.y - posion.y) <= attackRange)
+            {
+                isInRange = true; 
+            }
+            else if (Mathf.Abs(ip.x - posion.x) <= attackRange && Mathf.Abs(ip.y+1 - posion.y) <= attackRange)
+            {
+                isInRange = true;
+            }
+        }
         return isInRange;
     }
 

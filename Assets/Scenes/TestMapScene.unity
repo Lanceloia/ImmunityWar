@@ -12386,6 +12386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainWayGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: x
       value: 7
@@ -12413,7 +12417,7 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: immuneCellGrid2x1
       value: 
-      objectReference: {fileID: 1640558390}
+      objectReference: {fileID: 411948414}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

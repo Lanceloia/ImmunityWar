@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MarcophageCell : ImmuneCell
 {
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rank = 1;
         attackPower = 3;
@@ -39,12 +38,12 @@ public class MarcophageCell : ImmuneCell
         {
 
             //Debug.Log("attackRange changed");
-            GridsImmuneChange();
+            GridsImmuneChange(shapeType);
             
         }
     }
 
-    protected override void GridsImmuneChange()
+    protected override void GridsImmuneChange(ShapeType shapeType)
     {
         Maps map = Board.instance.map;
         for (int i = 0; i < map.GridsList.Count; i++)
