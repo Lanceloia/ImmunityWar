@@ -5,6 +5,9 @@ public class CameraController : MonoBehaviour
     public Transform target;            // 当前相机跟随的目标
     public Vector2 minBounds;           // 摄像机移动的最小边界
     public Vector2 maxBounds;           // 摄像机移动的最大边界
+    public float minZoom;      // 最小缩放值
+    public float maxZoom;     // 最大缩放值
+    public float zoomSpeed = 2f;  // 控制滚轮缩放的速度
     public float smoothSpeed = 0.125f;  // 跟随的平滑度
     public float dragSpeed = 2.0f;      // 鼠标拖动的速度
 
@@ -17,19 +20,36 @@ public class CameraController : MonoBehaviour
     {
         // 记录初始位置和偏移
         initialPosition = new Vector3(0,0,-2);
-        
+        minZoom = 1f;
+        maxZoom = 5f; 
     }
 
     void Update()
     {
         // 拖动相机
        // HandleDrag();
+        sizeControl();
 
         // 重置相机位置
         if (Input.GetKeyDown(KeyCode.R)) // 假设使用 R 键重置
         {
             //ResetCameraPosition();
             isFollowing = true;
+        }
+    }
+
+    private void sizeControl()
+    { 
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+        // 如果滚轮有输入
+        if (scrollInput != 0)
+        {
+            // 修改相机的orthographicSize来进行缩放
+            Camera.main.orthographicSize -= scrollInput * zoomSpeed;
+            // 限制相机的缩放范围
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoom, maxZoom);
+            Debug.Log("Camera Size: " + Camera.main.orthographicSize);  // 打印当前缩放值
         }
     }
 
