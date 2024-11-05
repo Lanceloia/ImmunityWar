@@ -13,7 +13,7 @@ public enum GridsType
     HistiocyteGrid = 6,
 }
 
-public enum shape
+public enum ShapeType
 {
     SmallSquare = 0,    //1x1的格子
     UpTriangle = 1,   // 2x1的格子,从左向右是向上的
@@ -35,7 +35,7 @@ abstract public class Grids : MonoBehaviour
 {
     // 数据成员
     public GridsType type;   // 格子的类型
-    public shape shape;      // 格子的形状//需要绑定
+    public ShapeType shape;      // 格子的形状//需要绑定
     public Position p;             // 格子的地图坐标（内部计算用）
     public int x, y;               // 格子的地图坐标（外部绑定用）
 

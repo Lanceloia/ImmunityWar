@@ -52,16 +52,16 @@ public class MainWayGrid : Grids
                 {
                     //如果未建造则建造，否则升级
                     if (state == ImmuneCellGridState.CanBuild)
-                        Board.instance.ImmuneCell2x2Build((int)ImmuneCellType.MacrophageCell, target_position);
+                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.MacrophageCell, target_position,shape);
                     else
-                        Board.instance.ImmuneCell2x2Upgrade(target_position);
+                        Board.instance.ImmuneCellUpgrade(target_position,shape);
                 }
             }
         }
     
         if (canbuild2x1)
         {
-            Position target_position = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().p;
+            Position target_position = immuneCellGrid2x1.GetComponent<ImmuneCellGrid>().p;
             // 查询可建造 / 可升级状态
             ImmuneCellGridState state = Board.instance.ImmuneCellQuery(target_position);
 
@@ -79,18 +79,18 @@ public class MainWayGrid : Grids
                 if (!skip && playerChoice ==ImmuneCellType.BCell)
                 {
                     //如果未建造则建造，否则升级
-                    if (state == ImmuneCellGridState.CanBuild);
-                        //Board.instance.ImmuneCell2x1Build((int)ImmuneCellType.BCell, target_position);
-                    else;
-                        //Board.instance.ImmuneCell2x1Upgrade(target_position);
+                    if (state == ImmuneCellGridState.CanBuild)
+                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.BCell, target_position,shape);
+                    else
+                        Board.instance.ImmuneCellUpgrade(target_position,shape);
                 }
                 else if (!skip && playerChoice == ImmuneCellType.TCell)
                 {
                     //如果未建造则建造，否则升级
-                    if (state == ImmuneCellGridState.CanBuild);
-                       // Board.instance.ImmuneCell2x1Build((int)ImmuneCellType.TCell, target_position);
-                    else;
-                        //Board.instance.ImmuneCell2x1Upgrade(target_position);
+                    if (state == ImmuneCellGridState.CanBuild)
+                        Board.instance.ImmuneCellBuild((int)ImmuneCellType.TCell, target_position,shape);
+                    else
+                        Board.instance.ImmuneCellUpgrade(target_position,shape);
                 }
             }
         }

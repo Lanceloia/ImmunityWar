@@ -20,7 +20,7 @@ public class MarcophageCell : ImmuneCell
 
     }
 
-    public override void Upgrade()
+    public override void Upgrade(ShapeType shapeType)
     {
         byte temp = attackRange;
         // 断言此处等级必定小于3（等于3时调用者不该调用此函数）

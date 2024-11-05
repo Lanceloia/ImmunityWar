@@ -407,7 +407,7 @@ public class Board : MonoBehaviour
     }
 
 
-    public void ImmuneCell2x2Build(int immune_cell_type, Position target_position)
+    public void ImmuneCellBuild(int immune_cell_type, Position target_position,ShapeType shapeType)
     {
         // 创建一个新的类型为immune_cell_type的对象，并将它的精灵图移动到target_position位置
         GameObject immune_cell = Instantiate(immuneCellPrefabList[immune_cell_type]);
@@ -473,26 +473,15 @@ public class Board : MonoBehaviour
         return isInRange;
     }
 
-    internal void ImmuneCell2x2Upgrade(Position target_position)
+    internal void ImmuneCellUpgrade(Position target_position,ShapeType shapeType)
     {
         GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
-        immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().Upgrade();
+        immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().Upgrade(shapeType);
     }
-
-    public void ImmuneCell2x1Build(int immune_cell_type, Position target_position)
-    {
-        // 创建一个新的类型为immune_cell_type的对象，并将它的精灵图移动到target_position位置
-        GameObject immune_cell = Instantiate(immuneCellPrefabList[immune_cell_type]);
-        immuneCellList.Add(immune_cell);
-    }
-
 
     public void ArrowMove(int direction, Position target_position)
     {        
         arrowList[direction].transform.position = map.PositionChange(target_position);
     }
-
-    
-
 
 }

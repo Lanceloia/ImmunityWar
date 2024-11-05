@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4373066557797065342}
   - component: {fileID: 4492481807495382025}
   m_Layer: 0
-  m_Name: tower
+  m_Name: MarcophageCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

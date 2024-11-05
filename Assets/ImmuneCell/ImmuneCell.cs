@@ -46,7 +46,7 @@ abstract public class ImmuneCell : MonoBehaviour
 
     }
 
-    abstract public void Upgrade();
+    abstract public void Upgrade(ShapeType shapeType);
 
     abstract public void SpriteChange();
 
