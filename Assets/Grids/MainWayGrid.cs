@@ -7,6 +7,7 @@ public class MainWayGrid : Grids
     public bool canbuild2x2;                // 当前主路格子能否建造2x2的防御塔
     public bool canbuild2x1;                // 当前主路格子能否建造2x1的防御塔
     public GameObject immuneCellGrid2x2;    // 若能建造，则此处绑定对应的免细胞格子对象
+    public GameObject immuneCellGrid2x1;    // 若能建造，则此处绑定对应的免细胞格子对象
 
     private void _init()
     {
