@@ -5,7 +5,10 @@ using UnityEngine;
 public class MainWayGrid : Grids
 {
     public bool canbuild2x2;                // 当前主路格子能否建造2x2的防御塔
-    public GameObject immuneCellGrid2x2;    // 若能建造，则此处绑定对应的免细胞格子对象
+    public bool canbuild1x2;                // 当前主路格子能否建造1x2的防御塔
+    public GameObject immuneCellGrid2x2;    // 若能建造，则此处绑定对应的2x2免细胞格子对象
+
+    public GameObject immuneCellGrid1x2;    // 若能建造，则此处绑定对应的1x2免细胞格子对象
 
     private void _init()
     {
@@ -57,6 +60,19 @@ public class MainWayGrid : Grids
                 Board.instance.ImmuneCell2x2Build((int)ImmuneCellType.MacrophageCell, target_position);
             else
                 Board.instance.ImmuneCell2x2Upgrade(target_position);
+            
+        }
+
+
+        if  (canbuild1x2)
+        {
+            /*
+            //
+            //    
+            //      需要按钮
+            //
+            //
+            */ 
 
 
         }

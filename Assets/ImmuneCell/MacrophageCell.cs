@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MarcophageCell : ImmuneCell
 {
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rank = 1;
         attackPower = 3;

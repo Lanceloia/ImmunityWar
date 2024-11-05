@@ -194,7 +194,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 595989467}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
 --- !u!4 &20763728 stripped
 Transform:
@@ -698,9 +701,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 411948413}
+  - {fileID: 1258507624}
   - {fileID: 1505819539}
   - {fileID: 362556057}
-  - {fileID: 814771612}
   - {fileID: 2139603312}
   - {fileID: 806327291}
   - {fileID: 1881841786}
@@ -1110,7 +1113,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1135,7 +1138,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 6.241016
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1161,7 +1164,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99167, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1424553579}
@@ -1438,6 +1441,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 95824869116754957, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
   m_PrefabInstance: {fileID: 158710975}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &194794879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+  m_PrefabInstance: {fileID: 1610524745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &214010549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 2139603311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220773201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1568,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 2129910507}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &248670173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+  m_PrefabInstance: {fileID: 258319639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &258319639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1622,13 +1640,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 258319642}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
 --- !u!4 &258319640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6792842528651329518, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
   m_PrefabInstance: {fileID: 258319639}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &258319642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248670173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 0
+  y: 6
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &260989197
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,7 +2220,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2047867010}
   m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!4 &362556057 stripped
 Transform:
@@ -2555,7 +2601,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938808278}
   m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!4 &411948413 stripped
 Transform:
@@ -4045,6 +4094,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
   m_PrefabInstance: {fileID: 680851352}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &595989465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+  m_PrefabInstance: {fileID: 20763727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &595989467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595989465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 0
+  y: 10
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &597146390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4084892352172237120, guid: d6a87681136bbdc4494c3445ac46dcec, type: 3}
@@ -5059,6 +5135,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1962930633658672225, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 775270542}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &778701568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+  m_PrefabInstance: {fileID: 2003621665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &789729422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5308,86 +5389,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1046933360}
   m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!4 &806327291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
   m_PrefabInstance: {fileID: 806327290}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &814771611
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 84151553}
-    m_Modifications:
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-      propertyPath: m_Name
-      value: ImmuneCellGrid-2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
---- !u!4 &814771612 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
-  m_PrefabInstance: {fileID: 814771611}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &816319554 stripped
 GameObject:
@@ -5523,6 +5533,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 95824869116754957, guid: bb13753953b2cae4db9f2f2c58357730, type: 3}
   m_PrefabInstance: {fileID: 835361542}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &842355768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 1881841785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &843706510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5605,10 +5620,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4694290418713290007, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
   m_PrefabInstance: {fileID: 843706510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &846363915
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 84151553}
+    m_Modifications:
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      propertyPath: m_Name
+      value: ImmuneCellGrid-2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1258507625}
+  m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!1 &854132160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 395810032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &857439647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+  m_PrefabInstance: {fileID: 1223390728}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &858726487 stripped
 GameObject:
@@ -6427,6 +6519,33 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   speed: 0
   isMove: 0
+--- !u!1 &1046933358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 806327290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1046933360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046933358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 9
+  y: 12
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1001 &1057192323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7249,13 +7368,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1223390731}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
 --- !u!4 &1223390729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6792842528651329518, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
   m_PrefabInstance: {fileID: 1223390728}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1223390731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857439647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 17
+  y: 8
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &1225695637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -7317,6 +7461,38 @@ Transform:
   - {fileID: 1103476527}
   m_Father: {fileID: 1431763885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1258507623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 846363915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1258507624 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 846363915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1258507625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258507623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 10
+  y: 0
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1001 &1269560149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7410,6 +7586,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1962930633658672225, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 1269560149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1278493442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 1464013679}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1283879452
 GameObject:
@@ -8366,13 +8547,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1464013682}
   m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!4 &1464013680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
   m_PrefabInstance: {fileID: 1464013679}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1464013682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278493442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 6
+  y: 17
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &1491637852 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -8527,7 +8733,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1939563826}
   m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!4 &1505819539 stripped
 Transform:
@@ -8538,6 +8747,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7422728807294108566, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
   m_PrefabInstance: {fileID: 57557558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1514529070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+  m_PrefabInstance: {fileID: 1660756924}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1523152212
 PrefabInstance:
@@ -9428,13 +9642,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1610524748}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
 --- !u!4 &1610524746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6792842528651329518, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
   m_PrefabInstance: {fileID: 1610524745}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1610524748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194794879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 0
+  y: 8
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &1610949628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5734220592555890084, guid: 54fb1cfe9729926468e54b2615546758, type: 3}
@@ -9615,13 +9854,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1660756927}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
 --- !u!4 &1660756925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6792842528651329518, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
   m_PrefabInstance: {fileID: 1660756924}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1660756927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514529070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 17
+  y: 6
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &1683218290
 GameObject:
   m_ObjectHideFlags: 0
@@ -9657,7 +9921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -739.06, y: -237.77}
+  m_AnchoredPosition: {x: -740.79, y: -235.84}
   m_SizeDelta: {x: 6000, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683218292
@@ -10956,13 +11220,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1881841788}
   m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!4 &1881841786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
   m_PrefabInstance: {fileID: 1881841785}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881841788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842355768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 7
+  y: 12
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1001 &1889135580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11234,6 +11523,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1962930633658672225, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
   m_PrefabInstance: {fileID: 1922043716}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938808276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 411948412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1938808278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938808276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 6
+  y: 0
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
+--- !u!1 &1939563824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 1505819538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1939563826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939563824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 7
+  y: 5
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &1951724757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -11585,13 +11928,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7104951859854687510, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2003621668}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
 --- !u!4 &2003621666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6792842528651329518, guid: 2b3cfbecce6525243a458859d64aacdd, type: 3}
   m_PrefabInstance: {fileID: 2003621665}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2003621668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778701568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 17
+  y: 10
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1 &2006478850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7422728807294108566, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
@@ -12332,6 +12700,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5628597503649775120, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
   m_PrefabInstance: {fileID: 2035542261}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2047867008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+  m_PrefabInstance: {fileID: 362556056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2047867010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047867008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 9
+  y: 5
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1001 &2063481986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12927,13 +13322,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5715613521896582015, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139603314}
   m_SourcePrefab: {fileID: 100100000, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
 --- !u!4 &2139603312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1493463899171309072, guid: 62aeed02a1ced994e828cf860f741d39, type: 3}
   m_PrefabInstance: {fileID: 2139603311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139603314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214010549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  x: 10
+  y: 17
+  next: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}
 --- !u!1001 &2141307385
 PrefabInstance:
   m_ObjectHideFlags: 0
