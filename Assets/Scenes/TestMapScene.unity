@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   x: 0
-  y: 0
+  y: 10
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   x: 0
-  y: 0
+  y: 6
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -2416,8 +2416,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 9
+  y: 5
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -2840,7 +2840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
+  x: 6
   y: 0
   next: 0
   accessRoad: 0
@@ -5822,8 +5822,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 9
+  y: 12
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -7753,8 +7753,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 17
+  y: 8
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -8916,8 +8916,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 6
+  y: 17
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -9115,8 +9115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 7
+  y: 5
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -10071,7 +10071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   x: 0
-  y: 0
+  y: 8
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -10179,7 +10179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
+  x: 10
   y: 0
   next: 0
   accessRoad: 0
@@ -10391,8 +10391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 17
+  y: 6
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -11778,8 +11778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 7
+  y: 12
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -12461,8 +12461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 17
+  y: 10
   next: 0
   accessRoad: 0
   accessRoadNext: 0
@@ -13867,8 +13867,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  x: 0
-  y: 0
+  x: 10
+  y: 17
   next: 0
   accessRoad: 0
   accessRoadNext: 0

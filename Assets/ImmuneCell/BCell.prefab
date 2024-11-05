@@ -97,3 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2480fcadf31b4ee4e9f4cc9e64fb43c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tower: {fileID: 4538323048108370188}
+  index: 0
+  type: 0
+  rank: 0
+  maxRank: 0
+  attackPower: 0
+  attackRange: 0
+  attackSpeed: 0
+  attackLeft: 0
