@@ -31,36 +31,68 @@ public class MainWayGrid : Grids
 
     public override IEnumerator onStemCellStay()
     {
+        
         if (canbuild2x2) 
         {
-            // 此处应该弹出2个按钮
-            // 如果没有建造，则弹出 “唤醒” 和 “跳过”
-            // 如果已经建造，则弹出 “升级” 和 “跳过”
-
             Position target_position = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().p;
-            //Debug.Log(string.Format("Query state of pos({0}, {1})", target_position.x, target_position.y));
-
             // 查询可建造 / 可升级状态
-            ImmuneCellGridState state = Board.instance.ImmuneCell2x2Query(target_position);
+            ImmuneCellGridState state = Board.instance.ImmuneCellQuery(target_position);
 
             // 满级则跳过
-            if (state == ImmuneCellGridState.MaxRank)
-                yield break;
-            yield return StartCoroutine(WaitForBuildSelect(target_position));
-            // 玩家是否选择跳过
-            bool skip;
+            if (state != ImmuneCellGridState.MaxRank)
+            {
+                yield return StartCoroutine(WaitForBuildSelect(target_position));   // 玩家是否选择跳过
+                bool skip;
+                skip = !(Board.instance.isBuilding);    // 当前不可跳过
+                
+                //TODO: 玩家选择
+                ImmuneCellType playerChoice = ImmuneCellType.MacrophageCell;
 
-            // 当前不可跳过
-            skip = !(Board.instance.isBuilding);
-            if (skip)
-                yield break;
+                if (!skip && playerChoice == ImmuneCellType.MacrophageCell)
+                {
+                    //如果未建造则建造，否则升级
+                    if (state == ImmuneCellGridState.CanBuild)
+                        Board.instance.ImmuneCell2x2Build((int)ImmuneCellType.MacrophageCell, target_position);
+                    else
+                        Board.instance.ImmuneCell2x2Upgrade(target_position);
+                }
+            }
+        }
+    
+        if (canbuild2x1)
+        {
+            Position target_position = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().p;
+            // 查询可建造 / 可升级状态
+            ImmuneCellGridState state = Board.instance.ImmuneCellQuery(target_position);
 
-            if (state == ImmuneCellGridState.CanBuild)
-                Board.instance.ImmuneCell2x2Build((int)ImmuneCellType.MacrophageCell, target_position);
-            else
-                Board.instance.ImmuneCell2x2Upgrade(target_position);
+            // 满级则跳过
+            if (state != ImmuneCellGridState.MaxRank)
+            {
+                yield return StartCoroutine(WaitForBuildSelect(target_position));   // 玩家是否选择跳过
+                bool skip;
+                skip = !(Board.instance.isBuilding);    // 当前不可跳过
+
+                //TODO: 玩家选择
+                ImmuneCellType playerChoice = ImmuneCellType.BCell;    
 
 
+                if (!skip && playerChoice ==ImmuneCellType.BCell)
+                {
+                    //如果未建造则建造，否则升级
+                    if (state == ImmuneCellGridState.CanBuild);
+                        //Board.instance.ImmuneCell2x1Build((int)ImmuneCellType.BCell, target_position);
+                    else;
+                        //Board.instance.ImmuneCell2x1Upgrade(target_position);
+                }
+                else if (!skip && playerChoice == ImmuneCellType.TCell)
+                {
+                    //如果未建造则建造，否则升级
+                    if (state == ImmuneCellGridState.CanBuild);
+                       // Board.instance.ImmuneCell2x1Build((int)ImmuneCellType.TCell, target_position);
+                    else;
+                        //Board.instance.ImmuneCell2x1Upgrade(target_position);
+                }
+            }
         }
 
     }

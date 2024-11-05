@@ -36,7 +36,7 @@ public class Board : MonoBehaviour
 
     public List<GameObject> buildList;//升级ui列表
     public bool isSelectingBuild;
-    public bool isBuilding;
+    public bool isBuilding; //用于在玩家选择时决定是否可以升级/建造
 
     public Maps map;                  // 记得绑定游戏地图的脚本
     public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制
@@ -398,7 +398,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public ImmuneCellGridState ImmuneCell2x2Query(Position target_position)
+    public ImmuneCellGridState ImmuneCellQuery(Position target_position)
     {
         //Debug.Log(string.Format("query state"));
         // 查询目标免疫细胞区域的可建造/可升级状态
@@ -479,9 +479,20 @@ public class Board : MonoBehaviour
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().Upgrade();
     }
 
+    public void ImmuneCell2x1Build(int immune_cell_type, Position target_position)
+    {
+        // 创建一个新的类型为immune_cell_type的对象，并将它的精灵图移动到target_position位置
+        GameObject immune_cell = Instantiate(immuneCellPrefabList[immune_cell_type]);
+        immuneCellList.Add(immune_cell);
+    }
+
+
     public void ArrowMove(int direction, Position target_position)
     {        
         arrowList[direction].transform.position = map.PositionChange(target_position);
     }
+
+    
+
 
 }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum ImmuneCellType
 {
-    MacrophageCell = 0
+    MacrophageCell = 0,
+    BCell = 1,
+    TCell = 2
 }
 
 abstract public class ImmuneCell : MonoBehaviour
