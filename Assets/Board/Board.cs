@@ -37,6 +37,7 @@ public class Board : MonoBehaviour
     public List<GameObject> buildList;//升级ui列表
     public bool isSelectingBuild;
     public bool isBuilding; //用于在玩家选择时决定是否可以升级/建造
+    public int buildingType;
 
     public Maps map;                  // 记得绑定游戏地图的脚本
     public List<GameObject> pathogenPrefabList;       // 绑定病原体的预制体对象，用于复制

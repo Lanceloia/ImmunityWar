@@ -68,12 +68,15 @@ public class MainWayGrid : Grids
             // 满级则跳过
             if (state != ImmuneCellGridState.MaxRank)
             {
-                yield return StartCoroutine(WaitForBuildSelect(target_position));   // 玩家是否选择跳过
+                yield return StartCoroutine(WaitFor2x1BuildSelect(target_position));   // 玩家是否选择跳过
                 bool skip;
-                skip = !(Board.instance.isBuilding);    // 当前不可跳过
+                skip = !(Board.instance.isBuilding); 
 
                 //TODO: 玩家选择
-                ImmuneCellType playerChoice = ImmuneCellType.BCell;    
+                ImmuneCellType playerChoice = ImmuneCellType.BCell; 
+                if(Board.instance.buildingType == 1){
+                    playerChoice = ImmuneCellType.TCell;
+                }
 
 
                 if (!skip && playerChoice ==ImmuneCellType.BCell)
@@ -119,7 +122,29 @@ public class MainWayGrid : Grids
         ButtonMove(new Position(-25, -25));
 
     }
+    public void Button1x2Move(Position target_position)
+    {
+        Board.instance.buildList[2].transform.position = Board.instance.map.PositionChange(target_position + (Direction)1 + (Direction)1);
+        Board.instance.buildList[3].transform.position = Board.instance.map.PositionChange(target_position + (Direction)0 );
+        Board.instance.buildList[1].transform.position = Board.instance.map.PositionChange(target_position + (Direction)2 + (Direction)2);
 
+    }
+    IEnumerator WaitFor2x1BuildSelect(Position target_position)
+    {
+        Button1x2Move(target_position);
+
+        Board.instance.isSelectingBuild = true;
+
+
+        while (Board.instance.isSelectingBuild)
+        {
+
+            yield return new WaitForEndOfFrame();
+
+        }
+        Button1x2Move(new Position(-25, -25));
+
+    }
     public override void onPathogenCellPassBy(GameObject pathogenCell)
     {
         foreach (GameObject immuneCell in immuneCells)
