@@ -33,13 +33,13 @@ public class Dice : MonoBehaviour
 
      void Start()
     {
-        // ï¿½ï¿½È¡Sprite Rendererï¿½ï¿½ï¿?
+        // ï¿½ï¿½È¡Sprite Rendererï¿½ï¿½ï¿½?
         spriteRenderer = GetComponent<SpriteRenderer>();
         initialOffset = transform.position - Camera.main.transform.position;
     }
     void LateUpdate()
     {
-        // Ã¿Ö¡¸üÐÂ¶ÔÏóÎ»ÖÃ£¬Ê¹ÆäËø¶¨ÔÚ³õÊ¼Î»ÖÃ²»ËæÉãÏñ»úÒÆ¶¯
+        // Ã¿Ö¡ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Ê¼Î»ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
         transform.position = Camera.main.transform.position + initialOffset;
     }
     private IEnumerator RollAnimation()

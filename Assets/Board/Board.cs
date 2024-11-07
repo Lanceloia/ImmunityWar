@@ -14,6 +14,7 @@ public enum CurrentRound
 
 }
 
+
 public class Board : MonoBehaviour
 {
     // 单例模式
@@ -62,6 +63,12 @@ public class Board : MonoBehaviour
 
     public GameObject cameraController;
 
+    public List<GameObject> cardsList;//储存了不同种类的卡，根据index可以在本数组中找到对应卡
+    public List<List<int>> handcardList; //二维list储存手牌的index,index对应cardsList中的index
+    public GameObject cardUIManager;//选择卡牌的UI管理
+    public List<int> cardUsedinThisRound;
+
+
     public void StartGame()
     {
         map.Init();                                               // 初始化地图信息
@@ -86,6 +93,18 @@ public class Board : MonoBehaviour
         isMove4Stem = false;
         monsterRound = 1;
         totalHealth = 15;
+
+        handcardList  = new List<List<int>>();
+        for (int i = 0; i < 4; i++)
+        {
+            List<int> row = new List<int>();
+            for (int j = 0; j < 2; j++)
+            {
+                row.Add(0); // 仅用于测试，每个角色手牌添加两张测试牌
+            }
+            handcardList.Add(row);
+        }
+        cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
     }
 
     void Start()
@@ -175,33 +194,6 @@ public class Board : MonoBehaviour
             
             yield return new WaitForEndOfFrame();
 
-            // 检查点击事件
-            /*if (Input.GetMouseButtonDown(0))  // 0 代表左键点击
-            {
-                // 将鼠标点击转换为世界坐标
-                Debug.Log("nmsl");
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                // 检查点击是否在对象上
-                if (Physics.Raycast(ray, out hit) && hit.transform.gameObject == oriObj)
-                {
-                    isSelectingAccess = false;
-                    isGoingAccess = false;
-
-                    ArrowMove(ori, new Position(-10,-10));
-                    ArrowMove(access, new Position(-10, -10));
-                }
-                if (Physics.Raycast(ray, out hit) && hit.transform.gameObject == accObj)
-                {
-                    isSelectingAccess = false;
-                    isGoingAccess = true;
-
-                    ArrowMove(ori, new Position(-10, -10));
-                    ArrowMove(access, new Position(-10, -10));
-                }
-                
-            }*/
             
         }
         ArrowMove(ori, new Position(-20, -20));
@@ -345,7 +337,7 @@ public class Board : MonoBehaviour
     {
         token++;          // token 传给下一个
         totalRound++;
-
+        
         // ImmuneCell行动
         ImmuneCellAction();
         
@@ -354,6 +346,8 @@ public class Board : MonoBehaviour
             
             cameraController.GetComponent<CameraController>().SetTarget(stemCellList[(int)token].GetComponent<StemCell>().transform);
             cameraController.GetComponent<CameraController>().isFollowing = true;
+
+            cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn((int)token);
         }
         // 如果token在AI这里，则轮到AI行动
         if (token == CurrentRound.AI)
@@ -388,6 +382,7 @@ public class Board : MonoBehaviour
             token = CurrentRound.P1;   // AI行动完token传回给P1
             cameraController.GetComponent<CameraController>().SetTarget(stemCellList[(int)CurrentRound.P1].GetComponent<StemCell>().transform);
             cameraController.GetComponent<CameraController>().isFollowing = true;
+            cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
         }
     }
     private void ImmuneCellAction()

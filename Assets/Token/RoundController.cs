@@ -24,7 +24,7 @@ public class RoundController : MonoBehaviour
     }
     void LateUpdate()
     {
-        // Ã¿Ö¡¸üĞÂ¶ÔÏóÎ»ÖÃ£¬Ê¹ÆäËø¶¨ÔÚ³õÊ¼Î»ÖÃ²»ËæÉãÏñ»úÒÆ¶¯
+        // Ã¿Ö¡ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Ê¼Î»ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
         transform.position = Camera.main.transform.position + initialOffset;
     }
     // Update is called once per frame
