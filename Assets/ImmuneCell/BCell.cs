@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BCell : ImmuneCell
 {
-    
+    AntigenType antigenType;//B细胞识别的抗原类型
     void Awake()
     {
         rank = 1;
@@ -12,6 +12,9 @@ public class BCell : ImmuneCell
         attackRange = 1;
         attackSpeed = 1;
         attackLeft = attackSpeed;
+        
+        ATPcost = 1;
+        antigenCost = 1;
     }
 
     // Update is called once per frame

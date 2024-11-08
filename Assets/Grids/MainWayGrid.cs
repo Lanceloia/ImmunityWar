@@ -45,7 +45,6 @@ public class MainWayGrid : Grids
                 bool skip;
                 skip = !(Board.instance.isBuilding);    // 当前不可跳过
                 
-                //TODO: 玩家选择
                 ImmuneCellType playerChoice = ImmuneCellType.MacrophageCell;
 
                 if (!skip && playerChoice == ImmuneCellType.MacrophageCell)
@@ -72,7 +71,6 @@ public class MainWayGrid : Grids
                 bool skip;
                 skip = !(Board.instance.isBuilding); 
 
-                //TODO: 玩家选择
                 ImmuneCellType playerChoice = ImmuneCellType.BCell; 
                 if(Board.instance.buildingType == 1){
                     playerChoice = ImmuneCellType.TCell;

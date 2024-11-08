@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TCell : ImmuneCell
 {
+    AntigenType antigenType;    //T细胞只能攻击特定抗原
     void Awake()
     {
         rank = 1;
@@ -11,6 +12,9 @@ public class TCell : ImmuneCell
         attackRange = 1;
         attackSpeed = 1;
         attackLeft = attackSpeed;
+        
+        ATPcost = 1;
+        antigenCost = 1;
     }
 
     // Update is called once per frame

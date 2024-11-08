@@ -1343,6 +1343,9 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   speed: 0
   isMove: 0
+  ATP: 0
+  ATPMax: 0
+  ATPspeed: 0
 --- !u!1001 &156975451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3430,6 +3433,9 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   speed: 0
   isMove: 0
+  ATP: 0
+  ATPMax: 0
+  ATPspeed: 0
 --- !u!1 &483021125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -7366,6 +7372,9 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   speed: 0
   isMove: 0
+  ATP: 0
+  ATPMax: 0
+  ATPspeed: 0
 --- !u!1001 &1057192323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7565,6 +7574,9 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   speed: 0
   isMove: 0
+  ATP: 0
+  ATPMax: 0
+  ATPspeed: 0
 --- !u!1001 &1068266071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11355,7 +11367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -739.06, y: -237.77}
+  m_AnchoredPosition: {x: -739.11, y: -237.78}
   m_SizeDelta: {x: 6000, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683218292

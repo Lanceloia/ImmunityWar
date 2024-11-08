@@ -11,6 +11,8 @@ public class MarcophageCell : ImmuneCell
         attackRange = 1;
         attackSpeed = 1;
         attackLeft = attackSpeed;
+        ATPcost = 1;
+        antigenCost = 0;
     }
 
     // Update is called once per frame
