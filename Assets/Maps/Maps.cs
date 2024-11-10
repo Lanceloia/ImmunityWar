@@ -34,16 +34,16 @@ public struct Position
 
 abstract public class Maps : MonoBehaviour
 {
-    public List<Position> StemCellsOriginPosition;    // м╪иокЫспфПй╪╣Ц╣дн╩жц
-    public List<Position> PathogensOriginPosition;    // м╪иокЫсп╡║т╜лЕгЬ╣дн╩жц
-    public List<GameObject> GridsList;           // м╪иокЫсп╦Явс╣д╤тоС╠М
+    public List<Position> StemCellsOriginPosition;    // м╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫й╪О©╫О©╫О©╫н╩О©╫О©╫
+    public List<Position> PathogensOriginPosition;    // м╪О©╫О©╫О©╫О©╫О©╫п╡О©╫т╜О©╫О©╫О©╫О©╫О©╫О©╫н╩О©╫О©╫
+    public List<GameObject> GridsList;           // м╪О©╫О©╫О©╫О©╫О©╫п╦О©╫О©╫с╣д╤О©╫О©╫О©╫О©╫
 
-    protected Dictionary<Position, GameObject> GridsDict; // м╪иокЫсп╦Явс╣дн╩жц╨м╤тоС
+    protected Dictionary<Position, GameObject> GridsDict; // м╪О©╫О©╫О©╫О©╫О©╫п╦О©╫О©╫с╣О©╫н╩О©╫ц╨м╤О©╫О©╫О©╫
 
-    abstract public void Init();    // ЁУй╪╩╞йЩ╬щЁит╠
-    abstract public Vector3 PositionChange(Position p); // ╣ьм╪вЬ╠Йв╙╩╩н╙йю╫ГвЬ╠Й
+    abstract public void Init();    // О©╫О©╫й╪О©╫О©╫О©╫О©╫О©╫щЁО©╫т╠
+    abstract public Vector3 PositionChange(Position p); // О©╫О©╫м╪О©╫О©╫О©╫О©╫в╙О©╫О©╫н╙О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 
-    public GameObject GetGridsFromPosition(Position p) // ╦Ы╬щвЬ╠Й╩Ях║╦Явс╤тоС
+    public GameObject GetGridsFromPosition(Position p) // О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫х║О©╫О©╫О©╫с╤О©╫О©╫О©╫
     {
         return GridsDict[p];
     }

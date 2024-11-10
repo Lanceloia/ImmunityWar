@@ -262,6 +262,7 @@ MonoBehaviour:
   x: 0
   y: 10
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -339,6 +340,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -528,6 +533,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -707,6 +716,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -1879,6 +1892,7 @@ MonoBehaviour:
   x: 0
   y: 6
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -2167,6 +2181,10 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -2419,6 +2437,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 0
       objectReference: {fileID: 0}
@@ -2550,6 +2572,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
       objectReference: {fileID: 0}
@@ -2671,6 +2697,7 @@ MonoBehaviour:
   x: 9
   y: 5
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -2748,6 +2775,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -2852,6 +2883,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3096,6 +3131,7 @@ MonoBehaviour:
   x: 6
   y: 0
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -3667,6 +3703,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
       objectReference: {fileID: 0}
@@ -4048,6 +4088,10 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
       objectReference: {fileID: 0}
@@ -4080,6 +4124,10 @@ PrefabInstance:
     - target: {fileID: -8114870921021736191, guid: 2ce14c5162889db4f84a1b686b4fba5f, type: 3}
       propertyPath: y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8114870921021736191, guid: 2ce14c5162889db4f84a1b686b4fba5f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8114870921021736191, guid: 2ce14c5162889db4f84a1b686b4fba5f, type: 3}
       propertyPath: next
@@ -4314,6 +4362,10 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
       objectReference: {fileID: 0}
@@ -4409,6 +4461,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
       objectReference: {fileID: 0}
@@ -4497,6 +4553,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
@@ -4649,6 +4709,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -4764,6 +4828,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x1
@@ -5176,6 +5244,7 @@ MonoBehaviour:
   x: 14
   y: 3
   next: 3
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -5697,6 +5766,8 @@ Transform:
   - {fileID: 883622120}
   - {fileID: 273917471}
   - {fileID: 568628750}
+  - {fileID: 1070640966}
+  - {fileID: 1849951774}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &771572286
@@ -5866,6 +5937,10 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -5996,6 +6071,10 @@ PrefabInstance:
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: next
@@ -6176,6 +6255,7 @@ MonoBehaviour:
   x: 9
   y: 12
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -6497,6 +6577,10 @@ PrefabInstance:
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: y
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5628597503649775120, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: m_LocalScale.x
@@ -6903,6 +6987,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -7004,6 +7092,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -7309,6 +7401,10 @@ PrefabInstance:
       propertyPath: y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5628597503649775120, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35
@@ -7548,6 +7644,10 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -7690,6 +7790,10 @@ PrefabInstance:
       propertyPath: y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5628597503649775120, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35
@@ -7756,6 +7860,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5628597503649775120, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
   m_PrefabInstance: {fileID: 1068266071}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1070640965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070640966}
+  - component: {fileID: 1070640967}
+  m_Layer: 0
+  m_Name: BackMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070640966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070640965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 759575561}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1070640967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070640965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bb69ca526c292479f098fa4805c98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 0
+  index: 0
+  cardName: 
+  cardDiscription: 
+  ATPValue: 0
+  antigenValue: 0
 --- !u!1001 &1071365889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7771,6 +7925,10 @@ PrefabInstance:
     - target: {fileID: -8114870921021736191, guid: 2ce14c5162889db4f84a1b686b4fba5f, type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8114870921021736191, guid: 2ce14c5162889db4f84a1b686b4fba5f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8114870921021736191, guid: 2ce14c5162889db4f84a1b686b4fba5f, type: 3}
       propertyPath: next
@@ -8003,6 +8161,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
@@ -8242,6 +8404,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -8499,6 +8665,7 @@ MonoBehaviour:
   x: 17
   y: 8
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -8637,6 +8804,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -8921,6 +9092,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x1
       value: 1
       objectReference: {fileID: 0}
@@ -9062,6 +9237,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x1
       value: 1
       objectReference: {fileID: 0}
@@ -9188,6 +9367,7 @@ MonoBehaviour:
   x: 11
   y: 13
   next: 3
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -9392,6 +9572,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -9495,6 +9679,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -9957,6 +10145,7 @@ MonoBehaviour:
   x: 6
   y: 17
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -10039,6 +10228,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x1
@@ -10157,6 +10350,7 @@ MonoBehaviour:
   x: 7
   y: 5
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -10375,6 +10569,10 @@ PrefabInstance:
       propertyPath: y
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10456,6 +10654,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -10643,6 +10845,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 0
       objectReference: {fileID: 0}
@@ -10823,6 +11029,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
       objectReference: {fileID: 0}
@@ -10911,6 +11121,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -11109,6 +11323,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 1
       objectReference: {fileID: 0}
@@ -11252,6 +11470,7 @@ MonoBehaviour:
   x: 0
   y: 8
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -11362,6 +11581,7 @@ MonoBehaviour:
   x: 10
   y: 0
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -11472,6 +11692,7 @@ MonoBehaviour:
   x: 6
   y: 4
   next: 1
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -11576,6 +11797,7 @@ MonoBehaviour:
   x: 17
   y: 6
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -11689,6 +11911,10 @@ PrefabInstance:
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: next
@@ -11833,6 +12059,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 1
       objectReference: {fileID: 0}
@@ -11927,6 +12157,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -11968,6 +12202,10 @@ PrefabInstance:
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: y
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: next
@@ -12251,6 +12489,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 1
       objectReference: {fileID: 0}
@@ -12525,6 +12767,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 2
       objectReference: {fileID: 0}
@@ -12609,6 +12855,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -12856,6 +13106,56 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7422728807294108566, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
   m_PrefabInstance: {fileID: 1696339694}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1849951773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1849951774}
+  - component: {fileID: 1849951775}
+  m_Layer: 0
+  m_Name: TP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1849951774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849951773}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 759575561}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849951775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849951773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc914857b4849d64a9e78107eae01b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 0
+  index: 0
+  cardName: 
+  cardDiscription: 
+  ATPValue: 0
+  antigenValue: 0
 --- !u!1 &1852983931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3880623472649850374, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
@@ -12999,6 +13299,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5dcfc3a426519784182b04db123afff7, type: 3}
   dicePrefab: {fileID: 8218393440619890564, guid: 9d432351878588440b1124e2f9a11dbd, type: 3}
   dice: {fileID: 350823403}
+  spritesOfStem:
+  - {fileID: 21300000, guid: 054d70261a4051d4f86dbb2979da7f61, type: 3}
+  - {fileID: 21300000, guid: 054d70261a4051d4f86dbb2979da7f61, type: 3}
+  - {fileID: 21300000, guid: 054d70261a4051d4f86dbb2979da7f61, type: 3}
+  - {fileID: 21300000, guid: 054d70261a4051d4f86dbb2979da7f61, type: 3}
+  stemPrefab: {fileID: 2936118331030169379, guid: 968e077576928de4c9baced05b7c1307, type: 3}
 --- !u!1 &1878480295
 GameObject:
   m_ObjectHideFlags: 0
@@ -13242,6 +13548,7 @@ MonoBehaviour:
   x: 7
   y: 12
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -13319,6 +13626,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -13415,6 +13726,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x2
       value: 1
       objectReference: {fileID: 0}
@@ -13508,6 +13823,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: canbuild2x1
@@ -13704,6 +14023,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 1
       objectReference: {fileID: 0}
@@ -13800,6 +14123,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -13930,6 +14257,7 @@ MonoBehaviour:
   x: 17
   y: 10
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -14017,6 +14345,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: accessRoad
@@ -14117,6 +14449,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 1
       objectReference: {fileID: 0}
@@ -14209,6 +14545,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -14412,6 +14752,7 @@ MonoBehaviour:
   x: 1
   y: 12
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0
@@ -14488,6 +14829,10 @@ PrefabInstance:
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
@@ -14584,6 +14929,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 0
       objectReference: {fileID: 0}
@@ -14630,6 +14979,10 @@ PrefabInstance:
     - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: y
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 172996891407243342, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
+      propertyPath: pre
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5628597503649775120, guid: 72a0031cb3c48154488dee7033fb69a6, type: 3}
       propertyPath: m_LocalScale.x
@@ -14955,6 +15308,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -15109,11 +15466,14 @@ MonoBehaviour:
   - {fileID: 883622119}
   - {fileID: 273917470}
   - {fileID: 568628749}
+  - {fileID: 1070640965}
+  - {fileID: 1849951773}
   cardUIManager: {fileID: 1874502713}
   cardUsedinThisRound: 
   isDoubleMove: 0
   isSelectMove: 0
   selectNum: 0
+  isBackMove: 0
 --- !u!1 &2107061650
 GameObject:
   m_ObjectHideFlags: 0
@@ -15376,6 +15736,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
+      propertyPath: pre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278967443469057844, guid: dbc4b27cc6bc4a94d962465999c1a32f, type: 3}
       propertyPath: next
       value: 3
       objectReference: {fileID: 0}
@@ -15505,6 +15869,7 @@ MonoBehaviour:
   x: 10
   y: 17
   next: 0
+  pre: 0
   accessRoad: 0
   accessRoadNext: 0
   nearHistiocyte: 0

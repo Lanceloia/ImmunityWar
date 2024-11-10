@@ -32,7 +32,7 @@ public class Dice : MonoBehaviour
             canBeUsed = false;
         }
         if(Board.instance.isSelectMove){
-
+            Board.instance.isSelectMove = false;
         }
     }
     public void RollDice()

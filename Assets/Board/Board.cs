@@ -70,9 +70,9 @@ public class Board : MonoBehaviour
 
     //用于实现卡牌具体效果
     public bool isDoubleMove = false;//用于实现DoubleMove卡牌
-    public bool isSelectMove = false;//用于实现isSelectMove卡牌
-    public int selectNum ;
-
+    public bool isSelectMove = false;//用于实现SelectMove卡牌
+    public int selectNum;
+    public bool isBackMove = false;//用于实现BackMove卡牌
     public void StartGame()
     {
         map.Init();                                               // 初始化地图信息
@@ -106,9 +106,10 @@ public class Board : MonoBehaviour
             // {
             //     row.Add(0); // 仅用于测试，每个角色手牌添加两张测试牌
             // }
-            row.Add(0);
+            row.Add(4);
             row.Add(1);
             row.Add(2);
+            row.Add(3);
             handcardList.Add(row);
         }
         cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
@@ -159,7 +160,7 @@ public class Board : MonoBehaviour
             Position np = p + dir;
 
             // 如果干细胞当前位置的格子是交叉路口，则进入选择箭头状态
-            if (map.GetGridsFromPosition(p).GetComponent<Grids>().accessRoad)
+            if (map.GetGridsFromPosition(p).GetComponent<Grids>().accessRoad&&!isBackMove)
             {
                 
 
@@ -170,7 +171,10 @@ public class Board : MonoBehaviour
 
             }
 
-            
+            //如果反向了则沿pre移动
+            if(isBackMove){
+                np = p+ map.GetGridsFromPosition(p).GetComponent<Grids>().pre;
+            }
 
             Debug.Log("remain:"+forward_step);
             StemCellSmoothMove(stem_cell_index, np);
@@ -186,7 +190,10 @@ public class Board : MonoBehaviour
         if (grid.GetComponent<Grids>().type == GridsType.MainWayGrid)
             yield return StartCoroutine(grid.GetComponent<MainWayGrid>().onStemCellStay());
 
-        //
+        //清楚反向标记
+        if(isBackMove){
+            isBackMove = false;
+        }
     }
 
     IEnumerator WaitForArrowSelect(int ori,int access,Position oriP,Position accessP)

@@ -15,10 +15,10 @@ public enum GridsType
 
 public enum ShapeType
 {
-    SmallSquare = 0,    //1x1µÄ¸ñ×Ó
-    UpTriangle = 1,   // 2x1µÄ¸ñ×Ó,´Ó×óÏòÓÒÊÇÏòÉÏµÄ
+    SmallSquare = 0,    //1x1ï¿½Ä¸ï¿½ï¿½ï¿½
+    UpTriangle = 1,   // 2x1ï¿½Ä¸ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½
     
-    DownTriangle = 2,   // 1x2µÄ¸ñ×Ó,´Ó×óÏòÓÒÊÇÏòÏÂµÄ
+    DownTriangle = 2,   // 1x2ï¿½Ä¸ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½
 
     BigSquare = 3,
 }
@@ -33,34 +33,35 @@ public enum Direction
 
 abstract public class Grids : MonoBehaviour
 {
-    // Êý¾Ý³ÉÔ±
-    public GridsType type;   // ¸ñ×ÓµÄÀàÐÍ
-    public ShapeType shape;      // ¸ñ×ÓµÄÐÎ×´//ÐèÒª°ó¶¨
-    public Position p;             // ¸ñ×ÓµÄµØÍ¼×ø±ê£¨ÄÚ²¿¼ÆËãÓÃ£©
-    public int x, y;               // ¸ñ×ÓµÄµØÍ¼×ø±ê£¨Íâ²¿°ó¶¨ÓÃ£©
+    // ï¿½ï¿½ï¿½Ý³ï¿½Ô±
+    public GridsType type;   // ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
+    public ShapeType shape;      // ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½×´//ï¿½ï¿½Òªï¿½ï¿½
+    public Position p;             // ï¿½ï¿½ï¿½ÓµÄµï¿½Í¼ï¿½ï¿½ï¿½ê£¨ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½
+    public int x, y;               // ï¿½ï¿½ï¿½ÓµÄµï¿½Í¼ï¿½ï¿½ï¿½ê£¨ï¿½â²¿ï¿½ï¿½ï¿½Ã£ï¿½
 
-    public HashSet<GameObject> immuneCells = new HashSet<GameObject>();     // ¿ÉÒÔ¹¥»÷µ½Õâ¸ö¸ñ×ÓµÄ·ÀÓùËþ
+    public HashSet<GameObject> immuneCells = new HashSet<GameObject>();     // ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    public Direction next;         // ÏÂÒ»¸ö¸ñ×ÓµÄ·½Ïò
-    public bool accessRoad;        // ÊÇ·ñ´æÔÚÖ§Â·
-    public Direction accessRoadNext; // Ö§Â·µÄÏÂÒ»¸ö¸ñ×ÓµÄ·½Ïò
-    bool canActiveStay;              // ÄÜ·ñÖ÷¶¯Í£ÁôÔÚ´Ë´¦
+    public Direction next;         // ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ·ï¿½ï¿½ï¿½
+    public Direction pre;
+    public bool accessRoad;        // ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ö§Â·
+    public Direction accessRoadNext; // Ö§Â·ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ·ï¿½ï¿½ï¿½
+    bool canActiveStay;              // ï¿½Ü·ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½Ú´Ë´ï¿½
 
-    public bool nearHistiocyte;//ÊÇ·ñÁÚ½ü×éÖ¯Ï¸°û
-    public Direction HistiocyteNext;//×éÖ¯Ï¸°û·½Ïò
+    public bool nearHistiocyte;//ï¿½Ç·ï¿½ï¿½Ú½ï¿½ï¿½ï¿½Ö¯Ï¸ï¿½ï¿½
+    public Direction HistiocyteNext;//ï¿½ï¿½Ö¯Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    // List of ImmuneCells    // Ò»¸öÁÐ±í£¬±íÊ¾Õâ¸ö¸ñ×ÓÔÚÁÐ±íÖÐµÄÏ¸°ûµÄ¹¥»÷·¶Î§ÄÚ
+    // List of ImmuneCells    // Ò»ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ðµï¿½Ï¸ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½
 
-    // ¸ÉÏ¸°û¾­¹ýÊ±µÄ´¦Àí
+    // ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä´ï¿½ï¿½ï¿½
     public abstract void onStemCellPassBy();
 
-    // ¸ÉÏ¸°ûÍ£ÁôÊ±´¦Àí
+    // ï¿½ï¿½Ï¸ï¿½ï¿½Í£ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
     public abstract IEnumerator onStemCellStay();
 
-    // ²¡¾ú¾­¹ýÊ±µÄ´¦Àí
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä´ï¿½ï¿½ï¿½
     public abstract void onPathogenCellPassBy(GameObject pathogen);
 
-    // ²¡¾úÍ£ÁôÊ±´¦Àí
+    // ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
     public abstract void onPathogenCellStay(GameObject pathogen);
     private void Awake()
     {
