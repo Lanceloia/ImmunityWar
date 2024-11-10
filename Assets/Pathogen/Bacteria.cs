@@ -17,9 +17,10 @@ public enum BacteriaType    //尚未使用，供参考
 
 public class Bacteria : Pathogen
 {
-    void Start()
+    void Awake()
     {
         type = PathogenType.bacteria;
+        antigenType = AntigenType.staph;
         health = 10;
         speed = 3f;
     }

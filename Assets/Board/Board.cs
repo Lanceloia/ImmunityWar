@@ -38,6 +38,7 @@ public class Board : MonoBehaviour
     public List<GameObject> buildList;//升级ui列表
     public bool isSelectingBuild;
     public bool isBuilding; //用于在玩家选择时决定是否可以升级/建造
+    public Position buildPosition;//升级/建造的防御塔的位置
     public int buildingType;
 
     public Maps map;                  // 记得绑定游戏地图的脚本
@@ -293,11 +294,15 @@ public class Board : MonoBehaviour
                 if (pathogen == null)
                     break;
             }
-
-
-
-
-
+        }
+        if (pathogen != null)
+        {
+            Position nnp = pathogen.GetComponent<Pathogen>().p;
+            GameObject grid1 = map.GetGridsFromPosition(nnp);
+            if (grid1 != null)
+            {
+                grid1.GetComponent<Grids>().onPathogenCellStay(pathogen);
+            }
         }
     }
 
@@ -338,8 +343,6 @@ public class Board : MonoBehaviour
         token++;          // token 传给下一个
         totalRound++;
         
-        // ImmuneCell行动
-        ImmuneCellAction();
         
         if(token!= CurrentRound.AI)
         {
@@ -349,40 +352,62 @@ public class Board : MonoBehaviour
 
             cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn((int)token);
         }
-        // 如果token在AI这里，则轮到AI行动
-        if (token == CurrentRound.AI)
+        switch (token)
         {
-            /*int pathogen_index = 0;
-            int forward_step = 2;
+            case CurrentRound.P1:
+                break;
+            case CurrentRound.P2:
+                stemCellList[1].GetComponent<StemCell>().TurnStart();
+                break;
+            case CurrentRound.P3:
+                stemCellList[2].GetComponent<StemCell>().TurnStart(); 
+                break;
+            case CurrentRound.AI:
+                // ImmuneCell行动
+                ImmuneCellAction();
+                /*int pathogen_index = 0;
+                int forward_step = 2;
 
-            //此处调用Pathogen_Forward，仅做测试用
-            if (pathogenList.Count == 0)
-            {
-                // 读取第一个刷怪点
+                //此处调用Pathogen_Forward，仅做测试用
+                if (pathogenList.Count == 0)
+                {
+                    // 读取第一个刷怪点
 
-                Position defaultPathogenPos = map.PathogensOriginPosition[0];
-                int defaultPathogenType = 0;
-                PathogenCreate(defaultPathogenType, defaultPathogenPos);
-            }*/
-            if ((totalRound ) % monsterRound == 0&& totalRound!=0)
-            {
-                Position defaultPathogenPos = map.PathogensOriginPosition[((totalRound)/4)%4];
-                int defaultPathogenType = 0;
-                PathogenCreate(defaultPathogenType, defaultPathogenPos, ((totalRound) / 4) % 4);
-            }
-            //// 所有怪物每次前进随机格
+                    Position defaultPathogenPos = map.PathogensOriginPosition[0];
+                    int defaultPathogenType = 0;
+                    PathogenCreate(defaultPathogenType, defaultPathogenPos);
+                }*/
+                if ((totalRound ) % monsterRound == 0&& totalRound!=0)
+                {
+                    Position defaultPathogenPos = map.PathogensOriginPosition[((totalRound)/4)%4];
+                    int defaultPathogenType = 0;
+                    PathogenCreate(defaultPathogenType, defaultPathogenPos, ((totalRound) / 4) % 4);
+                }
+                //// 所有怪物每次前进随机格
 
-            for (int i = pathogenList.Count - 1; i >= 0; i--)
-            {
-                //Debug.Log(i);
-                StartCoroutine(PathogenForward(i, UnityEngine.Random.Range(1, 7)));
-                //to do :增加交互
-            }
+                for (int i = pathogenList.Count - 1; i >= 0; i--)
+                {
+                    //Debug.Log(i);
+                    StartCoroutine(PathogenForward(i, 1));//UnityEngine.Random.Range(1, 7)));
+                    //to do :增加交互
+                }
 
-            token = CurrentRound.P1;   // AI行动完token传回给P1
-            cameraController.GetComponent<CameraController>().SetTarget(stemCellList[(int)CurrentRound.P1].GetComponent<StemCell>().transform);
-            cameraController.GetComponent<CameraController>().isFollowing = true;
-            cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
+                
+                
+
+
+                //p1的回合在AI回合结束后开始
+                token = CurrentRound.P1;  
+                cameraController.GetComponent<CameraController>().SetTarget(stemCellList[(int)CurrentRound.P1].GetComponent<StemCell>().transform);
+                cameraController.GetComponent<CameraController>().isFollowing = true;
+                cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
+                //Debug.Log("P1 turn");
+                stemCellList[0].GetComponent<StemCell>().TurnStart();
+        
+                break;
+            default:
+                Debug.Log("Token error");
+                break;
         }
     }
     private void ImmuneCellAction()
@@ -416,7 +441,7 @@ public class Board : MonoBehaviour
         
         // 根据形状调整位置
         if (shapeType == ShapeType. BigSquare)
-            immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.5f, 0.45f, 0);
+            immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.5f, 0, 0);
         else if (shapeType == ShapeType.UpTriangle )
             immune_cell.transform.position = map.PositionChange(target_position) + new Vector3(0.25f, 0.125f, 0);
         else if(shapeType == ShapeType.DownTriangle)

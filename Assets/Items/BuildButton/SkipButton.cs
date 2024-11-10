@@ -30,7 +30,7 @@ public class SkipButton : MonoBehaviour
     
     private void DefaultClickAction()
     {
-        Debug.Log("no");
+       // Debug.Log("no");
         
         Board.instance.isBuilding = false;
         Board.instance.isSelectingBuild = false;

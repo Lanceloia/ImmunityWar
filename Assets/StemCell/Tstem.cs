@@ -12,6 +12,6 @@ public class Tstem : StemCell
         ATPMax = 2;
         ATPspeed = 1;
     }
-
+    
 
 }

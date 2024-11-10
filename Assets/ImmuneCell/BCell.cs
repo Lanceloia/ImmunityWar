@@ -20,7 +20,7 @@ public class BCell : ImmuneCell
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public override void Upgrade(ShapeType shapeType)

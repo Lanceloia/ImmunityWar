@@ -27,10 +27,10 @@ abstract public class ImmuneCell : MonoBehaviour
     public byte attackLeft;         // 剩余攻击次数
 
 
-    public int ATPcost;     // 建造或升级时ATP消耗
-    public int antigenCost;     // 建造或升级时抗原消耗
+    public byte ATPcost;     // 建造或升级时ATP消耗
+    public byte antigenCost;     // 建造或升级时抗原消耗
 
-    public void NextRound()
+    public virtual void NextRound()
     {
         attackLeftReset();
     }

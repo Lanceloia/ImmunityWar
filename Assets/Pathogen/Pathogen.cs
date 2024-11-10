@@ -15,6 +15,7 @@ abstract public class Pathogen : MonoBehaviour
     public int index;       //细菌编号
 
     public PathogenType type;      //病菌类型
+    public AntigenType antigenType;     //病菌的抗原类型
     public int health;     //病菌血量
 
     public int targetIndex;

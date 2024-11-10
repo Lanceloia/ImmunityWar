@@ -11,6 +11,6 @@ public class MStem : StemCell
         ATPMax = 3;
         ATPspeed = 2;
     }
-
+    
 
 }

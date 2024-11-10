@@ -28,8 +28,25 @@ public class StemCell : MonoBehaviour
         speed = 3f;
 
         //为抗体的类型和数量赋初值
-        antigens.Add(AntigenType.staph, 0);
-        antigens.Add(AntigenType.flu, 0);
+        antigens.Add(AntigenType.staph, 2);//2仅仅是为了测试，实际应该为0
+        antigens.Add(AntigenType.flu, 2);
+    }
+
+    public virtual void TurnStart ()
+    {
+        ATPrecover();
+    }
+
+    protected virtual void ATPrecover()
+    {
+        if (ATP < ATPMax)
+        {
+            ATP += ATPspeed;
+        }
+        if(ATP > ATPMax)
+        {
+            ATP = ATPMax;
+        }
     }
 
     protected void Update()
