@@ -19,7 +19,7 @@ public class StartGrid : Grids
         
     }
 
-    public override void onStemCellPassBy()
+    public override void onStemCellPassBy(GameObject stemCell)
     {
         throw new System.NotImplementedException();
     }

@@ -25,9 +25,30 @@ public class MainWayGrid : Grids
         
     }
 
-    public override void onStemCellPassBy()
+    //获取抗原
+    public override void onStemCellPassBy(GameObject stemCell)
     {
-        throw new System.NotImplementedException();
+        if (canbuild2x2&&immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().state != ImmuneCellGridState.CanBuild &&(immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().type == ImmuneCellType.MacrophageCell))
+        {
+            //我后悔用byte了
+            //(哭哭)
+            Dictionary<AntigenType, int> dict1 = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<MarcophageCell >().antigens;
+            Dictionary<AntigenType, byte> dict2 = stemCell.GetComponent<StemCell>().antigens;
+            foreach (var entry in dict1)
+            {
+                if (!dict2.ContainsKey(entry.Key))
+                {
+                    dict2.Add(entry.Key, (byte)entry.Value);
+                }
+                else
+                {
+                    dict2[entry.Key] += (byte)entry.Value;
+                }
+            }
+
+            // 清空dict1
+            dict1.Clear();
+        }
     }
 
     public override IEnumerator onStemCellStay()
@@ -169,7 +190,12 @@ public class MainWayGrid : Grids
                 if (mc.enemyInRange.ContainsKey(pathogenCell))
                     mc.enemyInRange[pathogenCell] += 1;
                 else
-                mc.enemyInRange.Add(pathogenCell,1);
+                    mc.enemyInRange.Add(pathogenCell,1);
+                if (mc.enemyInRange2.ContainsKey(pathogenCell))
+                    mc.enemyInRange2[pathogenCell] = mc.count;
+                else
+                    mc.enemyInRange2.Add(pathogenCell, mc.count);
+
             }
         }
     }

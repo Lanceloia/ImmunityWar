@@ -169,6 +169,10 @@ public class Board : MonoBehaviour
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
             forward_step--;
+            //每一步移动完后，调用移动格子的OnStemPassBy
+            GameObject grid1 = map.GetGridsFromPosition(np);
+            if (grid1.GetComponent<Grids>().type == GridsType.MainWayGrid)
+                grid1.GetComponent<MainWayGrid>().onStemCellPassBy(stemCellList[stem_cell_index]);
             
         }
 
@@ -362,6 +366,8 @@ public class Board : MonoBehaviour
             case CurrentRound.P3:
                 stemCellList[2].GetComponent<StemCell>().TurnStart(); 
                 break;
+            case CurrentRound.P4:
+                break;
             case CurrentRound.AI:
                 // ImmuneCell行动
                 ImmuneCellAction();
@@ -388,7 +394,7 @@ public class Board : MonoBehaviour
                 for (int i = pathogenList.Count - 1; i >= 0; i--)
                 {
                     //Debug.Log(i);
-                    StartCoroutine(PathogenForward(i, 1));//UnityEngine.Random.Range(1, 7)));
+                    StartCoroutine(PathogenForward(i, UnityEngine.Random.Range(1, 7)));
                     //to do :增加交互
                 }
 

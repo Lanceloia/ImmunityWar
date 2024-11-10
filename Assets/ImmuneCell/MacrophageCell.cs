@@ -8,7 +8,7 @@ public class MarcophageCell : ImmuneCell
     private int engulfSpeed = 3;//吞噬所需回合数
     private int engulfingTime = 2+1;//消化时间,实际停留时间为2回合
     private int engulfingLeft = 0;//吞噬剩余回合数
-    private int count = 0;//用于检测是否连续在范围内
+    public int count = 0;//用于检测是否连续在范围内
 
     public GameObject targetEnemy;//吞噬目标
 
@@ -133,13 +133,14 @@ public class MarcophageCell : ImmuneCell
     public override void NextRound()
     {
         base.NextRound();
-        
+        count++;
         List<GameObject> toRemove = new List<GameObject>();
+        List<GameObject> RemoveOnly = new List<GameObject>();
         foreach (GameObject i in enemyInRange.Keys)
         {
             if (i == null)
             {
-                toRemove.Add(i);
+                RemoveOnly.Add(i);
                 continue;
             }
             
@@ -161,15 +162,18 @@ public class MarcophageCell : ImmuneCell
             engulfingLeft--;
             if (engulfingLeft == 0)
             {
-                if(antigens.ContainsKey(targetEnemy.GetComponent<Pathogen>().antigenType))
+                if(targetEnemy != null)
                 {
-                    antigens[targetEnemy.GetComponent<Pathogen>().antigenType] += 1;
-                }
-                else
-                {
-                    antigens.Add(targetEnemy.GetComponent<Pathogen>().antigenType,1);
-                    isEngulfing = false;
-                    engulfingLeft = engulfingTime;
+                    if(antigens.ContainsKey(targetEnemy.GetComponent<Pathogen>().antigenType))
+                    {
+                        antigens[targetEnemy.GetComponent<Pathogen>().antigenType] += 1;
+                    }
+                    else
+                    {
+                        antigens.Add(targetEnemy.GetComponent<Pathogen>().antigenType,1);
+                        isEngulfing = false;
+                        engulfingLeft = engulfingTime;
+                    }
                 }
             }
         }
@@ -178,6 +182,10 @@ public class MarcophageCell : ImmuneCell
             Pathogen p = i.GetComponent<Pathogen>();
             p.onHurt(p.health);//吞噬时直接杀死
             enemyInRange.Remove(i);
+        }
+        foreach (GameObject i in RemoveOnly)
+        {
+            enemyInRange2.Remove(i);
         }
     }
     
