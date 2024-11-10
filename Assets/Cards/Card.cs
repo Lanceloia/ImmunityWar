@@ -16,7 +16,8 @@ abstract public class Card : MonoBehaviour
     public int index;
     public string cardName;
     public string cardDiscription;
-    public int cardValue;
+    public int ATPValue;
+    public int antigenValue;
     // Start is called before the first frame update
     void Start()
     {

@@ -20,10 +20,19 @@ public class Dice : MonoBehaviour
     {
         if (canBeUsed)
         {
-            RollDice(); // �������ʱ����RollDice
+            if(Board.instance.isSelectMove)RollX(Board.instance.selectNum);
+            else RollDice(); // �������ʱ����RollDice
+            int stepCount = type;
+            if(Board.instance.isDoubleMove){//用于实现双倍移动卡牌
+                stepCount*=2;
+                Board.instance.isDoubleMove = false;
+            }
             if (Board.instance.token != CurrentRound.AI)
-                StartCoroutine(Board.instance.StemCellForward((int)Board.instance.token, type));
+                StartCoroutine(Board.instance.StemCellForward((int)Board.instance.token, stepCount));
             canBeUsed = false;
+        }
+        if(Board.instance.isSelectMove){
+
         }
     }
     public void RollDice()
@@ -31,12 +40,17 @@ public class Dice : MonoBehaviour
         StartCoroutine(RollAnimation());// ����RollAnimation
     }
 
-     void Start()
+    void Start()
     {
         // ��ȡSprite Renderer���?
         spriteRenderer = GetComponent<SpriteRenderer>();
         initialOffset = transform.position - Camera.main.transform.position;
     }
+    // void Update(){
+    //     if(Board.instance.isSelectMove){
+    //         canBeUsed = false;
+    //     }
+    // }
     void LateUpdate()
     {
         // ÿ֡���¶���λ�ã�ʹ�������ڳ�ʼλ�ò���������ƶ�
@@ -64,5 +78,9 @@ public class Dice : MonoBehaviour
     {
         return type;
     }
-
+    public void RollX(int i)
+    {
+        spriteRenderer.sprite = sprites[i-1];
+        type = i;
+    }
 }

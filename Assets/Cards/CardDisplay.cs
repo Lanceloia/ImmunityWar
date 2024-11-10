@@ -9,6 +9,7 @@ public class CardDisplay : MonoBehaviour
     public TextMeshProUGUI cardName;
     public TextMeshProUGUI cardDiscrip;
     public TextMeshProUGUI cardValue;
+    public TextMeshProUGUI antigenValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class CardDisplay : MonoBehaviour
     public void DisplayCard(){
         cardName.text = card.cardName;
         cardDiscrip.text = card.cardDiscription;
-        cardValue.text = card.cardValue.ToString();
+        cardValue.text = card.ATPValue.ToString();
+        antigenValue.text = card.antigenValue.ToString();
     } 
 }

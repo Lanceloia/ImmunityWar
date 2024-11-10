@@ -68,6 +68,10 @@ public class Board : MonoBehaviour
     public GameObject cardUIManager;//选择卡牌的UI管理
     public List<int> cardUsedinThisRound;
 
+    //用于实现卡牌具体效果
+    public bool isDoubleMove = false;//用于实现DoubleMove卡牌
+    public bool isSelectMove = false;//用于实现isSelectMove卡牌
+    public int selectNum ;
 
     public void StartGame()
     {
@@ -98,10 +102,13 @@ public class Board : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             List<int> row = new List<int>();
-            for (int j = 0; j < 2; j++)
-            {
-                row.Add(0); // 仅用于测试，每个角色手牌添加两张测试牌
-            }
+            // for (int j = 0; j < 2; j++)
+            // {
+            //     row.Add(0); // 仅用于测试，每个角色手牌添加两张测试牌
+            // }
+            row.Add(0);
+            row.Add(1);
+            row.Add(2);
             handcardList.Add(row);
         }
         cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
@@ -144,7 +151,7 @@ public class Board : MonoBehaviour
     public IEnumerator StemCellForward(int stem_cell_index, int forward_step)
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
-        //Debug.Log("move:"+forward_step);
+        Debug.Log("move:"+forward_step);
         while (forward_step > 0)
         {
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
@@ -165,8 +172,10 @@ public class Board : MonoBehaviour
 
             
 
+            Debug.Log("remain:"+forward_step);
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
+            Debug.Log("endmv");
             forward_step--;
             
         }
@@ -177,7 +186,7 @@ public class Board : MonoBehaviour
         if (grid.GetComponent<Grids>().type == GridsType.MainWayGrid)
             yield return StartCoroutine(grid.GetComponent<MainWayGrid>().onStemCellStay());
 
-
+        //
     }
 
     IEnumerator WaitForArrowSelect(int ori,int access,Position oriP,Position accessP)
@@ -225,6 +234,7 @@ public class Board : MonoBehaviour
             // 等待下一帧继续循环
             yield return null;
         }
+        
     }
 
     public void PathogenCreate(int pathogen_type, Position target_position, int target_index)
