@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TCell : ImmuneCell
 {
-    AntigenType antigenType;    //T细胞只能攻击特定抗原
+    AntigenType antigenType = AntigenType.staph;    //T细胞只能攻击特定抗原，暂定为staph
     void Awake()
     {
         rank = 1;
@@ -116,7 +116,7 @@ public class TCell : ImmuneCell
             return;
         }
             
-        while(attackLeft != 0 && pathogen != null)
+        while(attackLeft != 0 && pathogen != null && pathogen.GetComponent<Pathogen>().antigenType == antigenType&& pathogen.GetComponent<Pathogen>().isIn == true)
         {
             attackLeft--;
             pathogen.GetComponent<Pathogen>().onHurt(attackPower);

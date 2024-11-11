@@ -14,7 +14,7 @@ public class StemCell : MonoBehaviour
     public Vector3 target;
     public float speed;     //动画的移动速度
     public bool isMove = false;
-
+    public int forward_step = 0;
 
 
     public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //抗体的类型和数量

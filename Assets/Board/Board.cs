@@ -146,7 +146,8 @@ public class Board : MonoBehaviour
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
         //Debug.Log("move:"+forward_step);
-        while (forward_step > 0)
+        stemCellList[stem_cell_index].GetComponent<StemCell>().forward_step = forward_step;
+        while (stemCellList[stem_cell_index].GetComponent<StemCell>().forward_step> 0)
         {
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
             Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
@@ -168,7 +169,7 @@ public class Board : MonoBehaviour
 
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
-            forward_step--;
+            stemCellList[stem_cell_index].GetComponent<StemCell>().forward_step--;
             //每一步移动完后，调用移动格子的OnStemPassBy
             GameObject grid1 = map.GetGridsFromPosition(np);
             if (grid1.GetComponent<Grids>().type == GridsType.MainWayGrid)

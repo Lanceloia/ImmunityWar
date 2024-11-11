@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BCell : ImmuneCell
 {
-    AntigenType antigenType;//B细胞识别的抗原类型
+    AntigenType antigenType = AntigenType.staph;//B细胞识别的抗原类型，暂定为staph
     void Awake()
     {
         rank = 1;
@@ -116,7 +116,7 @@ public class BCell : ImmuneCell
             return;
         }
             
-        while(attackLeft != 0 && pathogen != null)
+        while(attackLeft != 0 && pathogen != null && pathogen.GetComponent<Pathogen>().antigenType == antigenType)
         {
             attackLeft--;
             pathogen.GetComponent<Pathogen>().onHurt(attackPower);

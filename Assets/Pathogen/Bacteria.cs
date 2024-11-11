@@ -23,6 +23,7 @@ public class Bacteria : Pathogen
         antigenType = AntigenType.staph;
         health = 10;
         speed = 3f;
+        isIn = false;
     }
     public override void onHurt(int damage)
     {

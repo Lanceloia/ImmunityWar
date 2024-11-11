@@ -17,6 +17,7 @@ abstract public class Pathogen : MonoBehaviour
     public PathogenType type;      //病菌类型
     public AntigenType antigenType;     //病菌的抗原类型
     public int health;     //病菌血量
+    public bool isIn;      //病菌是否在宿主内
 
     public int targetIndex;
 

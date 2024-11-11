@@ -28,26 +28,51 @@ public class MainWayGrid : Grids
     //获取抗原
     public override void onStemCellPassBy(GameObject stemCell)
     {
-        if (canbuild2x2&&immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().state != ImmuneCellGridState.CanBuild &&(immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>().type == ImmuneCellType.MacrophageCell))
+        if(immuneCellGrid2x2!=null&&immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().state!= ImmuneCellGridState.CanBuild)
         {
-            //我后悔用byte了
-            //(哭哭)
-            Dictionary<AntigenType, int> dict1 = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<MarcophageCell >().antigens;
-            Dictionary<AntigenType, byte> dict2 = stemCell.GetComponent<StemCell>().antigens;
-            foreach (var entry in dict1)
+            ImmuneCell ic = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>();
+            switch (ic.type)
             {
-                if (!dict2.ContainsKey(entry.Key))
-                {
-                    dict2.Add(entry.Key, (byte)entry.Value);
-                }
-                else
-                {
-                    dict2[entry.Key] += (byte)entry.Value;
-                }
-            }
+                case ImmuneCellType.MacrophageCell:
+                    //我后悔用byte了
+                    //(哭哭)
+                    Dictionary<AntigenType, int> dict1 = immuneCellGrid2x2.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<MarcophageCell >().antigens;
+                    Dictionary<AntigenType, byte> dict2 = stemCell.GetComponent<StemCell>().antigens;
+                    foreach (var entry in dict1)
+                    {
+                        if (!dict2.ContainsKey(entry.Key))
+                        {
+                            dict2.Add(entry.Key, (byte)entry.Value);
+                        }
+                        else
+                        {
+                            dict2[entry.Key] += (byte)entry.Value;
+                        }   
+                    }
 
-            // 清空dict1
-            dict1.Clear();
+                    // 清空dict1
+                    dict1.Clear();
+                    break;
+                
+                default:
+                    Debug.Log("error");
+                    break;
+            }
+        }
+        else if(immuneCellGrid2x1!=null&&immuneCellGrid2x1.GetComponent<ImmuneCellGrid>().state != ImmuneCellGridState.CanBuild)
+        {
+            ImmuneCell ic = immuneCellGrid2x1.GetComponent<ImmuneCellGrid>().immune_cell.GetComponent<ImmuneCell>();
+            switch (ic.type)
+            {
+                case ImmuneCellType.TCell:
+                    stemCell.GetComponent<StemCell>().forward_step++;//路过T细胞增加移动力
+                    break;
+                case ImmuneCellType.BCell:
+                    break;
+                default:
+                    Debug.Log("error");
+                    break;
+            }
         }
     }
 
