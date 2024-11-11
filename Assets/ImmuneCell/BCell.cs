@@ -5,6 +5,7 @@ using UnityEngine;
 public class BCell : ImmuneCell
 {
     AntigenType antigenType = AntigenType.staph;//B细胞识别的抗原类型，暂定为staph
+    public GameObject prefabAntibody;
     void Awake()
     {
         rank = 1;
@@ -110,16 +111,12 @@ public class BCell : ImmuneCell
     }
     public override void attack(GameObject pathogen)
     {
-        if (pathogen == null)
-        {
-            Debug.Log("pathogen is null");
-            return;
-        }
-            
-        while(attackLeft != 0 && pathogen != null && pathogen.GetComponent<Pathogen>().antigenType == antigenType)
-        {
-            attackLeft--;
-            pathogen.GetComponent<Pathogen>().onHurt(attackPower);
-        }
+        //这是病菌调用的攻击，Bcell不需要被调用
+    }
+
+    public override void NextRound()
+    {
+        base.NextRound();
+
     }
 }
