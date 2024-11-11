@@ -117,6 +117,6 @@ public class BCell : ImmuneCell
     public override void NextRound()
     {
         base.NextRound();
-
+        //todo: 每回合生成一个抗体
     }
 }
