@@ -69,7 +69,11 @@ public class Board : MonoBehaviour
     public GameObject cardUIManager;//选择卡牌的UI管理
     public List<int> cardUsedinThisRound;
 
-
+    //用于实现卡牌具体效果
+    public bool isDoubleMove = false;//用于实现DoubleMove卡牌
+    public bool isSelectMove = false;//用于实现SelectMove卡牌
+    public int selectNum;
+    public bool isBackMove = false;//用于实现BackMove卡牌
     public void StartGame()
     {
         map.Init();                                               // 初始化地图信息
@@ -99,10 +103,14 @@ public class Board : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             List<int> row = new List<int>();
-            for (int j = 0; j < 2; j++)
-            {
-                row.Add(0); // 仅用于测试，每个角色手牌添加两张测试牌
-            }
+            // for (int j = 0; j < 2; j++)
+            // {
+            //     row.Add(0); // 仅用于测试，每个角色手牌添加两张测试牌
+            // }
+            row.Add(4);
+            row.Add(1);
+            row.Add(2);
+            row.Add(3);
             handcardList.Add(row);
         }
         cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
@@ -146,15 +154,14 @@ public class Board : MonoBehaviour
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
         //Debug.Log("move:"+forward_step);
-        stemCellList[stem_cell_index].GetComponent<StemCell>().forward_step = forward_step;
-        while (stemCellList[stem_cell_index].GetComponent<StemCell>().forward_step> 0)
+        while (forward_step > 0)
         {
             Position p = stemCellList[stem_cell_index].GetComponent<StemCell>().p;
             Direction dir = map.GetGridsFromPosition(p).GetComponent<Grids>().next;
             Position np = p + dir;
 
             // 如果干细胞当前位置的格子是交叉路口，则进入选择箭头状态
-            if (map.GetGridsFromPosition(p).GetComponent<Grids>().accessRoad)
+            if (map.GetGridsFromPosition(p).GetComponent<Grids>().accessRoad&&!isBackMove)
             {
                 
 
@@ -165,15 +172,21 @@ public class Board : MonoBehaviour
 
             }
 
-            
+            //如果反向了则沿pre移动
+            if(isBackMove){
+                np = p+ map.GetGridsFromPosition(p).GetComponent<Grids>().pre;
+            }
 
+            Debug.Log("remain:"+forward_step);
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
-            stemCellList[stem_cell_index].GetComponent<StemCell>().forward_step--;
+
+            forward_step--;
             //每一步移动完后，调用移动格子的OnStemPassBy
             GameObject grid1 = map.GetGridsFromPosition(np);
             if (grid1.GetComponent<Grids>().type == GridsType.MainWayGrid)
                 grid1.GetComponent<MainWayGrid>().onStemCellPassBy(stemCellList[stem_cell_index]);
+
             
         }
 
@@ -183,7 +196,10 @@ public class Board : MonoBehaviour
         if (grid.GetComponent<Grids>().type == GridsType.MainWayGrid)
             yield return StartCoroutine(grid.GetComponent<MainWayGrid>().onStemCellStay());
 
-
+        //清楚反向标记
+        if(isBackMove){
+            isBackMove = false;
+        }
     }
 
     IEnumerator WaitForArrowSelect(int ori,int access,Position oriP,Position accessP)
@@ -231,6 +247,7 @@ public class Board : MonoBehaviour
             // 等待下一帧继续循环
             yield return null;
         }
+        
     }
 
     public void PathogenCreate(int pathogen_type, Position target_position, int target_index)

@@ -24,8 +24,8 @@ public class DraggableCard : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         // 让卡牌跟随拖拽位置
         Vector2 mp = Input.mousePosition;
-        mp.x+=400;
-        mp.y+=100;
+        mp.x+=200;
+        mp.y+=50;
         rectTransform.position = mp;
 
         // 判断卡牌是否超过使用阈值距离
