@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class MarcophageCell : ImmuneCell
 {
+    public bool isEngulfing = false;//吞噬状态
+    private int engulfSpeed = 3;//吞噬所需回合数
+    private int engulfingTime = 2+1;//消化时间,实际停留时间为2回合
+    private int engulfingLeft = 0;//吞噬剩余回合数
+    public int count = 0;//用于检测是否连续在范围内
+
+    public GameObject targetEnemy;//吞噬目标
+
+    public Dictionary<AntigenType, int> antigens = new Dictionary<AntigenType, int>();//记录产出的抗原
+    public Dictionary<GameObject, int> enemyInRange = new Dictionary<GameObject, int>();//记录病菌在攻击范围内几回合了 
+    public Dictionary<GameObject, int> enemyInRange2 = new Dictionary<GameObject, int>();//记录病菌从第几回合开始在攻击范围内
     void Awake()
     {
         rank = 1;
@@ -11,6 +22,8 @@ public class MarcophageCell : ImmuneCell
         attackRange = 1;
         attackSpeed = 1;
         attackLeft = attackSpeed;
+        ATPcost = 1;
+        antigenCost = 0;
     }
 
     // Update is called once per frame
@@ -116,4 +129,64 @@ public class MarcophageCell : ImmuneCell
             pathogen.GetComponent<Pathogen>().onHurt(attackPower);
         }
     }
+
+    public override void NextRound()
+    {
+        base.NextRound();
+        count++;
+        List<GameObject> toRemove = new List<GameObject>();
+        List<GameObject> RemoveOnly = new List<GameObject>();
+        foreach (GameObject i in enemyInRange.Keys)
+        {
+            if (i == null)
+            {
+                RemoveOnly.Add(i);
+                continue;
+            }
+            
+            if(enemyInRange[i] == engulfSpeed && isEngulfing == false)//连续三回合都在范围内，则吞噬
+            {
+                toRemove.Add(i);
+                isEngulfing = true;
+                engulfingLeft = engulfingTime;
+                targetEnemy = i;
+                break;
+            }
+            if (isEngulfing == true)
+            {
+                break;
+            }
+        }
+        if (isEngulfing)
+        {
+            engulfingLeft--;
+            if (engulfingLeft == 0)
+            {
+                if(targetEnemy != null)
+                {
+                    if(antigens.ContainsKey(targetEnemy.GetComponent<Pathogen>().antigenType))
+                    {
+                        antigens[targetEnemy.GetComponent<Pathogen>().antigenType] += 1;
+                    }
+                    else
+                    {
+                        antigens.Add(targetEnemy.GetComponent<Pathogen>().antigenType,1);
+                        isEngulfing = false;
+                        engulfingLeft = engulfingTime;
+                    }
+                }
+            }
+        }
+        foreach (GameObject i in toRemove)
+        {
+            Pathogen p = i.GetComponent<Pathogen>();
+            p.onHurt(p.health);//吞噬时直接杀死
+            enemyInRange.Remove(i);
+        }
+        foreach (GameObject i in RemoveOnly)
+        {
+            enemyInRange2.Remove(i);
+        }
+    }
+    
 }

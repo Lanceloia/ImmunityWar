@@ -30,7 +30,7 @@ public class ImmuneCellGrid : Grids
         
     }
 
-    public override void onStemCellPassBy()
+    public override void onStemCellPassBy(GameObject stemCell)
     {
         throw new System.NotImplementedException();
     }

@@ -53,7 +53,8 @@ abstract public class Grids : MonoBehaviour
     // List of ImmuneCells    // һ���б�����ʾ����������б��е�ϸ���Ĺ�����Χ��
 
     // ��ϸ������ʱ�Ĵ���
-    public abstract void onStemCellPassBy();
+    public abstract void onStemCellPassBy(GameObject stemCell);
+
 
     // ��ϸ��ͣ��ʱ����
     public abstract IEnumerator onStemCellStay();

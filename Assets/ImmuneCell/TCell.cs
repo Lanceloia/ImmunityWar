@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TCell : ImmuneCell
 {
+    AntigenType antigenType = AntigenType.staph;    //T细胞只能攻击特定抗原，暂定为staph
     void Awake()
     {
         rank = 1;
@@ -11,6 +12,9 @@ public class TCell : ImmuneCell
         attackRange = 1;
         attackSpeed = 1;
         attackLeft = attackSpeed;
+        
+        ATPcost = 1;
+        antigenCost = 1;
     }
 
     // Update is called once per frame
@@ -112,7 +116,7 @@ public class TCell : ImmuneCell
             return;
         }
             
-        while(attackLeft != 0 && pathogen != null)
+        while(attackLeft != 0 && pathogen != null && pathogen.GetComponent<Pathogen>().antigenType == antigenType&& pathogen.GetComponent<Pathogen>().isIn == true)
         {
             attackLeft--;
             pathogen.GetComponent<Pathogen>().onHurt(attackPower);

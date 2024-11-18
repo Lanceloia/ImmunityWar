@@ -49,7 +49,7 @@ public class CameraController : MonoBehaviour
             Camera.main.orthographicSize -= scrollInput * zoomSpeed;
             // 限制相机的缩放范围
             Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoom, maxZoom);
-            Debug.Log("Camera Size: " + Camera.main.orthographicSize);  // 打印当前缩放值
+            //Debug.Log("Camera Size: " + Camera.main.orthographicSize);  // 打印当前缩放值
         }
     }
 

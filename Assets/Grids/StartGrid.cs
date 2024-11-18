@@ -19,7 +19,7 @@ public class StartGrid : Grids
         
     }
 
-    public override void onStemCellPassBy()
+    public override void onStemCellPassBy(GameObject stemCell)
     {
         throw new System.NotImplementedException();
     }
@@ -40,6 +40,17 @@ public class StartGrid : Grids
 
     public override void onPathogenCellStay(GameObject pathogenCell) 
     {
-        throw new System.NotImplementedException();
+        foreach (GameObject immuneCell in immuneCells)
+        {
+            ImmuneCell ic = immuneCell.GetComponent<ImmuneCell>();
+            if (ic.type == ImmuneCellType.MacrophageCell)
+            {
+                MarcophageCell mc = ic as MarcophageCell;
+                if (mc.enemyInRange.ContainsKey(pathogenCell))
+                    mc.enemyInRange[pathogenCell] += 1;
+                else
+                mc.enemyInRange.Add(pathogenCell,1);
+            }
+        }
     }
 }
