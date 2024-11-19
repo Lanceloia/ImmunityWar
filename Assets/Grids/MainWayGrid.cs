@@ -9,6 +9,7 @@ public class MainWayGrid : Grids
     public ImmuneCellGridState state;            // 对应的免疫细胞格子的状态
     public GameObject immuneCellGrid2x2;    // 若能建造，则此处绑定对应的免细胞格子对象
     public GameObject immuneCellGrid2x1;    // 若能建造，则此处绑定对应的免细胞格子对象
+    public GameObject _antiBody;            // 若能建造，则此处绑定对应的抗体对象
 
     private void _init()
     {
@@ -66,8 +67,10 @@ public class MainWayGrid : Grids
             {
                 case ImmuneCellType.TCell:
                     stemCell.GetComponent<StemCell>().forward_step++;//路过T细胞增加移动力
+                    //Todo,增加一个提供抗原的交互
                     break;
                 case ImmuneCellType.BCell:
+                    //Toodo,增加一个提供抗原的交互
                     break;
                 default:
                     Debug.Log("error");
@@ -200,7 +203,12 @@ public class MainWayGrid : Grids
             ImmuneCell ic = immuneCell.GetComponent<ImmuneCell>();
             ic.attack(pathogenCell); // 攻击
         }
-
+        if(_antiBody != null && pathogenCell.GetComponent<Pathogen>().bCell == null)
+        {
+            AntiBody antiBody = _antiBody.GetComponent<AntiBody>();
+            antiBody.attack(pathogenCell);
+            _antiBody = null;
+        }
     }
 
     public override void onPathogenCellStay(GameObject pathogenCell) 

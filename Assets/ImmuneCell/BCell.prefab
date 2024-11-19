@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 4538323048108370188}
+  grid: {fileID: 0}
   index: 0
-  type: 0
+  type: 1
   rank: 0
   maxRank: 0
   attackPower: 0
@@ -108,3 +109,8 @@ MonoBehaviour:
   attackLeft: 0
   ATPcost: 0
   antigenCost: 0
+  CytokineLeft: 0
+  tempCytokine: 0
+  antigenType: 0
+  prefabAntibody: {fileID: 552706131668871760, guid: 17f5249fbde1080439aeed27d841471e, type: 3}
+  grids: []

@@ -5,33 +5,35 @@ using UnityEngine;
 
 public enum AntigenType
 {
-    staph = 0,  //����?�������?
-    flu = 1,    //����
+    staph = 0,  //锟斤拷锟缴?锟斤拷锟斤拷锟斤拷锟?
+    flu = 1,    //锟斤拷锟斤拷
 }
 public class StemCell : MonoBehaviour
 {
     public Position p;
     public Vector3 target;
-    public float speed;     //�������ƶ��ٶ�
+    public float speed;     //锟斤拷锟斤拷锟斤拷锟狡讹拷锟劫讹拷
     public bool isMove = false;
     public int forward_step = 0;
 
 
-    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //��ԭ�����ͺ�����
-    public byte ATP;         //����
-    public byte ATPMax;      //��������
-    public byte ATPspeed;   //�����ظ��ٶ�
-    public int ATPbuffRound;//用于atpget卡牌
+
+    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //锟斤拷原锟斤拷锟斤拷锟酵猴拷锟斤拷锟斤拷
+    public byte ATP;         //锟斤拷锟斤拷
+    public byte ATPMax;      //锟斤拷锟斤拷锟斤拷锟斤拷
+    public byte ATPspeed;   //锟斤拷锟斤拷锟截革拷锟劫讹拷
+    public int ATPbuffRound;//鐢ㄤ簬atpget鍗＄墝
     public byte extraReward;
     public int rewardRound;
+
 
     protected virtual void Awake()
     {
         speed = 3f;
         ATPbuffRound = 0;
 
-        //Ϊ��������ͺ����������?
-        antigens.Add(AntigenType.staph, 2);//2������Ϊ�˲��ԣ�ʵ��Ӧ��Ϊ0
+        //为锟斤拷锟斤拷锟斤拷锟斤拷秃锟斤拷锟斤拷锟斤拷锟斤拷锟街?
+        antigens.Add(AntigenType.staph, 2);//2锟斤拷锟斤拷锟斤拷为锟剿诧拷锟皆ｏ拷实锟斤拷应锟斤拷为0
         antigens.Add(AntigenType.flu, 2);
     }
 

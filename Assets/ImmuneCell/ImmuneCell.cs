@@ -14,6 +14,8 @@ abstract public class ImmuneCell : MonoBehaviour
     public Position p;          // 防御塔位置
     public GameObject tower;    // 防御塔的对象本身
 
+    public GameObject grid;   // 防御塔所在的格子
+
     // 基础属性
     public int index;            // 防御塔编号
     public ImmuneCellType type;  // 防御塔类型
@@ -31,9 +33,20 @@ abstract public class ImmuneCell : MonoBehaviour
     public byte antigenCost;     // 建造或升级时抗原消耗
     public GameObject grid;   // 防御塔所在的格子
 
+    public int CytokineLeft;     // Cytokine激活模式还剩余几回合,1代表直接清除
+    public int tempCytokine;     // Cytokine激活模式激活时，记录Cytokine的等级
+
     public virtual void NextRound()
     {
         attackLeftReset();
+        if (CytokineLeft > 0)
+        {
+            CytokineLeft--;
+            if (CytokineLeft == 0)
+            {
+                CytokineAccepted(0);
+            }
+        }
     }
     public void attackLeftReset()
     {
@@ -60,4 +73,5 @@ abstract public class ImmuneCell : MonoBehaviour
 
     abstract public void attack(GameObject pathogen);
 
+    abstract public void CytokineAccepted(int cyRank);
 }

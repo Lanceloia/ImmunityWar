@@ -182,7 +182,7 @@ public class Board : MonoBehaviour
                 np = p+ map.GetGridsFromPosition(p).GetComponent<Grids>().pre;
             }
 
-            Debug.Log("remain:"+forward_step);
+            //Debug.Log("remain:"+forward_step);
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
 
@@ -421,7 +421,11 @@ public class Board : MonoBehaviour
                     //to do :增加交互
                 }
 
-                
+                //怪物计算收到的抗体伤害
+                foreach (GameObject pathogen in pathogenList)
+                {
+                    pathogen.GetComponent<Pathogen>().antibodyDamage();
+                }
                 
 
 
@@ -445,10 +449,21 @@ public class Board : MonoBehaviour
     }
     private void ImmuneCellAction()
     {
-        // 每个免疫细胞行动
-        for (int i = 0; i < immuneCellList.Count; i++)
+        // 按顺序执行每个免疫细胞的行为
+        List<ImmuneCell> tempList = new List<ImmuneCell>();
+        foreach (GameObject immune_cell in immuneCellList)
         {
-            immuneCellList[i].GetComponent<ImmuneCell>().NextRound();
+            tempList.Add(immune_cell.GetComponent<ImmuneCell>());
+        }
+        foreach (ImmuneCell immune_cell in tempList)
+        {
+            if (immune_cell.type ==ImmuneCellType.MacrophageCell)
+                immune_cell.NextRound();
+        }
+        foreach (ImmuneCell immune_cell in tempList)
+        {
+            if (immune_cell.type != ImmuneCellType.MacrophageCell)
+                immune_cell.NextRound();
         }
     }
 
@@ -484,9 +499,15 @@ public class Board : MonoBehaviour
         GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
         immune_cell_grid.GetComponent<ImmuneCellGrid>().state = ImmuneCellGridState.CanUpgrade;
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell = immune_cell;
+
+
         immune_cell.GetComponent<ImmuneCell>().grid= immune_cell_grid;
+
         // 向攻击范围内的道路格子注册自身
         GridsAddImmune(immune_cell,shapeType);
+
+        //根据不同的免疫细胞类型，进行不同的初始化
+        ImmuneCellInit(immune_cell_type, immune_cell);
 
     }
 
@@ -498,7 +519,31 @@ public class Board : MonoBehaviour
             if (isInAttackRange(immune_cell,map.GridsList[i].GetComponent<Grids>().p,shapeType))
             {
                 map.GridsList[i].GetComponent<Grids>().immuneCells.Add(immune_cell);
+
+                //如果免疫细胞是B细胞，并且攻击范围内的格子是道路格子，则将道路格子添加到B细胞的攻击范围内
+                if (immune_cell.GetComponent<ImmuneCell>().type == ImmuneCellType.BCell && map.GridsList[i].GetComponent<Grids>().type == GridsType.MainWayGrid)
+                {
+                    Debug.Log("BCell add MainWayGrid");
+                    immune_cell.GetComponent<BCell>().grids.Add(map.GridsList[i].GetComponent<MainWayGrid>());
+                }
             }
+        }
+    }
+
+    private void ImmuneCellInit(int immune_cell_type, GameObject immune_cell) 
+    {
+        switch (immune_cell_type)
+        {
+            case 0://巨噬细胞
+                break;
+            case 1://B细胞
+                break;
+            case 2://T细胞
+                immune_cell.GetComponent<TCell>().BuildInit();
+                break;
+            default:
+                Debug.Log("ImmuneCellInit error");
+                break;
         }
     }
 

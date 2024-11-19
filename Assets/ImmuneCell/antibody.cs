@@ -2,9 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class antibody : MonoBehaviour
+public class AntiBody : MonoBehaviour
 {
-    public GameObject bcell;//生产次抗体的b细胞
-    AntigenType antigenType ;
-    Position p;
+    public GameObject bCell;//生产该抗体的b细胞
+    public AntigenType antigenType ;
+    public Position p;
+
+    void start()
+    {
+        antigenType = bCell.GetComponent<BCell>().antigenType;
+    }
+    public void attack(GameObject target)
+    {
+        target.GetComponent<Pathogen>().beAntibodyed(this);
+    }
+
+
+
 }
