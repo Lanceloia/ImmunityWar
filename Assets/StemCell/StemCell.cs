@@ -17,7 +17,7 @@ public class StemCell : MonoBehaviour
     public int forward_step = 0;
 
 
-    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //抗体的类型和数量
+    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //抗原的类型和数量
     public byte ATP;         //能量
     public byte ATPMax;      //能量上限
     public byte ATPspeed;   //能量回复速度

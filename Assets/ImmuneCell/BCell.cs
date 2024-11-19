@@ -119,4 +119,43 @@ public class BCell : ImmuneCell
         base.NextRound();
         //todo: 每回合生成一个抗体
     }
+
+    public override void CytokineAccepted(int cyRank)
+    {
+        switch (cyRank)
+        {
+            case 3:
+                attackSpeed += 1;
+                goto case 2;
+            case 2:
+                attackSpeed += 1;
+                goto case 1;
+            case 1:
+                attackPower += 1; break;
+            case 0:
+                switch(tempCytokine)
+                {
+                    case 1:
+                        attackPower -= 1;
+                        break;
+                    case 2:
+                        attackSpeed -= 1;
+                        goto case 1;
+                    case 3:
+                        attackSpeed -= 1;
+                        goto case 2;
+                    default:
+                        Debug.Log("MarcophageCell cytokine error1");
+                        break;
+                }
+                break;
+            default:
+                Debug.Log("MarcophageCell cytokine error2");
+                break;
+        }
+        tempCytokine = cyRank;
+        CytokineLeft = 2;
+    }
 }
+
+

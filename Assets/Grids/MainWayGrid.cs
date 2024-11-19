@@ -66,8 +66,10 @@ public class MainWayGrid : Grids
             {
                 case ImmuneCellType.TCell:
                     stemCell.GetComponent<StemCell>().forward_step++;//路过T细胞增加移动力
+                    //Todo,增加一个提供抗原的交互
                     break;
                 case ImmuneCellType.BCell:
+                    //Toodo,增加一个提供抗原的交互
                     break;
                 default:
                     Debug.Log("error");

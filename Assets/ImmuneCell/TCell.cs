@@ -5,6 +5,10 @@ using UnityEngine;
 public class TCell : ImmuneCell
 {
     AntigenType antigenType = AntigenType.staph;    //T细胞只能攻击特定抗原，暂定为staph
+    public HashSet<ImmuneCellGrid> gridSet =new HashSet<ImmuneCellGrid>();
+    
+    public int ReleaseSpeed = 2; //释放细胞因子的速度，所需的回合（1代表每回合都释放）
+    public int ReleaseLeft;  //细胞因子释放冷却
     void Awake()
     {
         rank = 1;
@@ -15,6 +19,7 @@ public class TCell : ImmuneCell
         
         ATPcost = 1;
         antigenCost = 1;
+        ReleaseLeft = ReleaseSpeed;
     }
 
     // Update is called once per frame
@@ -120,6 +125,77 @@ public class TCell : ImmuneCell
         {
             attackLeft--;
             pathogen.GetComponent<Pathogen>().onHurt(attackPower);
+        }
+    }
+
+    public override void NextRound()
+    {
+        base.NextRound();
+        ReleaseLeft--;
+        if(ReleaseLeft == 0)
+        {
+            ReleaseCytokine();
+        }
+        
+
+    }
+
+    private void ReleaseCytokine()  //细胞因子释放
+    {
+        ReleaseLeft = ReleaseSpeed; //每次释放的时候刷新释放CD
+        foreach(ImmuneCellGrid grid in gridSet)
+        {
+            if (grid.immune_cell != null)//如果免疫细胞已经建造
+                grid.immune_cell.GetComponent<ImmuneCell>().CytokineAccepted(rank);
+        }
+    }
+
+    public override void CytokineAccepted(int cyRank)
+    {
+        ;//T细胞不接受细胞因子
+    }
+
+    public void BuildInit()
+    {
+        Debug.Log("BuildInit");
+        if (grid.GetComponent<Grids>().shape == ShapeType.UpTriangle)
+        {
+            foreach(GameObject grid in Board.instance.map.GridsList)
+            {
+                if(grid.GetComponent<Grids>().type == GridsType.ImmuneCellGrid)
+                {
+                    ImmuneCellGrid grids = grid.GetComponent<ImmuneCellGrid>();
+                
+                    if(Mathf.Abs(grids.p.x - p.x) <= attackRange && Mathf.Abs(grids.p.y - p.y) <= attackRange)
+                    {
+
+                        gridSet.Add(grids);
+                    }
+                    else if(Mathf.Abs(grids.p.x - (p.x+1)) <= attackRange && Mathf.Abs(grids.p.y - p.y) <= attackRange)
+                    {
+                        gridSet.Add(grids);
+                    }
+                }
+            }
+        }
+        else if (grid.GetComponent<Grids>().shape == ShapeType.DownTriangle)
+        {
+            foreach (GameObject grid in Board.instance.map.GridsList) 
+            {
+                if (grid.GetComponent<Grids>().type == GridsType.ImmuneCellGrid)
+                {
+                    ImmuneCellGrid grids = grid.GetComponent<ImmuneCellGrid>();
+
+                    if (Mathf.Abs(grids.p.x - p.x) <= attackRange*2 && Mathf.Abs(grids.p.y - p.y) <= attackRange*2)
+                    {
+                        gridSet.Add(grids);
+                    }
+                    else if (Mathf.Abs(grids.p.x - p.x) <= attackRange*2 && Mathf.Abs(grids.p.y - (p.y+1)) <= attackRange*2)
+                    {
+                        gridSet.Add(grids);
+                    }
+                }
+            }
         }
     }
 }
