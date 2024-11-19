@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BCell : ImmuneCell
 {
-    AntigenType antigenType = AntigenType.staph;//B细胞识别的抗原类型，暂定为staph
+    public AntigenType antigenType = AntigenType.staph;//B细胞识别的抗原类型，暂定为staph
     public GameObject prefabAntibody;
+    public List<MainWayGrid> grids = new List<MainWayGrid>();//在B细胞攻击范围内的主路网格
     void Awake()
     {
         rank = 1;
-        attackPower = 3;
+        attackPower = 1;
         attackRange = 1;
         attackSpeed = 1;
         attackLeft = attackSpeed;
@@ -55,7 +56,9 @@ public class BCell : ImmuneCell
         {
             if (isInAttackRange(map.GridsList[i].GetComponent<Grids>().p,shapeType))
             {
-                map.GridsList[i].GetComponent<Grids>().immuneCells.Add(tower);
+                Grids g = map.GridsList[i].GetComponent<Grids>();
+                g.immuneCells.Add(tower);
+                grids.Add(map.GridsList[i].GetComponent<MainWayGrid>());
             }
         }
     }
@@ -99,13 +102,12 @@ public class BCell : ImmuneCell
         //攻击力更新
         if (rank == 2)
         {
-            attackPower = 4;
+            attackPower = 2;
             attackSpeed = 2;
         }
         else if (rank == 3)
         {
-            attackPower = 5;
-            attackRange = 2;
+            attackPower = 3;
             attackSpeed = 3;
         }
     }
@@ -118,6 +120,42 @@ public class BCell : ImmuneCell
     {
         base.NextRound();
         //todo: 每回合生成一个抗体
+        antibodyRelease(attackSpeed);
+    }
+
+    public void antibodyRelease(byte _attackSpeed)
+    {
+        GameObject antibody = (GameObject)Instantiate(prefabAntibody);
+        for (int i = 0; i < _attackSpeed; i++)
+        {
+            //设置抗体位置,随机生成在grids中
+            int index = Random.Range(0, grids.Count);
+            int temp = 0;
+            foreach (var grid in grids)
+            {
+                if (grid._antiBody == null)
+                {
+                    break;
+                }
+                temp++;
+            }
+            if (temp == grids.Count)
+            {
+                Debug.Log("no grid available");
+                return;
+            }
+            //确保不重复
+            while (grids[index]._antiBody != null)
+            {
+                index = Random.Range(0, grids.Count);
+            }
+            grids[index]._antiBody = antibody;
+            //Debug.Log("index: " + index);
+            //Debug.Log("grids count: " + grids.Count);
+            antibody.transform.position = grids[index].transform.position+new Vector3(0,0.25f,0);//设置抗体位置
+            //Debug.Log("antibody position: " + grids[index].x+","+grids[index].y);
+            antibody.GetComponent<AntiBody>().p = grids[index].p;
+        }
     }
 
     public override void CytokineAccepted(int cyRank)

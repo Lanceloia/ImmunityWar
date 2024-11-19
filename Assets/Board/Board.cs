@@ -177,7 +177,7 @@ public class Board : MonoBehaviour
                 np = p+ map.GetGridsFromPosition(p).GetComponent<Grids>().pre;
             }
 
-            Debug.Log("remain:"+forward_step);
+            //Debug.Log("remain:"+forward_step);
             StemCellSmoothMove(stem_cell_index, np);
             yield return StartCoroutine(WaitForObjectUpdate(stem_cell_index));
 
@@ -416,7 +416,11 @@ public class Board : MonoBehaviour
                     //to do :增加交互
                 }
 
-                
+                //怪物计算收到的抗体伤害
+                foreach (GameObject pathogen in pathogenList)
+                {
+                    pathogen.GetComponent<Pathogen>().antibodyDamage();
+                }
                 
 
 
@@ -505,6 +509,13 @@ public class Board : MonoBehaviour
             if (isInAttackRange(immune_cell,map.GridsList[i].GetComponent<Grids>().p,shapeType))
             {
                 map.GridsList[i].GetComponent<Grids>().immuneCells.Add(immune_cell);
+
+                //如果免疫细胞是B细胞，并且攻击范围内的格子是道路格子，则将道路格子添加到B细胞的攻击范围内
+                if (immune_cell.GetComponent<ImmuneCell>().type == ImmuneCellType.BCell && map.GridsList[i].GetComponent<Grids>().type == GridsType.MainWayGrid)
+                {
+                    Debug.Log("BCell add MainWayGrid");
+                    immune_cell.GetComponent<BCell>().grids.Add(map.GridsList[i].GetComponent<MainWayGrid>());
+                }
             }
         }
     }
