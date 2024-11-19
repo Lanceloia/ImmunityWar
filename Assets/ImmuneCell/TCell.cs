@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TCell : ImmuneCell
 {
-    AntigenType antigenType = AntigenType.staph;    //TÏ¸°ûÖ»ÄÜ¹¥»÷ÌØ¶¨¿¹Ô­£¬Ôİ¶¨Îªstaph
+    AntigenType antigenType = AntigenType.staph;    //Tç»†èƒåªèƒ½æ”»å‡»ç‰¹å®šæŠ—åŸï¼Œæš‚å®šä¸ºstaph
     public HashSet<ImmuneCellGrid> gridSet =new HashSet<ImmuneCellGrid>();
     
-    public int ReleaseSpeed = 2; //ÊÍ·ÅÏ¸°ûÒò×ÓµÄËÙ¶È£¬ËùĞèµÄ»ØºÏ£¨1´ú±íÃ¿»ØºÏ¶¼ÊÍ·Å£©
-    public int ReleaseLeft;  //Ï¸°ûÒò×ÓÊÍ·ÅÀäÈ´
+    public int ReleaseSpeed = 2; //é‡Šæ”¾ç»†èƒå› å­çš„é€Ÿåº¦ï¼Œæ‰€éœ€çš„å›åˆï¼ˆ1ä»£è¡¨æ¯å›åˆéƒ½é‡Šæ”¾ï¼‰
+    public int ReleaseLeft;  //ç»†èƒå› å­é‡Šæ”¾å†·å´
     void Awake()
     {
         rank = 1;
@@ -19,7 +19,11 @@ public class TCell : ImmuneCell
         
         ATPcost = 1;
         antigenCost = 1;
+
+        type = ImmuneCellType.TCell;
+
         ReleaseLeft = ReleaseSpeed;
+
     }
 
     // Update is called once per frame
@@ -31,7 +35,7 @@ public class TCell : ImmuneCell
     public override void Upgrade(ShapeType shapeType)
     {
         byte temp = attackRange;
-        // ¶ÏÑÔ´Ë´¦µÈ¼¶±Ø¶¨Ğ¡ÓÚ3£¨µÈÓÚ3Ê±µ÷ÓÃÕß²»¸Ãµ÷ÓÃ´Ëº¯Êı£©
+        // æ–­è¨€æ­¤å¤„ç­‰çº§å¿…å®šå°äº3ï¼ˆç­‰äº3æ—¶è°ƒç”¨è€…ä¸è¯¥è°ƒç”¨æ­¤å‡½æ•°ï¼‰
         Debug.Assert(rank < 3);
         rank++;
         SpriteChange();
@@ -43,7 +47,7 @@ public class TCell : ImmuneCell
             immune_cell_grid.GetComponent<ImmuneCellGrid>().state = ImmuneCellGridState.MaxRank;
         }
         
-        if  (temp != attackRange)//Èç¹û¹¥»÷·¶Î§¸Ä±ä£¬ÔòÖØĞÂ¼ÆËã¹¥»÷Ä¿±ê
+        if  (temp != attackRange)//å¦‚æœæ”»å‡»èŒƒå›´æ”¹å˜ï¼Œåˆ™é‡æ–°è®¡ç®—æ”»å‡»ç›®æ ‡
         {
 
             //Debug.Log("attackRange changed");
@@ -90,7 +94,7 @@ public class TCell : ImmuneCell
 
     public override void SpriteChange()
     {
-        //ÌùÍ¼¸üĞÂ
+        //è´´å›¾æ›´æ–°
         if (rank == 2)
             tower.GetComponent<SpriteRenderer>().color = Color.green;
         else if (rank == 3)
@@ -100,7 +104,7 @@ public class TCell : ImmuneCell
 
     public override void AttackChange()
     {
-        //¹¥»÷Á¦¸üĞÂ
+        //æ”»å‡»åŠ›æ›´æ–°
         if (rank == 2)
         {
             attackPower = 4;
@@ -140,19 +144,19 @@ public class TCell : ImmuneCell
 
     }
 
-    private void ReleaseCytokine()  //Ï¸°ûÒò×ÓÊÍ·Å
+    private void ReleaseCytokine()  //ç»†èƒå› å­é‡Šæ”¾
     {
-        ReleaseLeft = ReleaseSpeed; //Ã¿´ÎÊÍ·ÅµÄÊ±ºòË¢ĞÂÊÍ·ÅCD
+        ReleaseLeft = ReleaseSpeed; //æ¯æ¬¡é‡Šæ”¾çš„æ—¶å€™åˆ·æ–°é‡Šæ”¾CD
         foreach(ImmuneCellGrid grid in gridSet)
         {
-            if (grid.immune_cell != null)//Èç¹ûÃâÒßÏ¸°ûÒÑ¾­½¨Ôì
+            if (grid.immune_cell != null)//å¦‚æœå…ç–«ç»†èƒå·²ç»å»ºé€ 
                 grid.immune_cell.GetComponent<ImmuneCell>().CytokineAccepted(rank);
         }
     }
 
     public override void CytokineAccepted(int cyRank)
     {
-        ;//TÏ¸°û²»½ÓÊÜÏ¸°ûÒò×Ó
+        ;//Tç»†èƒä¸æ¥å—ç»†èƒå› å­
     }
 
     public void BuildInit()

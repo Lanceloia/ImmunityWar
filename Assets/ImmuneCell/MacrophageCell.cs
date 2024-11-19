@@ -10,6 +10,8 @@ public class MarcophageCell : ImmuneCell
     private int engulfingLeft = 0;//吞噬剩余回合数
     public int count = 0;//用于检测是否连续在范围内
 
+    public bool getDoubleAntigen = false;
+
     public GameObject targetEnemy;//吞噬目标
 
     public Dictionary<AntigenType, int> antigens = new Dictionary<AntigenType, int>();//记录产出的抗原
@@ -24,6 +26,8 @@ public class MarcophageCell : ImmuneCell
         attackLeft = attackSpeed;
         ATPcost = 1;
         antigenCost = 0;
+
+        type = ImmuneCellType.MacrophageCell;
     }
 
     // Update is called once per frame
@@ -167,6 +171,11 @@ public class MarcophageCell : ImmuneCell
                     if(antigens.ContainsKey(targetEnemy.GetComponent<Pathogen>().antigenType))
                     {
                         antigens[targetEnemy.GetComponent<Pathogen>().antigenType] += 1;
+
+                        if(getDoubleAntigen){
+                            antigens[targetEnemy.GetComponent<Pathogen>().antigenType] += 1;
+                            getDoubleAntigen = false;
+                        }
                     }
                     else
                     {

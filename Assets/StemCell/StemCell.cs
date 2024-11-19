@@ -5,43 +5,63 @@ using UnityEngine;
 
 public enum AntigenType
 {
-    staph = 0,  //½ğ»ÆÉ«ÆÏÌÑÇò¾ú
-    flu = 1,    //Á÷¸Ğ
+    staph = 0,  //é”Ÿæ–¤æ‹·é”Ÿç¼´?é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿ?
+    flu = 1,    //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
 }
 public class StemCell : MonoBehaviour
 {
     public Position p;
     public Vector3 target;
-    public float speed;     //¶¯»­µÄÒÆ¶¯ËÙ¶È
+    public float speed;     //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç‹¡è®¹æ‹·é”ŸåŠ«è®¹æ‹·
     public bool isMove = false;
     public int forward_step = 0;
 
 
-    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //¿¹Ô­µÄÀàĞÍºÍÊıÁ¿
-    public byte ATP;         //ÄÜÁ¿
-    public byte ATPMax;      //ÄÜÁ¿ÉÏÏŞ
-    public byte ATPspeed;   //ÄÜÁ¿»Ø¸´ËÙ¶È
+
+    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //é”Ÿæ–¤æ‹·åŸé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿé…µçŒ´æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
+    public byte ATP;         //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
+    public byte ATPMax;      //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
+    public byte ATPspeed;   //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæˆªé©æ‹·é”ŸåŠ«è®¹æ‹·
+    public int ATPbuffRound;//é¢ã„¤ç°¬atpgeté—ï¼„å¢
+    public byte extraReward;
+    public int rewardRound;
 
 
     protected virtual void Awake()
     {
         speed = 3f;
+        ATPbuffRound = 0;
 
-        //Îª¿¹ÌåµÄÀàĞÍºÍÊıÁ¿¸³³õÖµ
-        antigens.Add(AntigenType.staph, 2);//2½ö½öÊÇÎªÁË²âÊÔ£¬Êµ¼ÊÓ¦¸ÃÎª0
+        //ä¸ºé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ç§ƒé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿè¡—?
+        antigens.Add(AntigenType.staph, 2);//2é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ä¸ºé”Ÿå‰¿è¯§æ‹·é”Ÿçš†ï½æ‹·å®é”Ÿæ–¤æ‹·åº”é”Ÿæ–¤æ‹·ä¸º0
         antigens.Add(AntigenType.flu, 2);
     }
 
     public virtual void TurnStart ()
     {
         ATPrecover();
+        
     }
 
     protected virtual void ATPrecover()
     {
+        byte addUp=ATPspeed;
+        if(ATPbuffRound>0){
+            addUp  += 1;
+            ATPbuffRound-=1; 
+        }
         if (ATP < ATPMax)
         {
-            ATP += ATPspeed;
+            ATP += addUp;
+        }
+        if(rewardRound>0){
+            rewardRound--;
+            if(rewardRound == 0){
+                ATP+=extraReward;
+            }
+        }
+        if(Board.instance.immuneBuffRound>0){
+            ATP+=1;
         }
         if(ATP > ATPMax)
         {
