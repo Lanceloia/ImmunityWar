@@ -105,7 +105,7 @@ public class CardUIManager : MonoBehaviour
                     newStem.GetComponent<StemSelect>().cardContainer = selector;
                     RectTransform stemRect = newStem.GetComponent<RectTransform>();
                     stemRect.anchoredPosition = position; // 使用锚点位置进行设置
-                    position.x += stemRect.sizeDelta.x/2 + cardSpacing;
+                    position.x += stemRect.sizeDelta.x/2 + 3*cardSpacing;
                 }
                 
             }

@@ -16,6 +16,8 @@ public class BCell : ImmuneCell
         
         ATPcost = 1;
         antigenCost = 1;
+
+        type = ImmuneCellType.BCell;
     }
 
     // Update is called once per frame

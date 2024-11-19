@@ -15,10 +15,10 @@ public enum GridsType
 
 public enum ShapeType
 {
-    SmallSquare = 0,    //1x1�ĸ���
-    UpTriangle = 1,   // 2x1�ĸ���,�������������ϵ�
+    SmallSquare = 0,    //1x1?????
+    UpTriangle = 1,   // 2x1?????,???????????????
     
-    DownTriangle = 2,   // 1x2�ĸ���,�������������µ�
+    DownTriangle = 2,   // 1x2?????,???????????????
 
     BigSquare = 3,
 }
@@ -33,36 +33,36 @@ public enum Direction
 
 abstract public class Grids : MonoBehaviour
 {
-    // ���ݳ�Ա
-    public GridsType type;   // ���ӵ�����
-    public ShapeType shape;      // ���ӵ���״//��Ҫ��
-    public Position p;             // ���ӵĵ�ͼ���꣨�ڲ������ã�
-    public int x, y;               // ���ӵĵ�ͼ���꣨�ⲿ���ã�
+    // ??????
+    public GridsType type;   // ?????????
+    public ShapeType shape;      // ????????//?????
+    public Position p;             // ?????????????????????
+    public int x, y;               // ??????????????????
 
-    public HashSet<GameObject> immuneCells = new HashSet<GameObject>();     // ���Թ�����������ӵķ�����
+    public HashSet<GameObject> immuneCells = new HashSet<GameObject>();     // ??????????????????????
 
-    public Direction next;         // ��һ�����ӵķ���
+    public Direction next;         // ?????????????
     public Direction pre;
-    public bool accessRoad;        // �Ƿ����֧·
-    public Direction accessRoadNext; // ֧·����һ�����ӵķ���
-    bool canActiveStay;              // �ܷ�����ͣ���ڴ˴�
+    public bool accessRoad;        // ???????��
+    public Direction accessRoadNext; // ?��???????????????
+    bool canActiveStay;              // ??????????????
 
-    public bool nearHistiocyte;//�Ƿ��ڽ���֯ϸ��
-    public Direction HistiocyteNext;//��֯ϸ������
+    public bool nearHistiocyte;//????????????
+    public Direction HistiocyteNext;//??????????
 
-    // List of ImmuneCells    // һ���б�����ʾ����������б��е�ϸ���Ĺ�����Χ��
+    // List of ImmuneCells    // ????��????????????????��??��???????????��??
 
-    // ��ϸ������ʱ�Ĵ���
+    // ???????????????
     public abstract void onStemCellPassBy(GameObject stemCell);
 
 
-    // ��ϸ��ͣ��ʱ����
+    // ?????????????
     public abstract IEnumerator onStemCellStay();
 
-    // ��������ʱ�Ĵ���
+    // ??????????????
     public abstract void onPathogenCellPassBy(GameObject pathogen);
 
-    // ����ͣ��ʱ����
+    // ????????????
     public abstract void onPathogenCellStay(GameObject pathogen);
     private void Awake()
     {

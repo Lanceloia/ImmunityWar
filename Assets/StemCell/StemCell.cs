@@ -5,43 +5,61 @@ using UnityEngine;
 
 public enum AntigenType
 {
-    staph = 0,  //½ğ»ÆÉ«ÆÏÌÑÇò¾ú
-    flu = 1,    //Á÷¸Ğ
+    staph = 0,  //ï¿½ï¿½ï¿½É?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
+    flu = 1,    //ï¿½ï¿½ï¿½ï¿½
 }
 public class StemCell : MonoBehaviour
 {
     public Position p;
     public Vector3 target;
-    public float speed;     //¶¯»­µÄÒÆ¶¯ËÙ¶È
+    public float speed;     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½
     public bool isMove = false;
     public int forward_step = 0;
 
 
-    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //¿¹ÌåµÄÀàĞÍºÍÊıÁ¿
-    public byte ATP;         //ÄÜÁ¿
-    public byte ATPMax;      //ÄÜÁ¿ÉÏÏŞ
-    public byte ATPspeed;   //ÄÜÁ¿»Ø¸´ËÙ¶È
-
+    public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½
+    public byte ATP;         //ï¿½ï¿½ï¿½ï¿½
+    public byte ATPMax;      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public byte ATPspeed;   //ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½Ù¶ï¿½
+    public int ATPbuffRound;//ç”¨äºatpgetå¡ç‰Œ
+    public byte extraReward;
+    public int rewardRound;
 
     protected virtual void Awake()
     {
         speed = 3f;
+        ATPbuffRound = 0;
 
-        //Îª¿¹ÌåµÄÀàĞÍºÍÊıÁ¿¸³³õÖµ
-        antigens.Add(AntigenType.staph, 2);//2½ö½öÊÇÎªÁË²âÊÔ£¬Êµ¼ÊÓ¦¸ÃÎª0
+        //Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö?
+        antigens.Add(AntigenType.staph, 2);//2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ë²ï¿½ï¿½Ô£ï¿½Êµï¿½ï¿½Ó¦ï¿½ï¿½Îª0
         antigens.Add(AntigenType.flu, 2);
     }
 
     public virtual void TurnStart ()
     {
         ATPrecover();
+        
     }
 
     protected virtual void ATPrecover()
     {
+        byte addUp=ATPspeed;
+        if(ATPbuffRound>0){
+            addUp  += 1;
+            ATPbuffRound-=1; 
+        }
         if (ATP < ATPMax)
         {
-            ATP += ATPspeed;
+            ATP += addUp;
+        }
+        if(rewardRound>0){
+            rewardRound--;
+            if(rewardRound == 0){
+                ATP+=extraReward;
+            }
+        }
+        if(Board.instance.immuneBuffRound>0){
+            ATP+=1;
         }
         if(ATP > ATPMax)
         {

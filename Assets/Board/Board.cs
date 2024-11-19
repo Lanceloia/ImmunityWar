@@ -74,6 +74,10 @@ public class Board : MonoBehaviour
     public bool isSelectMove = false;//用于实现SelectMove卡牌
     public int selectNum;
     public bool isBackMove = false;//用于实现BackMove卡牌
+    public int ATPGetter;//用于实现ATPbuffer
+    public int ATPGetremainRound;
+
+    public int immuneBuffRound;
     public void StartGame()
     {
         map.Init();                                               // 初始化地图信息
@@ -107,7 +111,7 @@ public class Board : MonoBehaviour
             // {
             //     row.Add(0); // 仅用于测试，每个角色手牌添加两张测试牌
             // }
-            row.Add(4);
+            row.Add(10);
             row.Add(1);
             row.Add(2);
             row.Add(3);
@@ -153,6 +157,7 @@ public class Board : MonoBehaviour
     public IEnumerator StemCellForward(int stem_cell_index, int forward_step)
     {
         // 目前，会在Dice.cs中，通过鼠标点击的响应函数调用这里
+        if(immuneBuffRound>0)forward_step+=2;
         //Debug.Log("move:"+forward_step);
         while (forward_step > 0)
         {
@@ -407,7 +412,7 @@ public class Board : MonoBehaviour
                     int defaultPathogenType = 0;
                     PathogenCreate(defaultPathogenType, defaultPathogenPos, ((totalRound) / 4) % 4);
                 }
-                //// 所有怪物每次前进随机格
+                // 所有怪物每次前进随机格
 
                 for (int i = pathogenList.Count - 1; i >= 0; i--)
                 {
@@ -427,7 +432,11 @@ public class Board : MonoBehaviour
                 cardUIManager.GetComponent<CardUIManager>().DisplayCardsForTurn(0);
                 //Debug.Log("P1 turn");
                 stemCellList[0].GetComponent<StemCell>().TurnStart();
-        
+
+                if(immuneBuffRound>0){
+                    immuneBuffRound--;
+                }
+
                 break;
             default:
                 Debug.Log("Token error");
@@ -475,7 +484,7 @@ public class Board : MonoBehaviour
         GameObject immune_cell_grid = map.GetGridsFromPosition(target_position);
         immune_cell_grid.GetComponent<ImmuneCellGrid>().state = ImmuneCellGridState.CanUpgrade;
         immune_cell_grid.GetComponent<ImmuneCellGrid>().immune_cell = immune_cell;
-
+        immune_cell.GetComponent<ImmuneCell>().grid= immune_cell_grid;
         // 向攻击范围内的道路格子注册自身
         GridsAddImmune(immune_cell,shapeType);
 

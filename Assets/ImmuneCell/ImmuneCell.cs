@@ -29,6 +29,7 @@ abstract public class ImmuneCell : MonoBehaviour
 
     public byte ATPcost;     // 建造或升级时ATP消耗
     public byte antigenCost;     // 建造或升级时抗原消耗
+    public GameObject grid;   // 防御塔所在的格子
 
     public virtual void NextRound()
     {
