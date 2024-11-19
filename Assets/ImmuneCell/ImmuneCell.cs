@@ -31,7 +31,6 @@ abstract public class ImmuneCell : MonoBehaviour
 
     public byte ATPcost;     // 建造或升级时ATP消耗
     public byte antigenCost;     // 建造或升级时抗原消耗
-    public GameObject grid;   // 防御塔所在的格子
 
     public int CytokineLeft;     // Cytokine激活模式还剩余几回合,1代表直接清除
     public int tempCytokine;     // Cytokine激活模式激活时，记录Cytokine的等级
