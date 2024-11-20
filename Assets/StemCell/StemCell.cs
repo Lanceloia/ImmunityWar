@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 
 public enum AntigenType
@@ -16,6 +18,18 @@ public class StemCell : MonoBehaviour
     public bool isMove = false;
     public int forward_step = 0;
 
+    private SpriteRenderer sr;
+    public List<Sprite> sprites;
+    private int curFrame;
+    public int FrameCount
+    {
+        get
+        {
+            return sprites.Count;
+        }
+    }
+    private float timeDelta;
+    private int FPS = 4;
 
 
     public Dictionary<AntigenType, byte> antigens = new Dictionary<AntigenType, byte>(); //锟斤拷原锟斤拷锟斤拷锟酵猴拷锟斤拷锟斤拷
@@ -31,6 +45,13 @@ public class StemCell : MonoBehaviour
     {
         speed = 3f;
         ATPbuffRound = 0;
+
+        // 绑定到spirte组件
+        sr = GetComponent<SpriteRenderer>();
+        if (FrameCount > 0)
+        {
+            sr.sprite = sprites[0];
+        }
 
         //为锟斤拷锟斤拷锟斤拷锟斤拷秃锟斤拷锟斤拷锟斤拷锟斤拷锟街?
         antigens.Add(AntigenType.staph, 2);//2锟斤拷锟斤拷锟斤拷为锟剿诧拷锟皆ｏ拷实锟斤拷应锟斤拷为0
@@ -82,6 +103,17 @@ public class StemCell : MonoBehaviour
                 isMove = false;
                 
             }
-        }            
+        }
+
+        if (FrameCount > 0)
+        {
+            timeDelta += Time.deltaTime;
+            if (timeDelta > 1.0f / FPS)
+            {
+                timeDelta -= 1.0f / FPS;
+                curFrame = (curFrame + 1) % FrameCount;
+                sr.sprite = sprites[curFrame];
+            }
+        }
     }
 }

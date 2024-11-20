@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73b6154273072884dba8f89a0c9e89f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 672ca3d41907d714e9ee47947cf565e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 3142038978999402330}
+  grid: {fileID: 0}
   index: 0
   type: 0
   rank: 1
@@ -108,3 +109,9 @@ MonoBehaviour:
   attackLeft: 0
   ATPcost: 0
   antigenCost: 0
+  CytokineLeft: 0
+  tempCytokine: 0
+  isEngulfing: 0
+  count: 0
+  getDoubleAntigen: 0
+  targetEnemy: {fileID: 0}
