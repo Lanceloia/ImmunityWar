@@ -6,7 +6,7 @@ public enum PathogenType
 {
    bacteria,
    virus,
-   fungi
+   strep
 
 }
 abstract public class Pathogen : MonoBehaviour

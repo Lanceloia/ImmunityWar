@@ -7,14 +7,15 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public enum AntigenType
 {
-    staph = 0,  //锟斤拷锟缴?锟斤拷锟斤拷锟斤拷锟?
-    flu = 1,    //锟斤拷锟斤拷
+    staph = 0,  //锟斤拷锟�??锟斤拷锟斤拷锟斤拷锟?
+    Strep = 1,    //链球菌病原体
+    Virus = 2
 }
 public class StemCell : MonoBehaviour
 {
     public Position p;
     public Vector3 target;
-    public float speed;     //锟斤拷锟斤拷锟斤拷锟狡讹拷锟劫讹拷
+    public float speed;     //锟斤拷锟斤拷锟斤拷锟狡讹拷锟劫讹�?
     public bool isMove = false;
     public int forward_step = 0;
 
@@ -36,7 +37,7 @@ public class StemCell : MonoBehaviour
     public byte ATP;         //锟斤拷锟斤拷
     public byte ATPMax;      //锟斤拷锟斤拷锟斤拷锟斤拷
     public byte ATPspeed;   //锟斤拷锟斤拷锟截革拷锟劫讹拷
-    public int ATPbuffRound;//鐢ㄤ簬atpget鍗＄墝
+    public int ATPbuffRound;//鐀��簬atpget鍗＄�?
     public byte extraReward;
     public int rewardRound;
 
@@ -54,8 +55,9 @@ public class StemCell : MonoBehaviour
         }
 
         //为锟斤拷锟斤拷锟斤拷锟斤拷秃锟斤拷锟斤拷锟斤拷锟斤拷锟街?
-        antigens.Add(AntigenType.staph, 2);//2锟斤拷锟斤拷锟斤拷为锟剿诧拷锟皆ｏ拷实锟斤拷应锟斤拷为0
-        antigens.Add(AntigenType.flu, 2);
+        antigens.Add(AntigenType.staph, 2);//2锟斤拷锟斤拷锟斤拷为锟剿诧拷锟皆ｏ拷实锟斤拷应锟斤拷�?0
+        antigens.Add(AntigenType.Strep, 2);
+        antigens.Add(AntigenType.Virus,2);
     }
 
     public virtual void TurnStart ()
