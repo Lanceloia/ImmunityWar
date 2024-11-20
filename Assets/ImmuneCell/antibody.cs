@@ -14,7 +14,8 @@ public class AntiBody : MonoBehaviour
     }
     public void attack(GameObject target)
     {
-        target.GetComponent<Pathogen>().beAntibodyed(this);
+        if(antigenType == target.GetComponent<Pathogen>().antigenType)
+            target.GetComponent<Pathogen>().beAntibodyed(this);
     }
 
 
