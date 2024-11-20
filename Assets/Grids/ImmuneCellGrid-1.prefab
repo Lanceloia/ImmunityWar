@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6792842528651329518}
   - component: {fileID: 232093013466581281}
+  - component: {fileID: 8456373534328042531}
   m_Layer: 0
   m_Name: ImmuneCellGrid-1
   m_TagString: Untagged
@@ -84,3 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8456373534328042531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104951859854687510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d82f81497f6c940a19f62c43c04879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  shape: 0
+  x: 0
+  y: 0
+  next: 0
+  pre: 0
+  accessRoad: 0
+  accessRoadNext: 0
+  nearHistiocyte: 0
+  HistiocyteNext: 0
+  state: 0
+  immune_cell: {fileID: 0}

@@ -45,7 +45,14 @@ abstract public class Maps : MonoBehaviour
 
     public GameObject GetGridsFromPosition(Position p) // ���������ȡ���Ӷ���
     {
-        return GridsDict[p];
+        try
+        {
+            return GridsDict[p];
+        }
+        catch (KeyNotFoundException ex){
+            Debug.Log(string.Format("Key not found position ({0},{1})", p.x, p.y));
+            return new GameObject();
+        };
     }
 
     // Start is called before the first frame update
