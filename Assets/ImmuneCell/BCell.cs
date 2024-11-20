@@ -154,9 +154,10 @@ public class BCell : ImmuneCell
             grids[index]._antiBody = antibody;
             //Debug.Log("index: " + index);
             //Debug.Log("grids count: " + grids.Count);
-            antibody.transform.position = grids[index].transform.position+new Vector3(0,0.25f,0);//设置抗体位置
+            antibody.transform.position = grids[index].transform.position + new Vector3(0,0.25f,0);//设置抗体位置
             //Debug.Log("antibody position: " + grids[index].x+","+grids[index].y);
             antibody.GetComponent<AntiBody>().p = grids[index].p;
+            antibody.GetComponent<AntiBody>().bCell = this.gameObject;
         }
     }
 

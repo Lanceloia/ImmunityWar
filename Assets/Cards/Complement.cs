@@ -20,6 +20,10 @@ public class Complement : Card
         
     }
     public override void CardEffect(){
-        
+        foreach(GameObject pathogen in Board.instance.pathogenList)
+        {
+            Pathogen pat=pathogen.GetComponent<Pathogen>();
+            pat.antibodyDamage();
+        }
     }
 }
