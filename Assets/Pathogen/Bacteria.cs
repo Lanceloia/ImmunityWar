@@ -19,6 +19,7 @@ public class Bacteria : Pathogen
 {
     void Awake()
     {
+        base.Awake();
         type = PathogenType.bacteria;
         antigenType = AntigenType.staph;
         health = 10;

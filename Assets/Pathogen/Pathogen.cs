@@ -29,6 +29,29 @@ abstract public class Pathogen : MonoBehaviour
     public float speed;
     public bool isMove = false;
 
+    private SpriteRenderer sr;
+    public List<Sprite> sprites;
+    private int curFrame;
+    public int FrameCount
+    {
+        get
+        {
+            return sprites.Count;
+        }
+    }
+    private float timeDelta;
+    private int FPS = 4;
+
+
+    protected void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        if (FrameCount > 0)
+        {
+            sr.sprite = sprites[0];
+        }
+    }
+
     void Start()
     {
        
@@ -48,6 +71,17 @@ abstract public class Pathogen : MonoBehaviour
             {
                 isMove = false;
                
+            }
+        }
+
+        if (FrameCount > 0)
+        {
+            timeDelta += Time.deltaTime;
+            if (timeDelta > 1.0f / FPS)
+            {
+                timeDelta -= 1.0f / FPS;
+                curFrame = (curFrame + 1) % FrameCount;
+                sr.sprite = sprites[curFrame];
             }
         }
     }
