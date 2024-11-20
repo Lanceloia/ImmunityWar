@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// 存储测试用地图TestMap的地图数据
+// 存储地图WoundMap的地图数据
 public class WoundMap : Maps
 {
 
